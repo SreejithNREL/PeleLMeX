@@ -12,6 +12,14 @@ chk*
 plt*
 grdlog
 temporals
+Exec/Production/A74Phase2/Files.dat
+Exec/Production/A74Phase2/clean_and_run.sh
+Exec/RegTests/EB_BackwardStepFlame/.gitignore
+Exec/RegTests/SprayTest/.gitignore
+Exec/RegTests/Unit/.gitignore
+
+*.cproject
+*.project
 
 # OSX files
 .DS_Store
