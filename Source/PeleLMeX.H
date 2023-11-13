@@ -964,6 +964,7 @@ public:
   //-----------------------------------------------------------------------------
   // Temporal
   void massBalance();
+  void massBalancePatch();
   void speciesBalance();
   void rhoHBalance();
   void initTemporals(const PeleLM::TimeStamp& a_time = AmrOldTime);
@@ -971,6 +972,9 @@ public:
   void addMassFluxes(
     const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
     const amrex::Geometry& a_geom);
+  void addMassFluxesA74(
+      const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+      const amrex::Geometry& a_geom);
   void addRhoHFluxes(
     const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
     const amrex::Geometry& a_geom);
@@ -1876,6 +1880,7 @@ public:
   int m_temp_int = 5;
   int m_do_extremas = 0;
   int m_do_massBalance = 0;
+  int m_do_massReportPatch = 1;
   int m_do_energyBalance = 0;
   int m_do_speciesBalance = 0;
   amrex::Real m_massOld;
@@ -1888,11 +1893,15 @@ public:
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainRhoHFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM * NUM_SPECIES> m_domainRhoYFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainUmacFlux;
+  //Specific to A74 SImulations only.
+  amrex::Array<amrex::Real, 6> m_InletPatchMassFlux;
+  amrex::Array<amrex::Real, 1> m_OutletPatchMassFlux;
 
   std::ofstream tmpStateFile;
   std::ofstream tmpExtremasFile;
   std::ofstream tmpMassFile;
   std::ofstream tmpSpecFile;
+  std::ofstream tmpMassPatchFile;
 
   // Number of ghost cells
 #ifdef AMREX_USE_EB

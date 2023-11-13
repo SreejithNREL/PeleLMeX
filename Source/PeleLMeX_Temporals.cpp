@@ -9,12 +9,26 @@ PeleLM::initTemporals(const PeleLM::TimeStamp& a_time)
     return;
   }
 
+  // Reset mass fluxes integrals on patches
+  if ((m_do_massReportPatch != 0) && (m_incompressible == 0))
+    {
+      m_OutletPatchMassFlux[0] = 0.0;     //A74
+      for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+        {
+        m_InletPatchMassFlux[2 * idim] = 0.0;             //A74
+        m_InletPatchMassFlux[2 * idim+1] = 0.0;           //A74
+        }
+    }
+
   // Reset mass fluxes integrals on domain boundaries
   if ((m_do_massBalance != 0) && (m_incompressible == 0)) {
     m_massOld = MFSum(GetVecOfConstPtrs(getDensityVect(a_time)), 0);
+    m_OutletPatchMassFlux[0] = 0.0;     //A74
     for (int idim = 0; idim < AMREX_SPACEDIM; idim++) {
       m_domainMassFlux[2 * idim] = 0.0;
       m_domainMassFlux[2 * idim + 1] = 0.0;
+      m_InletPatchMassFlux[2 * idim] = 0.0;             //A74
+      m_InletPatchMassFlux[2 * idim+1] = 0.0;           //A74
     }
   }
   if ((m_do_energyBalance != 0) && (m_incompressible == 0)) {
@@ -42,10 +56,12 @@ PeleLM::massBalance()
   // Compute the mass balance on the computational domain
   m_massNew = MFSum(GetVecOfConstPtrs(getDensityVect(AmrNewTime)), 0);
   Real dmdt = (m_massNew - m_massOld) / m_dt;
-  Real massFluxBalance = AMREX_D_TERM(
+  /*Real massFluxBalance = AMREX_D_TERM(
     m_domainMassFlux[0] + m_domainMassFlux[1],
     +m_domainMassFlux[2] + m_domainMassFlux[3],
-    +m_domainMassFlux[4] + m_domainMassFlux[5]);
+    +m_domainMassFlux[4] + m_domainMassFlux[5]);*/
+
+  Real massFluxBalance = m_domainMassFlux[4];
 
   tmpMassFile << m_nstep << " " << m_cur_time // Time info
               << " " << m_massNew             // mass
@@ -53,6 +69,20 @@ PeleLM::massBalance()
               << " " << massFluxBalance       // domain boundaries mass fluxes
               << " " << std::abs(dmdt - massFluxBalance) << " \n"; // balance
   tmpMassFile.flush();
+}
+
+void
+PeleLM::massBalancePatch()
+{
+  tmpMassPatchFile << m_nstep << " " << m_cur_time<< " "
+      << m_InletPatchMassFlux[0]<<" "
+      << m_InletPatchMassFlux[1]<<" "
+      << m_InletPatchMassFlux[2]<<" "
+      << m_InletPatchMassFlux[3]<<" "
+      << m_InletPatchMassFlux[4]<<" "
+      << m_InletPatchMassFlux[5]<<" "
+      <<m_OutletPatchMassFlux[0]<<"\n";
+  tmpMassPatchFile.flush();
 }
 
 void
@@ -87,6 +117,137 @@ PeleLM::speciesBalance()
   }
   tmpSpecFile << "\n";
   tmpSpecFile.flush();
+}
+
+//Calculate total mass fluxes through corner premixers, pilot and window cooling holes in A74 simulations
+void PeleLM::addMassFluxesA74( const Array<const MultiFab*,
+                               AMREX_SPACEDIM>& a_fluxes,
+                               const Geometry& a_geom)
+{
+  // Do when m_nstep is -1 since m_nstep is increased by one before
+  // the writeTemporals
+  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
+    return;
+  }
+
+  // Get the face areas
+  const Real* dx = a_geom.CellSize();
+  const Real *prob_lo = a_geom.ProbLo();
+  Array<Real, AMREX_SPACEDIM> area;
+
+  area[0] = dx[1] * dx[2];
+  area[1] = dx[0] * dx[2];
+  area[2] = dx[0] * dx[1];
+
+  int idim  = 2;    //All inlet boundary patches are in the z-planes in the A74 combustor
+
+  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
+
+  auto const& fma = a_fluxes[idim]->const_arrays();
+
+  Real sum_CP00 = 0.0;
+  Real sum_CP01 = 0.0;
+  Real sum_CP02 = 0.0;
+  Real sum_CP03 = 0.0;
+  Real sum_Pilot = 0.0;
+  Real sum_WCH = 0.0;
+  Real sumHi = 0.0;
+
+  const Real rmin_cp_actual = 11.4808/2.0*0.001;
+  const Real rmax_cp_actual = 16.6624/2.0*0.001;
+  const Real xycenter_cp = 0.0163322;   //The x,y cooridnates of all the CPs have this as their absolute values.
+
+  const Real rmax_pilot_actual = 0.005080;
+  const Real xymin_wch_actual = 43.18*0.001-1.5875*0.001/2.0;
+  const Real sqrt2 = sqrt(2.0);
+
+  Real rmin_cp_touse = 11.4808/2.0*0.001-dx[0]*sqrt2/2.0;
+  Real rmax_cp_touse = 16.6624/2.0*0.001+dx[0]*sqrt2/2.0;
+
+  Real rmax_pilot_touse = 0.005080+dx[0]*sqrt2/2.0;
+  Real xymin_wch_touse = 43.18*0.001-1.5875*0.001/2.0-dx[0]*sqrt2/2.0;
+
+  auto r = amrex::ParReduce(TypeList<ReduceOpSum, ReduceOpSum, ReduceOpSum, ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum>{},
+                            TypeList<Real, Real, Real, Real, Real, Real, Real>{}, *a_fluxes[idim],
+                            IntVect(0),[=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real, Real>
+                            {Array4<const Real> const& flux = fma[box_no];
+
+          int idx = k;
+          Real xp = prob_lo[0]+(i+0.5)*dx[0];
+          Real yp = prob_lo[1]+(j+0.5)*dx[1];
+          Real radp_origin = sqrt(xp*xp+yp*yp);
+          Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+          Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+          Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+          Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+
+          // low
+          Real MFR_Pilot = 0.0;
+          Real MFR_CP00 = 0.0;
+          Real MFR_CP01 = 0.0;
+          Real MFR_CP02 = 0.0;
+          Real MFR_CP03 = 0.0;
+          Real MFR_WCH = 0.0;
+
+          //Window cooling hole MFR calculation
+          if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+            {
+              for (int n = 0; n < NUM_SPECIES; n++)
+                {
+                  MFR_WCH += flux(i, j, k, n) * area[idim];
+                }
+          }
+          if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse)) {
+            for (int n = 0; n < NUM_SPECIES; n++) {
+                MFR_CP00 += flux(i, j, k, n) * area[idim];
+            }
+          }
+          if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse)) {
+            for (int n = 0; n < NUM_SPECIES; n++) {
+                MFR_CP01 += flux(i, j, k, n) * area[idim];
+            }
+          }
+          if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse)) {
+              for (int n = 0; n < NUM_SPECIES; n++) {
+                MFR_CP02 += flux(i, j, k, n) * area[idim];
+             }
+          }
+          if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse)) {
+              for (int n = 0; n < NUM_SPECIES; n++) {
+                MFR_CP03 += flux(i, j, k, n) * area[idim];
+              }
+          }
+          if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse)) {
+              for (int n = 0; n < NUM_SPECIES; n++) {
+                MFR_Pilot += flux(i, j, k, n) * area[idim];
+              }
+          }
+          // high
+          Real high = 0.0;
+          if (idx == faceDomain.bigEnd(idim)) {
+            for (int n = 0; n < NUM_SPECIES; n++) {
+              high += flux(i, j, k, n) * area[idim];
+            }
+          }
+          return {MFR_Pilot, MFR_CP00, MFR_CP01, MFR_CP02, MFR_CP03, MFR_WCH, high};
+        });
+      sum_Pilot = amrex::get<0>(r);
+      sum_CP00 = amrex::get<1>(r);
+      sum_CP01 = amrex::get<2>(r);
+      sum_CP02 = amrex::get<3>(r);
+      sum_CP03 = amrex::get<4>(r);
+      sum_WCH = amrex::get<5>(r);
+      sumHi = amrex::get<6>(r);
+
+    ParallelAllReduce::Sum<Real>({sum_Pilot, sum_CP00, sumHi}, ParallelContext::CommunicatorSub());
+    m_InletPatchMassFlux[0] += sum_Pilot;
+    m_InletPatchMassFlux[1] += sum_CP00;
+    m_InletPatchMassFlux[2] += sum_CP01;
+    m_InletPatchMassFlux[3] += sum_CP02;
+    m_InletPatchMassFlux[4] += sum_CP03;
+    m_InletPatchMassFlux[5] += sum_WCH;
+    m_OutletPatchMassFlux[0] -= sumHi; // Outflow, negate flux
+
 }
 
 void
@@ -509,6 +670,11 @@ PeleLM::writeTemporals()
   if ((m_do_massBalance != 0) && (m_incompressible == 0)) {
     massBalance();
   }
+  //----------------------------------------------------------------
+  // Mass balance
+  if ((m_do_massBalance != 0) && (m_incompressible == 0)) {
+      massBalancePatch();
+  }
 
   //----------------------------------------------------------------
   // Species balance
@@ -596,6 +762,13 @@ PeleLM::openTempFile()
         std::ios::out | std::ios::app | std::ios_base::binary);
       tmpMassFile.precision(12);
     }
+    if (m_do_massReportPatch != 0) {
+          tempFileName = "temporals/tempMassPatch";
+          tmpMassPatchFile.open(
+            tempFileName.c_str(),
+            std::ios::out | std::ios::app | std::ios_base::binary);
+          tmpMassPatchFile.precision(12);
+        }
     if (m_do_speciesBalance != 0) {
       tempFileName = "temporals/tempSpecies";
       tmpSpecFile.open(
@@ -644,6 +817,10 @@ PeleLM::closeTempFile()
       tmpExtremasFile.flush();
       tmpExtremasFile.close();
     }
+    if (m_do_massReportPatch != 0) {
+        tmpMassPatchFile.flush();
+        tmpMassPatchFile.close();
+        }
 #ifdef PELE_USE_EFIELD
     if (m_do_ionsBalance) {
       tmpIonsFile.flush();

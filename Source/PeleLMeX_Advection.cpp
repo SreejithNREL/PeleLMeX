@@ -644,6 +644,10 @@ PeleLM::computeScalarAdvTerms(std::unique_ptr<AdvanceAdvData>& advData)
     if (m_do_massBalance != 0) {
       addMassFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0]);
     }
+    if (m_do_massReportPatch != 0) {
+        addMassFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
+        }
+
     if (m_do_energyBalance != 0) {
       addRhoHFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0]);
     }
