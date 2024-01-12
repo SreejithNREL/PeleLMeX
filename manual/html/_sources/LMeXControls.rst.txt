@@ -164,7 +164,7 @@ The following list of derived variables are available in PeleLMeX:
     * - `mole_fractions`
       - NUM_SPECIES
       - Species mole fractions
-    * - `diffcoeffs`
+    * - `diffcoeff`
       - NUM_SPECIES
       - Species mixture-averaged diffusion coefficients
     * - `lambda`
@@ -223,7 +223,7 @@ PeleLMeX algorithm
 
 ::
 
-    #-----------------------PELELMEX CONTROL-----------------------
+    #-----------------------PELE CONTROL-----------------------
     peleLM.v = 1                           # [OPT, DEF=0] Verbose
     peleLM.run_mode = normal               # [OPT, DEF=normal] Switch between time-advance mode (normal) or UnitTest (evaluate)
     peleLM.use_wbar = 1                    # [OPT, DEF=1] Enable Wbar correction in diffusion fluxes
@@ -527,4 +527,3 @@ frequency using:
 ::
 
     amr.message_int      = 20                # [OPT, DEF=10] Frequency for checking the presence of trigger files
-
