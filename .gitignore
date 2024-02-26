@@ -3,6 +3,8 @@
 tmp_build*
 compile_commands.json
 .ccls-cache
+./Exec/**/.project
+./Exec/**/.cproject
 
 # Run output
 *.p3d
@@ -12,6 +14,7 @@ chk*
 plt*
 grdlog
 temporals
+
 
 # OSX files
 .DS_Store
