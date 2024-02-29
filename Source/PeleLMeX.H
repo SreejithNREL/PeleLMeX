@@ -977,6 +977,8 @@ public:
   // Temporal
   void massBalance();
   void speciesBalance();
+  void speciesBalance_A74();
+
   void rhoHBalance();
   void initTemporals(const PeleLM::TimeStamp& a_time = AmrOldTime);
   void writeTemporals();
@@ -990,6 +992,10 @@ public:
     const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
     const amrex::Geometry& a_geom,
     const amrex::Real& a_factor = 1.0);
+  void addRhoYFluxesA74(
+      const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+      const amrex::Geometry& a_geom,
+      const amrex::Real& a_factor = 1.0);
   void addUmacFluxes(
     std::unique_ptr<AdvanceAdvData>& advData, const amrex::Geometry& a_geom);
   void openTempFile();
@@ -1891,6 +1897,7 @@ public:
 
   // Temporals
   int m_do_temporals = 0;
+  int m_do_patch_mfr=1;
   int m_temp_int = 5;
   int m_do_extremas = 0;
   int m_do_massBalance = 0;
@@ -1906,11 +1913,19 @@ public:
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainRhoHFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM * NUM_SPECIES> m_domainRhoYFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainUmacFlux;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_pilot;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP00;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP01;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP02;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP03;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP04;
+  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_wch;
 
   std::ofstream tmpStateFile;
   std::ofstream tmpExtremasFile;
   std::ofstream tmpMassFile;
   std::ofstream tmpSpecFile;
+  std::ofstream tmppatchmfrFile;
 
   // Number of ghost cells
 #ifdef AMREX_USE_EB
