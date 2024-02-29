@@ -1918,7 +1918,6 @@ public:
   amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP01;
   amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP02;
   amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP03;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP04;
   amrex::Array<amrex::Real, 2> m_domainRhoYFlux_wch;
 
   std::ofstream tmpStateFile;

@@ -756,6 +756,8 @@ PeleLM::addRhoYFluxesA74(
 	m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
 	m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
 	m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
+
+	amrex::Print()<<"\n Flux = "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_wch[1];
     }
 
 
