@@ -563,29 +563,6 @@ PeleLM::addRhoYFluxesA74(
   area[2] = dx[0] * dx[1];
 #endif
 
-  // Outer loop over species
-  int idx_O2=-1;
-  int idx_N2=-1;
-  int idx_F=-1;
-  Vector<std::string> spec_names;
-  pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(spec_names);
-  for (int n = 0; n < NUM_SPECIES; n++)
-  {
-	  if(spec_names[n]=="O2")
-	  {
-		  idx_O2=n;
-	  }
-	  if(spec_names[n]=="N2")
-	  {
-		  idx_N2=n;
-	  }
-	  if(spec_names[n]=="NC12H26")
-	  {
-		  idx_F=n;
-	  }
-  }
-  amrex::Print()<<"\nSpecies index O2 N2 Fuel: "<<idx_O2<<" "<<idx_N2<<" "<<idx_F;
-
   // Inner loop over dimensions
   int idim=2;
   auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
@@ -641,27 +618,27 @@ PeleLM::addRhoYFluxesA74(
 			  //Window cooling hole MFR calculation
 			  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
 			  {
-				  sum_wch_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_wch_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
 			  {
-				  sum_CP00_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_CP00_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
 			  {
-				  sum_CP01_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_CP01_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
 			  {
-				  sum_CP02_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_CP02_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
 			  {
-				  sum_CP03_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_CP03_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
 			  {
-				  sum_pilot_loc += flux(i, j, k, idx_F) * area[idim];
+				  sum_pilot_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 			  }
 			  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
 			  });
@@ -718,27 +695,27 @@ PeleLM::addRhoYFluxesA74(
 				  //Window cooling hole MFR calculation
 				  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
 				  {
-					  sum_wch_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_wch_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
 				  {
-					  sum_CP00_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_CP00_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
 				  {
-					  sum_CP01_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_CP01_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
 				  {
-					  sum_CP02_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_CP02_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
 				  {
-					  sum_CP03_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_CP03_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
 				  {
-					  sum_pilot_loc += (flux(i, j, k, idx_O2)+flux(i, j, k, idx_N2)) * area[idim];
+					  sum_pilot_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 				  }
 				  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
 				});
@@ -757,7 +734,7 @@ PeleLM::addRhoYFluxesA74(
 	m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
 	m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
 
-	amrex::Print()<<"\n Flux = "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_wch[1];
+
     }
 
 
