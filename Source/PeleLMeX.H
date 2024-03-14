@@ -1913,12 +1913,12 @@ public:
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainRhoHFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM * NUM_SPECIES> m_domainRhoYFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainUmacFlux;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_pilot;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP00;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP01;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP02;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_CP03;
-  amrex::Array<amrex::Real, 2> m_domainRhoYFlux_wch;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_pilot;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP00;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP01;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP02;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP03;
+  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_wch;
 
   std::ofstream tmpStateFile;
   std::ofstream tmpExtremasFile;

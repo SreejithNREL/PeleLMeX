@@ -651,11 +651,11 @@ PeleLM::computeScalarAdvTerms(std::unique_ptr<AdvanceAdvData>& advData)
       addRhoYFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0]);
     }
 
-#ifndef AMREX_USE_GPU
+//#ifndef AMREX_USE_GPU
     if (m_do_patch_mfr != 0) {
           addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
         }
-#endif
+//#endif
   }
   // Compute face domain integral for U at every SDC iteration
   addUmacFluxes(advData, geom[0]);

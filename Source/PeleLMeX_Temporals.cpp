@@ -548,10 +548,10 @@ PeleLM::addRhoYFluxesA74(
     return;
   }
 
+  const auto dx = a_geom.CellSizeArray();
+  auto prob_lo = a_geom.ProbLoArray();
   // Get the face areas
-  const Real* dx = a_geom.CellSize();
-  const Real *prob_lo = a_geom.ProbLo();
-  Array<Real, AMREX_SPACEDIM> area;
+  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> area;
 #if (AMREX_SPACEDIM == 1)
   area[0] = 1.0;
 #elif (AMREX_SPACEDIM == 2)
@@ -567,8 +567,6 @@ PeleLM::addRhoYFluxesA74(
   int idim=2;
   auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
   auto const& fma = a_fluxes[idim]->const_arrays();
-
-
 
   const Real rmin_cp_actual = 11.4808/2.0*0.001;
   const Real rmax_cp_actual = 16.6624/2.0*0.001;
@@ -589,59 +587,59 @@ PeleLM::addRhoYFluxesA74(
   Real sum_CP01 	= 0.0;
   Real sum_CP02 	= 0.0;
   Real sum_CP03 	= 0.0;
-  Real sum_wch 	= 0.0;
+  Real sum_wch 		= 0.0;
 
   auto r = amrex::ParReduce(
-          TypeList<ReduceOpSum, ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, TypeList<Real, Real,Real, Real,Real, Real>{},
+          TypeList<ReduceOpSum, ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, 
+	  TypeList<Real, Real,Real, Real,Real, Real>{},
           *a_fluxes[idim], IntVect(0),
           [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real>
           {
         	  Array4<const Real> const& flux = fma[box_no];
+		  int idx = k;
 
-			  int idx = k;
+		  Real xp = prob_lo[0]+(i+0.5)*dx[0];
+		  Real yp = prob_lo[1]+(j+0.5)*dx[1];
+		  Real radp_origin = sqrt(xp*xp+yp*yp);
+		  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
 
-			  Real xp = prob_lo[0]+(i+0.5)*dx[0];
-			  Real yp = prob_lo[1]+(j+0.5)*dx[1];
-			  Real radp_origin = sqrt(xp*xp+yp*yp);
-			  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
-			  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
-			  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
-			  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  Real sum_pilot_loc	= 0.0;
+		  Real sum_CP00_loc 	= 0.0;
+		  Real sum_CP01_loc 	= 0.0;
+		  Real sum_CP02_loc 	= 0.0;
+		  Real sum_CP03_loc 	= 0.0;
+		  Real sum_wch_loc 	= 0.0;
 
-			  Real sum_pilot_loc	= 0.0;
-			  Real sum_CP00_loc 	= 0.0;
-			  Real sum_CP01_loc 	= 0.0;
-			  Real sum_CP02_loc 	= 0.0;
-			  Real sum_CP03_loc 	= 0.0;
-			  Real sum_wch_loc 		= 0.0;
-
-			  //Window cooling hole MFR calculation
-			  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
-			  {
-				  sum_wch_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
-			  {
-				  sum_CP00_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
-			  {
-				  sum_CP01_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
-			  {
-				  sum_CP02_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
-			  {
-				  sum_CP03_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
-			  {
-				  sum_pilot_loc += flux(i, j, k, NC12H26_ID) * area[idim];
-			  }
-			  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
-			  });
+		  //Window cooling hole MFR calculation
+		  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  {
+			  sum_wch_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
+		  {
+			  sum_CP00_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  {
+			  sum_CP01_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
+		  {
+			  sum_CP02_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
+		  {
+			  sum_CP03_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
+		  {
+			  sum_pilot_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
+		  });
 		  sum_pilot = amrex::get<0>(r);
 		  sum_CP00 = amrex::get<1>(r);
 		  sum_CP01 = amrex::get<2>(r);
@@ -664,78 +662,73 @@ PeleLM::addRhoYFluxesA74(
 		  sum_CP03 	= 0.0;
 		  sum_wch 	= 0.0;
 
-	r = amrex::ParReduce(
-			  TypeList<ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, TypeList<Real, Real,Real, Real,Real, Real>{},
-			  *a_fluxes[idim], IntVect(0),
-			  [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real>
-			  {
-				  Array4<const Real> const& flux = fma[box_no];
+       r = amrex::ParReduce(
+           TypeList<ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, 
+	   TypeList<Real, Real,Real, Real,Real, Real>{},
+	   *a_fluxes[idim], IntVect(0),
+	   [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real>
+	   {
+		  Array4<const Real> const& flux = fma[box_no];
+		  int idx = k;
 
-				  int idx = k;
+		  Real xp = prob_lo[0]+(i+0.5)*dx[0];
+		  Real yp = prob_lo[1]+(j+0.5)*dx[1];
 
-				  Real xp = prob_lo[0]+(i+0.5)*dx[0];
-				  Real yp = prob_lo[1]+(j+0.5)*dx[1];
+		  Real radp_origin = sqrt(xp*xp+yp*yp);
+		  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
 
+		  Real sum_pilot_loc	= 0.0;
+		  Real sum_CP00_loc 	= 0.0;
+		  Real sum_CP01_loc 	= 0.0;
+		  Real sum_CP02_loc 	= 0.0;
+		  Real sum_CP03_loc 	= 0.0;
+		  Real sum_wch_loc	= 0.0;
 
-				  			  Real radp_origin = sqrt(xp*xp+yp*yp);
-				  			  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
-				  			  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
-				  			  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
-				  			  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  //Window cooling hole MFR calculation
+		  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  {
+			  sum_wch_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
+		  {
+			  sum_CP00_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  {
+			  sum_CP01_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
+		  {
+			  sum_CP02_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
+		  {
+			  sum_CP03_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
+		  {
+			  sum_pilot_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
+		});
+		sum_pilot = amrex::get<0>(r);
+		sum_CP00 = amrex::get<1>(r);
+		sum_CP01 = amrex::get<2>(r);
+		sum_CP02 = amrex::get<3>(r);
+		sum_CP03 = amrex::get<4>(r);
+		sum_wch = amrex::get<5>(r);
 
-
-
-				  Real sum_pilot_loc	= 0.0;
-				  Real sum_CP00_loc 	= 0.0;
-				  Real sum_CP01_loc 	= 0.0;
-				  Real sum_CP02_loc 	= 0.0;
-				  Real sum_CP03_loc 	= 0.0;
-				  Real sum_wch_loc 		= 0.0;
-
-				  //Window cooling hole MFR calculation
-				  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
-				  {
-					  sum_wch_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
-				  {
-					  sum_CP00_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
-				  {
-					  sum_CP01_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
-				  {
-					  sum_CP02_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
-				  {
-					  sum_CP03_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
-				  {
-					  sum_pilot_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
-				  }
-				  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
-				});
-	sum_pilot = amrex::get<0>(r);
-	sum_CP00 = amrex::get<1>(r);
-	sum_CP01 = amrex::get<2>(r);
-	sum_CP02 = amrex::get<3>(r);
-	sum_CP03 = amrex::get<4>(r);
-	sum_wch = amrex::get<5>(r);
-
-	ParallelAllReduce::Sum<Real>({sum_pilot, sum_CP00, sum_CP01,sum_CP02,sum_CP03,sum_wch}, ParallelContext::CommunicatorSub());
-	m_domainRhoYFlux_CP00[1] = a_factor * sum_CP00;
-	m_domainRhoYFlux_CP01[1] = a_factor * sum_CP01;
-	m_domainRhoYFlux_CP02[1] = a_factor * sum_CP02;
-	m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
-	m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
-	m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
-
-
-    }
+		ParallelAllReduce::Sum<Real>({sum_pilot, sum_CP00, sum_CP01,sum_CP02,sum_CP03,sum_wch}, ParallelContext::CommunicatorSub());
+		m_domainRhoYFlux_CP00[1] = a_factor * sum_CP00;
+		m_domainRhoYFlux_CP01[1] = a_factor * sum_CP01;
+		m_domainRhoYFlux_CP02[1] = a_factor * sum_CP02;
+		m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
+		m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
+		m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
+ }
 
 
 void
