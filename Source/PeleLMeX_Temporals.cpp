@@ -535,6 +535,113 @@ PeleLM::addRhoYFluxes(
   }
 }
 
+void PeleLM::initBPatches(Geometry& a_geom)
+{
+	std::string pele_prefix = "peleLM.bpatch";
+	ParmParse pp(pele_prefix);
+	int num_bPatches = 0;
+	num_bPatches = pp.countval("patchnames");
+	amrex::Print()<<"\nThere are "<<num_bPatches<<" boundary patches in the input file.\n";
+
+	Vector<std::string> bpatch_name;
+	if (num_bPatches > 0){
+
+		m_bPatches.resize(num_bPatches);
+		bpatch_name.resize(num_bPatches);
+	}
+	for (int n = 0; n < num_bPatches; ++n){
+		pp.get("patchnames", bpatch_name[n], n);
+		m_bPatches[n] = std::make_unique<BPatch>(bpatch_name[n],a_geom);
+	}
+
+
+
+}
+
+
+void
+PeleLM::addRhoYFluxesPatch(
+  const Array<const MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+  const Geometry& a_geom,
+  const Real& a_factor)
+{
+
+  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
+	    return;
+	  }
+
+	  const auto dx = a_geom.CellSizeArray();
+	  auto prob_lo = a_geom.ProbLoArray();
+	  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> area;
+
+
+	#if (AMREX_SPACEDIM == 1)
+	  area[0] = 1.0;
+	#elif (AMREX_SPACEDIM == 2)
+	  area[0] = dx[1];
+	  area[1] = dx[0];
+	#else
+	  area[0] = dx[1] * dx[2];
+	  area[1] = dx[0] * dx[2];
+	  area[2] = dx[0] * dx[1];
+	#endif
+
+
+	  //Loop through all patches
+	  for (int n=0;n<m_bPatches.size();n++){
+
+		  BPatch* patch = m_bPatches[n].get();
+		  int idim = patch->getPatchBoundaryDim();
+
+		  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
+		  auto const& fma = a_fluxes[idim]->const_arrays();
+
+		  //Loop through species specified by user
+		  for(int m=0;m<patch->getNumSpecies();m++){
+
+		  Real sum_species_flux_global = 0.0;
+
+
+		  {
+		  auto r = amrex::ParReduce(
+				  TypeList<ReduceOpSum,ReduceOpSum>{},
+				  TypeList<Real,Real>{},
+		          *a_fluxes[idim], IntVect(0),
+		          [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real>{
+
+					  Array4<const Real> const& flux = fma[box_no];
+					  int idx = (patch->getPatchBoundaryDim()==0?i:(patch->getPatchBoundaryDim()==1?j:k));
+					  int idx_lo_hi = (patch->getPatchBoundaryLoHi()==0?faceDomain.smallEnd(idim):faceDomain.bigEnd(idim));
+
+					  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point_coordinates{prob_lo[0]+(i+0.5)*dx[0],prob_lo[1]+(j+0.5)*dx[1],prob_lo[2]+(k+0.5)*dx[2]};
+
+					  Real sum_species_flux	= 0.0;
+					  Real dummy=0.0;
+
+					  if (idx == idx_lo_hi and patch->CheckifPointInside(point_coordinates,a_geom))
+					  {
+						  int species_idx=patch->getSpeciesIdx(m);
+						  sum_species_flux+=flux(i, j, k, species_idx) * area[idim];
+					  }
+					  return {sum_species_flux,dummy};
+		            });
+		  	  	  sum_species_flux_global = amrex::get<0>(r);
+
+
+		  		  ParallelAllReduce::Sum<Real>({sum_species_flux_global}, ParallelContext::CommunicatorSub());
+		  		  patch->setSpeciesFlux(m,a_factor * sum_species_flux_global);
+		  		  amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
+
+		  }
+		  }
+
+	  }
+
+
+
+
+}
+
 void
 PeleLM::addRhoYFluxesA74(
   const Array<const MultiFab*, AMREX_SPACEDIM>& a_fluxes,
@@ -579,7 +686,7 @@ PeleLM::addRhoYFluxesA74(
   Real rmin_cp_touse = 11.4808/2.0*0.001;//-dx[0]*sqrt2/2.0;
   Real rmax_cp_touse = 16.6624/2.0*0.001;//+dx[0]*sqrt2/2.0;
 
-  Real rmax_pilot_touse = 0.005080;//+dx[0]*sqrt2/2.0;
+  Real rmax_pilot_touse = 0.005080+dx[0]*sqrt2/2.0;
   Real xymin_wch_touse = 43.18*0.001-1.5875*0.001/2.0-dx[0]*sqrt2/2.0;
 
   Real sum_pilot	= 0.0;
@@ -655,6 +762,7 @@ PeleLM::addRhoYFluxesA74(
 		  m_domainRhoYFlux_pilot[0] = a_factor * sum_pilot;
 		  m_domainRhoYFlux_wch[0] = a_factor * sum_wch;
 
+		  amrex::Print()<<"\nOld function == "<<m_domainRhoYFlux_pilot[0];
 		  sum_pilot	= 0.0;
 		  sum_CP00 	= 0.0;
 		  sum_CP01 	= 0.0;
@@ -728,6 +836,7 @@ PeleLM::addRhoYFluxesA74(
 		m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
 		m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
 		m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
+		amrex::Print()<<"\nOld function == "<<m_domainRhoYFlux_pilot[1];
  }
 
 

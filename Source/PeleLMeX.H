@@ -9,6 +9,8 @@
 #include "PeleLMeX_DiffusionOp.H"
 #include "DiagBase.H"
 #include "PeleLMeX_FlowControllerData.H"
+#include "PeleLMeX_BPatch.H"
+
 #ifdef PELE_USE_EFIELD
 #include "PrecondOp.H"
 #endif
@@ -44,6 +46,8 @@ class SprayParticleContainer;
 #ifdef PELE_USE_SOOT
 class SootModel;
 #endif
+
+class BPatch;
 
 const std::string PrettyLine = " " + std::string(78, '=') + "\n";
 
@@ -978,6 +982,7 @@ public:
   void massBalance();
   void speciesBalance();
   void speciesBalance_A74();
+  void initBPatches(amrex::Geometry& a_geom);
 
   void rhoHBalance();
   void initTemporals(const PeleLM::TimeStamp& a_time = AmrOldTime);
@@ -996,6 +1001,10 @@ public:
       const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
       const amrex::Geometry& a_geom,
       const amrex::Real& a_factor = 1.0);
+  void addRhoYFluxesPatch(
+        const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+        const amrex::Geometry& a_geom,
+        const amrex::Real& a_factor = 1.0);
   void addUmacFluxes(
     std::unique_ptr<AdvanceAdvData>& advData, const amrex::Geometry& a_geom);
   void openTempFile();
@@ -1897,7 +1906,8 @@ public:
 
   // Temporals
   int m_do_temporals = 0;
-  int m_do_patch_mfr=1;
+  int m_do_patch_mfr=0;
+  amrex::Vector<std::unique_ptr<BPatch>> m_bPatches;
   int m_temp_int = 5;
   int m_do_extremas = 0;
   int m_do_massBalance = 0;
