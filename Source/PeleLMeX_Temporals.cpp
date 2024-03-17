@@ -1,4 +1,5 @@
 #include <PeleLMeX.H>
+#include <PeleLMeX_BPatch.H>
 
 using namespace amrex;
 
@@ -591,13 +592,15 @@ PeleLM::addRhoYFluxesPatch(
 	  for (int n=0;n<m_bPatches.size();n++){
 
 		  BPatch* patch = m_bPatches[n].get();
-		  int idim = patch->getPatchBoundaryDim();
+		  BPatch::BpatchDataContainer const* bpdevice = patch->getDeviceData();
+
+		  int idim=bpdevice->m_boundary_dim;
 
 		  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
 		  auto const& fma = a_fluxes[idim]->const_arrays();
 
 		  //Loop through species specified by user
-		  for(int m=0;m<patch->getNumSpecies();m++){
+		  for(int m=0;m<bpdevice->num_species;m++){
 
 		  Real sum_species_flux_global = 0.0;
 
@@ -610,17 +613,17 @@ PeleLM::addRhoYFluxesPatch(
 		          [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real>{
 
 					  Array4<const Real> const& flux = fma[box_no];
-					  int idx = (patch->getPatchBoundaryDim()==0?i:(patch->getPatchBoundaryDim()==1?j:k));
-					  int idx_lo_hi = (patch->getPatchBoundaryLoHi()==0?faceDomain.smallEnd(idim):faceDomain.bigEnd(idim));
+					  int idx = (bpdevice->m_boundary_dim==0?i:(bpdevice->m_boundary_dim==1?j:k));
+					  int idx_lo_hi = (bpdevice->m_boundary_lo_hi==0?faceDomain.smallEnd(idim):faceDomain.bigEnd(idim));
 
 					  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point_coordinates{prob_lo[0]+(i+0.5)*dx[0],prob_lo[1]+(j+0.5)*dx[1],prob_lo[2]+(k+0.5)*dx[2]};
 
 					  Real sum_species_flux	= 0.0;
 					  Real dummy=0.0;
 
-					  if (idx == idx_lo_hi and patch->CheckifPointInside(point_coordinates,a_geom))
+					  if (idx == idx_lo_hi and bpdevice->CheckifPointInside(point_coordinates,a_geom))
 					  {
-						  int species_idx=patch->getSpeciesIdx(m);
+						  int species_idx=bpdevice->speciesIndex[m];
 						  sum_species_flux+=flux(i, j, k, species_idx) * area[idim];
 					  }
 					  return {sum_species_flux,dummy};
@@ -629,7 +632,7 @@ PeleLM::addRhoYFluxesPatch(
 
 
 		  		  ParallelAllReduce::Sum<Real>({sum_species_flux_global}, ParallelContext::CommunicatorSub());
-		  		  patch->setSpeciesFlux(m,a_factor * sum_species_flux_global);
+		  		  bpdevice->setSpeciesFlux(m,a_factor * sum_species_flux_global);
 		  		  amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
 
 		  }
