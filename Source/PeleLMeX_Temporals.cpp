@@ -69,6 +69,21 @@ PeleLM::massBalance()
   tmpMassFile.flush();
 }
 
+void PeleLM::speciesBalancePatch()
+{
+	for(int n=0;n<m_bPatches.size();n++){
+	BPatch* patch = m_bPatches[n].get();
+	BPatch::BpatchDataContainer bphost = patch->getHostData();
+	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
+	tmppatchmfrFile << " " << bphost.speciesFlux[0]
+	                << " " << bphost.speciesFlux[1]
+	                << " " << bphost.speciesFlux[2];
+	}
+	tmppatchmfrFile << "\n";
+	tmppatchmfrFile.flush();
+
+}
+
 void PeleLM::speciesBalance_A74()
 {
 	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
@@ -861,7 +876,8 @@ PeleLM::writeTemporals()
 
   // Species balance
     if ((m_do_patch_mfr != 0) && (m_incompressible == 0)) {
-    	speciesBalance_A74();
+    	//speciesBalance_A74();
+    	speciesBalancePatch();
     }
 
   //----------------------------------------------------------------

@@ -982,6 +982,7 @@ public:
   void massBalance();
   void speciesBalance();
   void speciesBalance_A74();
+  void speciesBalancePatch();
   void initBPatches(amrex::Geometry& a_geom);
 
   void rhoHBalance();
