@@ -620,8 +620,9 @@ PeleLM::addRhoYFluxesPatch(
 
 					  Real sum_species_flux	= 0.0;
 					  Real dummy=0.0;
+					  const bool ifinside=bpdevice->CheckifPointInside(point_coordinates,dx[0]);
 
-					  if (idx == idx_lo_hi and bpdevice->CheckifPointInside(point_coordinates,a_geom))
+					  if (idx == idx_lo_hi and ifinside)
 					  {
 						  int species_idx=bpdevice->speciesIndex[m];
 						  sum_species_flux+=flux(i, j, k, species_idx) * area[idim];
@@ -632,7 +633,7 @@ PeleLM::addRhoYFluxesPatch(
 
 
 		  		  ParallelAllReduce::Sum<Real>({sum_species_flux_global}, ParallelContext::CommunicatorSub());
-		  		  bpdevice->setSpeciesFlux(m,a_factor * sum_species_flux_global);
+		  		  bpdevice->speciesFlux[m]=a_factor * sum_species_flux_global;
 		  		  amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
 
 		  }

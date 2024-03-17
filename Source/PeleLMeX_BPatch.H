@@ -51,11 +51,12 @@ public:
 
 		AMREX_GPU_DEVICE
 		AMREX_FORCE_INLINE
-		bool CheckifPointInside(amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> point_coordinate,const amrex::Geometry& geom) const
+		bool CheckifPointInside(amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> point_coordinate,
+				amrex::Real dx) const
 		{
 			bool inside=false;
 			const amrex::Real sqrt2 = sqrt(2.0);
-			const auto dx = geom.CellSizeArray();
+			//auto dx = geom.CellSizeArray();
 			amrex::Real xp,yp,zp;
 
 			#if (AMREX_SPACEDIM == 2)
@@ -71,7 +72,7 @@ public:
 				if(m_boundary_dim==2)
 				{
 					amrex::Real rad = sqrt((xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+(yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1]));
-					if(rad<=m_patch_circle_radius+dx[0]*sqrt2/2.0){
+					if(rad<=m_patch_circle_radius+dx*sqrt2/2.0){
 						inside=true;
 					}
 				}
@@ -79,9 +80,6 @@ public:
 			return inside;
 		}
 
-		AMREX_GPU_DEVICE
-		AMREX_FORCE_INLINE
-		void setSpeciesFlux(int i,amrex::Real flux) const {speciesFlux[i]=flux;}
 	};
 
 	void allocate()
