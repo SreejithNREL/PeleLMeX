@@ -17,7 +17,6 @@ public:
 	{
 		int m_boundary_dir;
 		int m_boundary_lo_hi;
-		int m_boundary_index;
 		int num_species;
 		int m_patchtype_num;
 		int * speciesIndex=nullptr;
@@ -74,40 +73,55 @@ public:
 				inside=true;
 			}
 			else if(m_patchtype_num==1){
+				amrex::Real patch_circle_radius_touse=m_patch_circle_radius+dx*sqrt2/2.0;
 				amrex::Real rad = sqrt((xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+
 						               (yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1])+
 									   (zp-m_patch_circle_center[2])*(zp-m_patch_circle_center[2]));
-				if(rad<=m_patch_circle_radius+dx*sqrt2/2.0){
+				if(rad<=patch_circle_radius_touse){
 					inside=true;
 				}
 			}
 			else if(m_patchtype_num==2){
-				if((xp>=m_patch_rectangle_lo[0]-dx/2.0 && xp<=m_patch_rectangle_hi[0]+dx/2.0) &&
-				   (yp>=m_patch_rectangle_lo[1]-dx/2.0 && yp<=m_patch_rectangle_hi[1]+dx/2.0) &&
-				   (zp>=m_patch_rectangle_lo[2]-dx/2.0 && zp<=m_patch_rectangle_hi[2]+dx/2.0))
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rectangle_lo_touse = {m_patch_rectangle_lo[0]-dx/2.0,m_patch_rectangle_lo[1]-dx/2.0,m_patch_rectangle_lo[2]-dx/2.0};
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rectangle_hi_touse = {m_patch_rectangle_hi[0]+dx/2.0,m_patch_rectangle_hi[1]+dx/2.0,m_patch_rectangle_hi[2]+dx/2.0};
+				patch_rectangle_hi_touse[m_boundary_dir]=0.0;
+				patch_rectangle_lo_touse[m_boundary_dir]=0.0;
+				if((xp>=patch_rectangle_lo_touse[0] && xp<=patch_rectangle_hi_touse[0]) &&
+				   (yp>=patch_rectangle_lo_touse[1] && yp<=patch_rectangle_hi_touse[1]) &&
+				   (zp>=patch_rectangle_lo_touse[2] && zp<=patch_rectangle_hi_touse[2]))
 				{
 					inside=true;
 				}
 			}
 			else if(m_patchtype_num==3){
-				amrex::Real rad = sqrt(( xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+
-										(yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1])+
-										(zp-m_patch_circle_center[2])*(zp-m_patch_circle_center[2]));
-				if(rad<=m_patch_circ_ann_outer_radius+dx*sqrt2/2.0 && rad>=m_patch_circ_ann_inner_radius-dx*sqrt2/2.0)
+				amrex::Real patch_circ_ann_outer_radius_touse=m_patch_circ_ann_outer_radius+dx*sqrt2/2.0;
+				amrex::Real patch_circ_ann_inner_radius_touse=m_patch_circ_ann_inner_radius-dx*sqrt2/2.0;
+
+				amrex::Real rad = sqrt(( xp-m_patch_circ_ann_center[0])*(xp-m_patch_circ_ann_center[0])+
+										(yp-m_patch_circ_ann_center[1])*(yp-m_patch_circ_ann_center[1])+
+										(zp-m_patch_circ_ann_center[2])*(zp-m_patch_circ_ann_center[2]));
+				if(rad<=patch_circ_ann_outer_radius_touse && rad>=patch_circ_ann_inner_radius_touse)
 				{
 					inside=true;
 				}
 			}
 			else if(m_patchtype_num==4){
-				if(((xp>=m_patch_rect_ann_outer_lo[0]-dx/2.0 && xp<=m_patch_rect_ann_outer_hi[0]+dx/2.0) &&
-					(yp>=m_patch_rect_ann_outer_lo[1]-dx/2.0 && yp<=m_patch_rect_ann_outer_hi[1]+dx/2.0) &&
-					(zp>=m_patch_rect_ann_outer_lo[2]-dx/2.0 && zp<=m_patch_rect_ann_outer_hi[2]+dx/2.0)) &&
-				  !((xp>=m_patch_rect_ann_inner_lo[0]+dx/2.0 && xp<=m_patch_rect_ann_inner_hi[0]-dx/2.0) &&
-				    (yp>=m_patch_rect_ann_inner_lo[1]+dx/2.0 && yp<=m_patch_rect_ann_inner_hi[1]-dx/2.0) &&
-					(zp>=m_patch_rect_ann_inner_lo[2]+dx/2.0 && zp<=m_patch_rect_ann_inner_hi[2]-dx/2.0))
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rect_ann_inner_lo_touse = {m_patch_rect_ann_inner_lo[0]+dx/2.0,m_patch_rect_ann_inner_lo[1]+dx/2.0,m_patch_rect_ann_inner_lo[2]+dx/2.0};
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rect_ann_inner_hi_touse = {m_patch_rect_ann_inner_hi[0]-dx/2.0,m_patch_rect_ann_inner_hi[1]-dx/2.0,m_patch_rect_ann_inner_hi[2]-dx/2.0};
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rect_ann_outer_lo_touse = {m_patch_rect_ann_outer_lo[0]-dx/2.0,m_patch_rect_ann_outer_lo[1]-dx/2.0,m_patch_rect_ann_outer_lo[2]-dx/2.0};
+				amrex::GpuArray <amrex::Real, AMREX_SPACEDIM> patch_rect_ann_outer_hi_touse = {m_patch_rect_ann_outer_hi[0]+dx/2.0,m_patch_rect_ann_outer_hi[1]+dx/2.0,m_patch_rect_ann_outer_hi[2]+dx/2.0};
+				patch_rect_ann_inner_lo_touse[m_boundary_dir]=0.0;
+				patch_rect_ann_inner_hi_touse[m_boundary_dir]=0.0;
+				patch_rect_ann_outer_lo_touse[m_boundary_dir]=0.0;
+				patch_rect_ann_outer_hi_touse[m_boundary_dir]=0.0;
+				if(((xp>=patch_rect_ann_outer_lo_touse[0] && xp<=patch_rect_ann_outer_hi_touse[0]) &&
+					(yp>=patch_rect_ann_outer_lo_touse[1] && yp<=patch_rect_ann_outer_hi_touse[1]) &&
+					(zp>=patch_rect_ann_outer_lo_touse[2] && zp<=patch_rect_ann_outer_hi_touse[2]))&&
+				  !((xp>=patch_rect_ann_inner_lo_touse[0] && xp<=patch_rect_ann_inner_hi_touse[0]) &&
+				    (yp>=patch_rect_ann_inner_lo_touse[1] && yp<=patch_rect_ann_inner_hi_touse[1]) &&
+					(zp>=patch_rect_ann_inner_lo_touse[2] && zp<=patch_rect_ann_inner_hi_touse[2]))
 					)
 				{
-
 					inside=true;
 				}
 			}

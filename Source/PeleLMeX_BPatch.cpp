@@ -68,6 +68,7 @@ BPatch::BPatch(const std::string& patch_name,const amrex::Geometry& geom):m_patc
 	}
 
 	//Define patch variables
+
 	if(m_patchtype=="full-boundary"){
 		for (int n = 0; n < AMREX_SPACEDIM; ++n){
 			m_bpdata_h.m_patch_rectangle_lo[n] = prob_lo[n];

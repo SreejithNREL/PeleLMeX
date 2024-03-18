@@ -71,16 +71,15 @@ PeleLM::massBalance()
 
 void PeleLM::speciesBalancePatch()
 {
-	for(int n=0;n<m_bPatches.size();n++){
-	BPatch* patch = m_bPatches[n].get();
-	BPatch::BpatchDataContainer bphost = patch->getHostData();
 	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
-	tmppatchmfrFile << " " << bphost.speciesFlux[0]
-	                << " " << bphost.speciesFlux[1]
-	                << " " << bphost.speciesFlux[2];
-	}
-	tmppatchmfrFile << "\n";
-	tmppatchmfrFile.flush();
+	for(int n=0;n<m_bPatches.size();n++){
+		BPatch* patch = m_bPatches[n].get();
+		BPatch::BpatchDataContainer bphost = patch->getHostData();
+		for(int i=0;i<bphost.num_species;i++){
+		tmppatchmfrFile << " " << bphost.speciesFlux[i];
+		}}
+		tmppatchmfrFile << "\n";
+		tmppatchmfrFile.flush();
 
 }
 
@@ -652,7 +651,7 @@ PeleLM::addRhoYFluxesPatch(
 		  		  amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
 
 		  }
-		  }
+		}
 
 	  }
 
@@ -702,8 +701,8 @@ PeleLM::addRhoYFluxesA74(
   const Real xymin_wch_actual = 43.18*0.001-1.5875*0.001/2.0;
   const Real sqrt2 = sqrt(2.0);
 
-  Real rmin_cp_touse = 11.4808/2.0*0.001;//-dx[0]*sqrt2/2.0;
-  Real rmax_cp_touse = 16.6624/2.0*0.001;//+dx[0]*sqrt2/2.0;
+  Real rmin_cp_touse = 11.4808/2.0*0.001-dx[0]*sqrt2/2.0;
+  Real rmax_cp_touse = 16.6624/2.0*0.001+dx[0]*sqrt2/2.0;
 
   Real rmax_pilot_touse = 0.005080+dx[0]*sqrt2/2.0;
   Real xymin_wch_touse = 43.18*0.001-1.5875*0.001/2.0-dx[0]*sqrt2/2.0;
@@ -740,7 +739,7 @@ PeleLM::addRhoYFluxesA74(
 		  Real sum_wch_loc 	= 0.0;
 
 		  //Window cooling hole MFR calculation
-		  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  if (idx == faceDomain.smallEnd(idim))// and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
 		  {
 			  sum_wch_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 		  }
@@ -748,7 +747,7 @@ PeleLM::addRhoYFluxesA74(
 		  {
 			  sum_CP00_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 		  }
-		  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  if (idx == faceDomain.bigEnd(idim))// and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
 		  {
 			  sum_CP01_loc += flux(i, j, k, NC12H26_ID) * area[idim];
 		  }
@@ -781,7 +780,7 @@ PeleLM::addRhoYFluxesA74(
 		  m_domainRhoYFlux_pilot[0] = a_factor * sum_pilot;
 		  m_domainRhoYFlux_wch[0] = a_factor * sum_wch;
 
-		  amrex::Print()<<"\nOld function == "<<m_domainRhoYFlux_pilot[0];
+		  amrex::Print()<<"\nOld function fuel (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[0]<<" "<<m_domainRhoYFlux_CP00[0]<<" "<<m_domainRhoYFlux_wch[0]<<" "<<m_domainRhoYFlux_CP01[1];
 		  sum_pilot	= 0.0;
 		  sum_CP00 	= 0.0;
 		  sum_CP01 	= 0.0;
@@ -815,7 +814,7 @@ PeleLM::addRhoYFluxesA74(
 		  Real sum_wch_loc	= 0.0;
 
 		  //Window cooling hole MFR calculation
-		  if (idx == faceDomain.smallEnd(idim) and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  if (idx == faceDomain.smallEnd(idim))// and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
 		  {
 			  sum_wch_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 		  }
@@ -823,7 +822,7 @@ PeleLM::addRhoYFluxesA74(
 		  {
 			  sum_CP00_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 		  }
-		  if (idx == faceDomain.smallEnd(idim) and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  if (idx == faceDomain.bigEnd(idim))// and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
 		  {
 			  sum_CP01_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
 		  }
@@ -855,7 +854,7 @@ PeleLM::addRhoYFluxesA74(
 		m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
 		m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
 		m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
-		amrex::Print()<<"\nOld function == "<<m_domainRhoYFlux_pilot[1];
+		amrex::Print()<<"\nOld function air (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_wch[1]<<" "<<m_domainRhoYFlux_CP01[1];
  }
 
 
@@ -980,6 +979,14 @@ PeleLM::openTempFile()
             tempFileName.c_str(),
             std::ios::out | std::ios::app | std::ios_base::binary);
           tmppatchmfrFile.precision(12);
+          tmppatchmfrFile<<"#Variables=iter,time";
+          for(int n=0;n<m_bPatches.size();n++){
+          		BPatch* patch = m_bPatches[n].get();
+          		BPatch::BpatchDataContainer bphost = patch->getHostData();
+          		for(int i=0;i<bphost.num_species;i++){
+          		tmppatchmfrFile << "," <<patch->m_patchname+"_"+patch->speciesList[i];
+          		}}
+          tmppatchmfrFile<<"\n";
         }
 #ifdef PELE_USE_EFIELD
     if (m_do_ionsBalance) {
