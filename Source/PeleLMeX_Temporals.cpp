@@ -609,7 +609,7 @@ PeleLM::addRhoYFluxesPatch(
 		  BPatch* patch = m_bPatches[n].get();
 		  BPatch::BpatchDataContainer const* bpdevice = patch->getDeviceData();
 
-		  int idim=bpdevice->m_boundary_dim;
+		  int idim=bpdevice->m_boundary_dir;
 
 		  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
 		  auto const& fma = a_fluxes[idim]->const_arrays();
@@ -628,7 +628,7 @@ PeleLM::addRhoYFluxesPatch(
 		          [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real>{
 
 					  Array4<const Real> const& flux = fma[box_no];
-					  int idx = (bpdevice->m_boundary_dim==0?i:(bpdevice->m_boundary_dim==1?j:k));
+					  int idx = (bpdevice->m_boundary_dir==0?i:(bpdevice->m_boundary_dir==1?j:k));
 					  int idx_lo_hi = (bpdevice->m_boundary_lo_hi==0?faceDomain.smallEnd(idim):faceDomain.bigEnd(idim));
 
 					  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point_coordinates{prob_lo[0]+(i+0.5)*dx[0],prob_lo[1]+(j+0.5)*dx[1],prob_lo[2]+(k+0.5)*dx[2]};

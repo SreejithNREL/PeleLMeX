@@ -15,8 +15,9 @@ public:
 
 	struct BpatchDataContainer
 	{
-		int m_boundary_dim;
+		int m_boundary_dir;
 		int m_boundary_lo_hi;
+		int m_boundary_index;
 		int num_species;
 		int m_patchtype_num;
 		int * speciesIndex=nullptr;
@@ -26,27 +27,27 @@ public:
 			//declare nothing
 		#elif (AMREX_SPACEDIM == 2)
 			//In 2D, a boundary patch is a line
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_line_center;
+			amrex::GpuArray<amrex::Real, 3> m_patch_line_center;
 			amrex::Real  m_patch_line_radius;
 		#else
 			//circle variables
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_circle_center;
+			amrex::GpuArray<amrex::Real, 3> m_patch_circle_center;
 			amrex::Real  m_patch_circle_radius;
 
 			//rectangle variables
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rectangle_lo;
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rectangle_hi;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rectangle_lo;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rectangle_hi;
 
 			//circle annular variables
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_circ_ann_center;
+			amrex::GpuArray<amrex::Real, 3> m_patch_circ_ann_center;
 			amrex::Real  m_patch_circ_ann_inner_radius;
 			amrex::Real  m_patch_circ_ann_outer_radius;
 
 			//Rectangular annular variables
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rect_ann_outer_lo;
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rect_ann_outer_hi;
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rect_ann_inner_lo;
-			amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_patch_rect_ann_inner_hi;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rect_ann_outer_lo;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rect_ann_outer_hi;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rect_ann_inner_lo;
+			amrex::GpuArray<amrex::Real, 3> m_patch_rect_ann_inner_hi;
 		#endif
 
 		AMREX_GPU_DEVICE
@@ -59,6 +60,7 @@ public:
 			//auto dx = geom.CellSizeArray();
 			amrex::Real xp,yp,zp;
 
+			point_coordinate[m_boundary_dir] = 0.0;
 			#if (AMREX_SPACEDIM == 2)
 				xp=point_coordinate[0];
 				yp=point_coordinate[1];
@@ -68,15 +70,49 @@ public:
 				zp=point_coordinate[2];
 			#endif
 
-			//if(m_patchtype=="circle"){
-				if(m_boundary_dim==2)
-				{
-					amrex::Real rad = sqrt((xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+(yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1]));
-					if(rad<=m_patch_circle_radius+dx*sqrt2/2.0){
-						inside=true;
-					}
+			if(m_patchtype_num==0){
+				inside=true;
+			}
+			else if(m_patchtype_num==1){
+				amrex::Real rad = sqrt((xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+
+						               (yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1])+
+									   (zp-m_patch_circle_center[2])*(zp-m_patch_circle_center[2]));
+				if(rad<=m_patch_circle_radius+dx*sqrt2/2.0){
+					inside=true;
 				}
-			//}
+			}
+			else if(m_patchtype_num==2){
+				if((xp>=m_patch_rectangle_lo[0]-dx/2.0 && xp<=m_patch_rectangle_hi[0]+dx/2.0) &&
+				   (yp>=m_patch_rectangle_lo[1]-dx/2.0 && yp<=m_patch_rectangle_hi[1]+dx/2.0) &&
+				   (zp>=m_patch_rectangle_lo[2]-dx/2.0 && zp<=m_patch_rectangle_hi[2]+dx/2.0))
+				{
+					inside=true;
+				}
+			}
+			else if(m_patchtype_num==3){
+				amrex::Real rad = sqrt(( xp-m_patch_circle_center[0])*(xp-m_patch_circle_center[0])+
+										(yp-m_patch_circle_center[1])*(yp-m_patch_circle_center[1])+
+										(zp-m_patch_circle_center[2])*(zp-m_patch_circle_center[2]));
+				if(rad<=m_patch_circ_ann_outer_radius+dx*sqrt2/2.0 && rad>=m_patch_circ_ann_inner_radius-dx*sqrt2/2.0)
+				{
+					inside=true;
+				}
+			}
+			else if(m_patchtype_num==4){
+				if(((xp>=m_patch_rect_ann_outer_lo[0]-dx/2.0 && xp<=m_patch_rect_ann_outer_hi[0]+dx/2.0) &&
+					(yp>=m_patch_rect_ann_outer_lo[1]-dx/2.0 && yp<=m_patch_rect_ann_outer_hi[1]+dx/2.0) &&
+					(zp>=m_patch_rect_ann_outer_lo[2]-dx/2.0 && zp<=m_patch_rect_ann_outer_hi[2]+dx/2.0)) &&
+				  !((xp>=m_patch_rect_ann_inner_lo[0]+dx/2.0 && xp<=m_patch_rect_ann_inner_hi[0]-dx/2.0) &&
+				    (yp>=m_patch_rect_ann_inner_lo[1]+dx/2.0 && yp<=m_patch_rect_ann_inner_hi[1]-dx/2.0) &&
+					(zp>=m_patch_rect_ann_inner_lo[2]+dx/2.0 && zp<=m_patch_rect_ann_inner_hi[2]-dx/2.0))
+					)
+				{
+
+					inside=true;
+				}
+			}
+
+
 			return inside;
 		}
 
