@@ -653,7 +653,7 @@ PeleLM::computeScalarAdvTerms(std::unique_ptr<AdvanceAdvData>& advData)
 
 //#ifndef AMREX_USE_GPU
     if (m_do_patch_mfr != 0) {
-          addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
+          //addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
           addRhoYFluxesPatch(GetArrOfConstPtrs(fluxes[0]), geom[0]);
         }
 //#endif

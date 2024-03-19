@@ -556,7 +556,7 @@ void PeleLM::initBPatches(Geometry& a_geom)
 	ParmParse pp(pele_prefix);
 	int num_bPatches = 0;
 	num_bPatches = pp.countval("patchnames");
-	amrex::Print()<<"\nThere are "<<num_bPatches<<" boundary patches in the input file.\n";
+	//amrex::Print()<<"\nThere are "<<num_bPatches<<" boundary patches in the input file.\n";
 
 	Vector<std::string> bpatch_name;
 	if (num_bPatches > 0){
@@ -648,7 +648,7 @@ PeleLM::addRhoYFluxesPatch(
 
 		  		  ParallelAllReduce::Sum<Real>({sum_species_flux_global}, ParallelContext::CommunicatorSub());
 		  		  bpdevice->speciesFlux[m]=a_factor * sum_species_flux_global;
-		  		  amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
+		  		  //amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
 
 		  }
 		}
@@ -780,7 +780,7 @@ PeleLM::addRhoYFluxesA74(
 		  m_domainRhoYFlux_pilot[0] = a_factor * sum_pilot;
 		  m_domainRhoYFlux_wch[0] = a_factor * sum_wch;
 
-		  amrex::Print()<<"\nOld function fuel (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[0]<<" "<<m_domainRhoYFlux_CP00[0]<<" "<<m_domainRhoYFlux_wch[0]<<" "<<m_domainRhoYFlux_CP01[1];
+		  //amrex::Print()<<"\nOld function fuel (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[0]<<" "<<m_domainRhoYFlux_CP00[0]<<" "<<m_domainRhoYFlux_wch[0]<<" "<<m_domainRhoYFlux_CP01[1];
 		  sum_pilot	= 0.0;
 		  sum_CP00 	= 0.0;
 		  sum_CP01 	= 0.0;
@@ -854,7 +854,7 @@ PeleLM::addRhoYFluxesA74(
 		m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
 		m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
 		m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
-		amrex::Print()<<"\nOld function air (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_wch[1]<<" "<<m_domainRhoYFlux_CP01[1];
+		//amrex::Print()<<"\nOld function air (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_wch[1]<<" "<<m_domainRhoYFlux_CP01[1];
  }
 
 
