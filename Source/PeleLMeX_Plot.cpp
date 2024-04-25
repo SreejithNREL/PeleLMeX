@@ -961,22 +961,59 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
     auto const& temp_arr = ldata_p->state.array(mfi, TEMP);
     amrex::ParallelFor(bx, [=] AMREX_GPU_DEVICE(int i, int j, int k) noexcept {
       auto eos = pele::physics::PhysicsType::eos();
+
       Real massfrac[NUM_SPECIES] = {0.0};
-      Real sumYs = 0.0;
-      for (int n = 0; n < NUM_SPECIES; n++) {
-        massfrac[n] = rhoY_arr(i, j, k, n);
+            Real sumYs = 0.0;
+            for (int n = 0; n < NUM_SPECIES; n++) {
+              massfrac[n] = rhoY_arr(i, j, k, n);
 #ifdef N2_ID
-        if (n != N2_ID) {
-          sumYs += massfrac[n];
-        }
+             if (n != N2_ID) {
+                sumYs += massfrac[n];
+              }
 #endif
-      }
+            }
 #ifdef N2_ID
-      massfrac[N2_ID] = 1.0 - sumYs;
+            massfrac[N2_ID] = 1.0 - sumYs;
 #endif
 
-      // Get density
-      Real P_cgs = lprobparm->P_mean * 10.0;
+      if(lprobparm->do_ignit==1){
+      const amrex::Real* prob_lo = geom[a_lev].ProbLo();
+      const amrex::Real* prob_hi = geom[a_lev].ProbHi();
+      const amrex::Real* dx      = geom[a_lev].CellSize();
+
+          amrex::Real x[3] = {
+            prob_lo[0] + static_cast<amrex::Real>(i + 0.5) * dx[0],
+            prob_lo[1] + static_cast<amrex::Real>(j + 0.5) * dx[1],
+            prob_lo[2] + static_cast<amrex::Real>(k + 0.5) * dx[2]};
+
+          AMREX_D_TERM(const amrex::Real Lx = prob_hi[0] - prob_lo[0];,
+                       const amrex::Real Ly = prob_hi[1] - prob_lo[1];,
+                       const amrex::Real Lz = prob_hi[2] - prob_lo[2]);
+
+          AMREX_D_TERM(const amrex::Real xc = prob_lo[0] + 0.5 * Lx;,
+                       const amrex::Real yc = prob_lo[1] + 0.5 * Ly;,
+                       const amrex::Real zc = prob_lo[2] + 0.5 * Lz;);
+
+          constexpr amrex::Real Pi = 3.14159265358979323846264338327950288;
+          // Add hot air in front of the premixers:
+           amrex::GpuArray<amrex::Real,2*4> prem_centers{-0.0163322, 0.0163322,
+                                                             0.0163322, 0.0163322,
+                                                            -0.0163322,-0.0163322,
+                                                             0.0163322,-0.0163322};
+          for (int pm = 0; pm < 4; ++pm) {
+                amrex::Real z_center = prob_lo[2] + lprobparm->ignit_lowZ;
+                amrex::Real pm_rad = sqrt(  (x[0]-prem_centers[2*pm])  *(x[0]-prem_centers[2*pm])
+                                          + (x[1]-prem_centers[2*pm+1])*(x[1]-prem_centers[2*pm+1])
+                                          + (x[2]-z_center)*(x[2]-z_center));
+                amrex::Real tanh_dist = 0.5 * (1.0 - std::tanh((std::abs(pm_rad)-lprobparm->ignit_rad)/0.001));
+                temp_arr(i,j,k) += tanh_dist * (lprobparm->ignit_temp-lprobparm->T_mean);
+
+          }
+      }
+
+      amrex::Real P_cgs = lprobparm->P_mean * 10.0;
+
+      // Density
       Real rho_cgs = 0.0;
       eos.PYT2R(P_cgs, massfrac, temp_arr(i, j, k), rho_cgs);
       rho_arr(i, j, k) = rho_cgs * 1.0e3;
@@ -986,9 +1023,8 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
       eos.TY2H(temp_arr(i, j, k), massfrac, h_cgs);
       rhoH_arr(i, j, k) = h_cgs * 1.0e-4 * rho_arr(i, j, k);
 
-      // Fill rhoYs
       for (int n = 0; n < NUM_SPECIES; n++) {
-        rhoY_arr(i, j, k, n) = massfrac[n] * rho_arr(i, j, k);
+    	  rhoY_arr(i, j, k, n) = massfrac[n] * rho_arr(i, j, k);
       }
     });
   }
