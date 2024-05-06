@@ -9,6 +9,8 @@
 #include "PeleLMeX_DiffusionOp.H"
 #include "DiagBase.H"
 #include "PeleLMeX_FlowControllerData.H"
+#include "PeleLMeX_BPatch.H"
+
 #ifdef PELE_USE_EFIELD
 #include "PrecondOp.H"
 #endif
@@ -44,6 +46,8 @@ class SprayParticleContainer;
 #ifdef PELE_USE_SOOT
 class SootModel;
 #endif
+
+class BPatch;
 
 const std::string PrettyLine = " " + std::string(78, '=') + "\n";
 
@@ -977,7 +981,9 @@ public:
   // Temporal
   void massBalance();
   void speciesBalance();
-  void speciesBalance_A74();
+  void speciesBalancePatch();
+  void initBPatches(amrex::Geometry& a_geom);
+
 
   void rhoHBalance();
   void initTemporals(const PeleLM::TimeStamp& a_time = AmrOldTime);
@@ -992,10 +998,10 @@ public:
     const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
     const amrex::Geometry& a_geom,
     const amrex::Real& a_factor = 1.0);
-  void addRhoYFluxesA74(
-      const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
-      const amrex::Geometry& a_geom,
-      const amrex::Real& a_factor = 1.0);
+  void addRhoYFluxesPatch(
+    const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+    const amrex::Geometry& a_geom,
+    const amrex::Real& a_factor = 1.0);
   void addUmacFluxes(
     std::unique_ptr<AdvanceAdvData>& advData, const amrex::Geometry& a_geom);
   void openTempFile();
@@ -1691,6 +1697,10 @@ public:
   ProbParm* prob_parm = nullptr;
   ProbParm* prob_parm_d = nullptr;
 
+  // Patch parameters
+  BPatch* boundary_patches = nullptr;
+  BPatch* boundary_patches_d = nullptr;
+
 #ifdef PELE_USE_SOOT
   // Soot parameters
   SootModel* soot_model = nullptr;
@@ -1796,6 +1806,7 @@ public:
   amrex::Real m_max_wall_time = -1.0;
   int m_nstep = -1;
   int m_max_step = -1;
+  int m_nfiles = 1;
 
   int m_regrid_int = -1;
   int m_regrid_on_restart = 0;
@@ -1812,6 +1823,9 @@ public:
     AMREX_D_DECL(0.0, 0.0, 0.0)};
   amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> m_background_gp{
     AMREX_D_DECL(0.0, 0.0, 0.0)};
+
+  int m_do_periodic_channel = 0;
+  int m_periodic_channel_dir = -1;
 
   // DivU ? default ON when not incompressible
   int m_has_divu = 1;
@@ -1832,8 +1846,13 @@ public:
 
   // Diffusion
   int m_unity_Le = 0;
-  amrex::Real m_Schmidt_inv = 1.0 / 0.7;
+  int m_fixed_Pr = 0;
+  int m_fixed_Le = 0;
+
+  amrex::Real m_Lewis_inv = 1.0;
   amrex::Real m_Prandtl_inv = 1.0 / 0.7;
+  amrex::Real m_Schmidt_inv = 1.0 / 0.7;
+
   int m_use_wbar = 1;
   int m_use_soret = 0;
 
@@ -1897,7 +1916,8 @@ public:
 
   // Temporals
   int m_do_temporals = 0;
-  int m_do_patch_mfr=1;
+  int m_do_patch_mfr = 0;
+  amrex::Vector<std::unique_ptr<BPatch>> m_bPatches;
   int m_temp_int = 5;
   int m_do_extremas = 0;
   int m_do_massBalance = 0;

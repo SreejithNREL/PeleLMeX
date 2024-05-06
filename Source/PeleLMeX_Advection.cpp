@@ -37,6 +37,17 @@ PeleLM::computeVelocityAdvTerm(std::unique_ptr<AdvanceAdvData>& advData)
   int use_density = 0;
   computeDivTau(AmrOldTime, GetVecOfPtrs(divtau), use_density);
 
+  // Add compensating pressure gradient for periodic channel flow
+  if (m_do_periodic_channel != 0) {
+    m_background_gp[m_periodic_channel_dir] =
+      MFSum(GetVecOfConstPtrs(divtau), m_periodic_channel_dir) / m_uncoveredVol;
+    if (m_verbose > 2) {
+      amrex::Print() << "   ... Adding background pressure gradient in dir "
+                     << m_periodic_channel_dir << ": "
+                     << m_background_gp[m_periodic_channel_dir] << "\n";
+    }
+  }
+
   //----------------------------------------------------------------
   // Gather all the velocity forces
   // F = [ (gravity+...) - gradP + divTau ] / rho
@@ -651,11 +662,10 @@ PeleLM::computeScalarAdvTerms(std::unique_ptr<AdvanceAdvData>& advData)
       addRhoYFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0]);
     }
 
-//#ifndef AMREX_USE_GPU
     if (m_do_patch_mfr != 0) {
-          addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
-        }
-//#endif
+      addRhoYFluxesPatch(GetArrOfConstPtrs(fluxes[0]), geom[0]);
+    }
+
   }
   // Compute face domain integral for U at every SDC iteration
   addUmacFluxes(advData, geom[0]);

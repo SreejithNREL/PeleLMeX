@@ -73,8 +73,12 @@ SprayParticleContainer::injectParticles(
 }
 
 void
+<<<<<<< HEAD
 SprayParticleContainer::InitSprayParticles(
   const bool init_parts)
+=======
+SprayParticleContainer::InitSprayParticles(const bool init_parts)
+>>>>>>> Boundary_Patch_Implementation
 {
   m_sprayJets.resize(1);
   std::string jet_name = "jet1";

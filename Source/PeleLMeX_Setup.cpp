@@ -1,6 +1,7 @@
 #include <PeleLMeX.H>
 #include <AMReX_ParmParse.H>
 #include <PeleLMeX_DeriveFunc.H>
+#include <PeleLMeX_BPatch.H>
 #include "PelePhysics.H"
 #include <AMReX_buildInfo.H>
 #ifdef PELE_USE_EFIELD
@@ -14,7 +15,6 @@
 #ifdef PELE_USE_SOOT
 #include "SootModel.H"
 #endif
-
 using namespace amrex;
 
 static Box
@@ -44,9 +44,13 @@ PeleLM::Setup()
 
   // Ensure grid is isotropic
   {
-    //auto const dx = geom[0].CellSizeArray();
-    //AMREX_ALWAYS_ASSERT(AMREX_D_TERM(
-    //  , amrex::almostEqual(dx[0], dx[1]), &&amrex::almostEqual(dx[1], dx[2])));
+
+    auto const dx = geom[0].CellSizeArray();
+    amrex::Print() << "\n Dx = " << dx[0] << " " << dx[1] << " " << dx[2];
+    AMREX_ALWAYS_ASSERT(AMREX_D_TERM(
+      , amrex::almostEqual(dx[0], dx[1], 10),
+      &&amrex::almostEqual(dx[1], dx[2], 10)));
+
   }
   // Print build info to screen
   const char* githash1 = buildInfoGetGitHash(1);
@@ -94,6 +98,11 @@ PeleLM::Setup()
   // Diagnostics setup
   createDiagnostics();
 
+  // Boundary Patch Setup
+  if (m_do_patch_mfr != 0) {
+    initBPatches(Geom(0));
+  }
+
   // Initialize Level Hierarchy data
   resizeArray();
 
@@ -101,15 +110,30 @@ PeleLM::Setup()
   if (m_incompressible == 0) {
     amrex::Print() << " Initialization of Transport ... \n";
     trans_parms.allocate();
-    if ((m_les_verbose != 0) and m_do_les) {
+    if ((m_les_verbose != 0) and m_do_les) { // Say what transport model we're
+                                             // going to use
       amrex::Print() << "    Using LES in transport with Sc = "
                      << 1.0 / m_Schmidt_inv
                      << " and Pr = " << 1.0 / m_Prandtl_inv << std::endl;
-    }
-    if ((m_verbose != 0) and (m_unity_Le != 0)) {
-      amrex::Print() << "    Using Le = 1 transport with Sc = "
-                     << 1.0 / m_Schmidt_inv
-                     << " and Pr = " << 1.0 / m_Prandtl_inv << std::endl;
+    } else if (m_verbose != 0) {
+      if (m_fixed_Le == 0 && m_fixed_Pr == 0) {
+        if (m_use_soret == 0) {
+          amrex::Print() << "    Using mixture-averaged transport" << std::endl;
+        } else {
+          amrex::Print()
+            << "    Using mixture-averaged transport with Soret effects"
+            << std::endl;
+        }
+      } else {
+        if (m_fixed_Le != 0) {
+          amrex::Print() << "    Using fixed Le = " << 1.0 / m_Lewis_inv
+                         << std::endl;
+        }
+        if (m_fixed_Pr != 0) {
+          amrex::Print() << "    Using fixed Pr = " << 1.0 / m_Prandtl_inv
+                         << std::endl;
+        }
+      }
     }
     if (m_do_react != 0) {
       int reactor_type = 2;
@@ -297,6 +321,13 @@ PeleLM::readParameters()
     m_gravity[idim] = grav[idim];
   }
 
+  // Will automatically add pressure gradient for channel flow to maintain mass
+  // flow rate of initial condition
+  pp.query("do_periodic_channel", m_do_periodic_channel);
+  if (m_do_periodic_channel != 0) {
+    pp.get("periodic_channel_dir", m_periodic_channel_dir);
+  }
+
   // -----------------------------------------
   // LES
   // -----------------------------------------
@@ -330,26 +361,60 @@ PeleLM::readParameters()
 
   // -----------------------------------------
   // diffusion
+  ParmParse pptrans("transport");
+  pptrans.query("use_soret", m_use_soret);
   pp.query("use_wbar", m_use_wbar);
   pp.query("unity_Le", m_unity_Le);
-  if ((m_use_wbar != 0) and (m_unity_Le != 0)) {
-    m_use_wbar = 0;
-    amrex::Print() << "WARNING: use_wbar set to false because unity_Le is true"
+  pp.query("fixed_Le", m_fixed_Le);
+  pp.query("fixed_Pr", m_fixed_Pr);
+  if (m_unity_Le != 0) {
+    m_fixed_Le = 1;
+    amrex::Print() << "WARNING: unity_Le is deprecated and will be removed in "
+                      "future version, use fixed_Le instead"
                    << std::endl;
   }
+  if (m_do_les) { // For LES, Prandtl and Schmidt numbers are fixed
+    m_fixed_Le = 1;
+    m_fixed_Pr = 1;
+    amrex::Real Schmidt = 0.7;
+    pp.query("Schmidt", Schmidt);
+    m_Schmidt_inv = 1.0 / Schmidt;
+  }
+  if (m_fixed_Le != 0 && !m_do_les) { // Only ask for Lewis number when not
+                                      // LES, determined by Prandtl and
+                                      // Schmidt outside of this
+    amrex::Real Lewis = 1.0;
+    pp.query("Lewis", Lewis);
+    m_Lewis_inv = 1.0 / Lewis;
+  }
+  if (m_fixed_Pr != 0) {
+    amrex::Real Prandtl = 0.7;
+    pp.query("Prandtl", Prandtl);
+    m_Prandtl_inv = 1.0 / Prandtl;
+  }
+  if (m_fixed_Le != 0 && m_fixed_Pr != 0 && !m_do_les) { // calculate Schmidt in
+                                                         // case of no LES from
+                                                         // Lewis and Prandtl
+    m_Schmidt_inv = m_Lewis_inv * m_Prandtl_inv;
+  }
+  if (m_do_les) { // calculate Lewis in case of LES
+    m_Lewis_inv = m_Prandtl_inv / m_Schmidt_inv;
+  }
+
+  if (
+    (m_use_wbar != 0 || m_use_soret != 0) &&
+    (m_fixed_Le != 0 || m_fixed_Pr != 0)) {
+    m_use_wbar = 0;
+    m_use_soret = 0;
+    amrex::Print() << "WARNING: use_wbar and use_soret set to false because "
+                      "fixed_Pr or fixed_Le is true"
+                   << std::endl;
+  }
+
   pp.query("deltaT_verbose", m_deltaT_verbose);
   pp.query("deltaT_iterMax", m_deltaTIterMax);
   pp.query("deltaT_tol", m_deltaT_norm_max);
   pp.query("deltaT_crashIfFailing", m_crashOnDeltaTFail);
-  ParmParse pptrans("transport");
-  pptrans.query("use_soret", m_use_soret);
-
-  if (m_do_les or (m_unity_Le != 0)) {
-    amrex::Real Prandtl = 0.7;
-    pp.query("Prandtl", Prandtl);
-    m_Schmidt_inv = 1.0 / Prandtl;
-    m_Prandtl_inv = 1.0 / Prandtl;
-  }
 
   // -----------------------------------------
   // initialization
@@ -485,6 +550,7 @@ PeleLM::readParameters()
     pp.query("do_extremas", m_do_extremas);
     pp.query("do_mass_balance", m_do_massBalance);
     pp.query("do_species_balance", m_do_speciesBalance);
+    pp.query("do_patch_mfr", m_do_patch_mfr);
   }
 
   // -----------------------------------------
@@ -502,6 +568,8 @@ PeleLM::readParameters()
   ppa.query("dt_change_max", m_dtChangeMax);
   ppa.query("max_dt", m_max_dt);
   ppa.query("min_dt", m_min_dt);
+  m_nfiles = std::max(1, std::min(ParallelDescriptor::NProcs(), 256));
+  ppa.query("n_files", m_nfiles);
 
   if (max_level > 0 || (m_doLoadBalance != 0)) {
     ppa.query("regrid_int", m_regrid_int);
