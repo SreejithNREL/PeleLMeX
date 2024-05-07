@@ -69,26 +69,6 @@ PeleLM::massBalance()
   tmpMassFile.flush();
 }
 
-void PeleLM::speciesBalance_A74()
-{
-	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
-	tmppatchmfrFile << " " << m_domainRhoYFlux_pilot[0]
-	                << " " << m_domainRhoYFlux_CP00[0]
-	                << " " << m_domainRhoYFlux_CP01[0]
-	                << " " << m_domainRhoYFlux_CP02[0]
-					<< " " << m_domainRhoYFlux_CP03[0]
-					<< " " << m_domainRhoYFlux_wch[0]
-					<< " " << m_domainRhoYFlux_pilot[1]
-					<< " " << m_domainRhoYFlux_CP00[1]
-					<< " " << m_domainRhoYFlux_CP01[1]
-					<< " " << m_domainRhoYFlux_CP02[1]
-					<< " " << m_domainRhoYFlux_CP03[1]
-					<< " " << m_domainRhoYFlux_wch[1];
-
-	tmppatchmfrFile << "\n";
-	tmppatchmfrFile.flush();
-
-}
 
 void
 PeleLM::speciesBalancePatch()
