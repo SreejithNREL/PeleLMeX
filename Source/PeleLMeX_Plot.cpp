@@ -800,6 +800,8 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
 
   // Use PelePhysics PltFileManager
   pele::physics::pltfilemanager::PltFileManager pltData(a_dataPltFile);
+  m_cur_time = pltData.getFlowTimefromPlt();
+  m_nstep = pltData.getNstepfromPlt();
   Vector<std::string> plt_vars = pltData.getVariableList();
 
   // Find required data in pltfile
@@ -978,6 +980,43 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
 #ifdef N2_ID
       massfrac[N2_ID] = 1.0 - sumYs;
 #endif
+
+      if(lprobparm->do_ignit==1){
+      const amrex::Real* prob_lo = geom[a_lev].ProbLo();
+      const amrex::Real* prob_hi = geom[a_lev].ProbHi();
+      const amrex::Real* dx      = geom[a_lev].CellSize();
+
+          amrex::Real x[3] = {
+            prob_lo[0] + static_cast<amrex::Real>(i + 0.5) * dx[0],
+            prob_lo[1] + static_cast<amrex::Real>(j + 0.5) * dx[1],
+            prob_lo[2] + static_cast<amrex::Real>(k + 0.5) * dx[2]};
+
+          AMREX_D_TERM(const amrex::Real Lx = prob_hi[0] - prob_lo[0];,
+                       const amrex::Real Ly = prob_hi[1] - prob_lo[1];,
+                       const amrex::Real Lz = prob_hi[2] - prob_lo[2]);
+
+          AMREX_D_TERM(const amrex::Real xc = prob_lo[0] + 0.5 * Lx;,
+                       const amrex::Real yc = prob_lo[1] + 0.5 * Ly;,
+                       const amrex::Real zc = prob_lo[2] + 0.5 * Lz;);
+
+          constexpr amrex::Real Pi = 3.14159265358979323846264338327950288;
+          // Add hot air in front of the premixers:
+           amrex::GpuArray<amrex::Real,2*4> prem_centers{-0.0163322, 0.0163322,
+                                                             0.0163322, 0.0163322,
+                                                            -0.0163322,-0.0163322,
+                                                             0.0163322,-0.0163322};
+          for (int pm = 0; pm < 4; ++pm) {
+                amrex::Real z_center = prob_lo[2] + lprobparm->ignit_lowZ;
+                amrex::Real pm_rad = sqrt(  (x[0]-prem_centers[2*pm])  *(x[0]-prem_centers[2*pm])
+                                          + (x[1]-prem_centers[2*pm+1])*(x[1]-prem_centers[2*pm+1])
+                                          + (x[2]-z_center)*(x[2]-z_center));
+                amrex::Real tanh_dist = 0.5 * (1.0 - std::tanh((std::abs(pm_rad)-lprobparm->ignit_rad)/0.001));
+                                temp_arr(i,j,k) += tanh_dist * (lprobparm->ignit_temp-lprobparm->T_mean);
+
+                          }
+                      }
+
+
 
       // Get density
       Real P_cgs = lprobparm->P_mean * 10.0;

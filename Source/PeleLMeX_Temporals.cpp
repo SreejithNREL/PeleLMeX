@@ -75,7 +75,7 @@ PeleLM::speciesBalancePatch()
 {
   tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
   for (int n = 0; n < m_bPatches.size(); n++) {
-    BPatch::BpatchDataContainer* bphost = m_bPatches[n].get()->getHostDataPtr();
+    BPatch::BpatchDataContainer* bphost = m_bPatches[n]->getHostDataPtr();
     for (int i = 0; i < bphost->num_species; i++) {
       tmppatchmfrFile << " " << bphost->speciesFlux[i];
     }
@@ -531,7 +531,6 @@ PeleLM::addRhoYFluxes(
 }
 
 void
-
 PeleLM::initBPatches(Geometry& a_geom)
 {
   std::string pele_prefix = "peleLM.bpatch";
@@ -576,7 +575,6 @@ PeleLM::addRhoYFluxesPatch(
   if (geom[0].IsRZ() && m_bPatches.size() > 0) {
     Abort("Bpatches not supported in RZ coordinates");
   }
-
   area[0] = dx[1];
   area[1] = dx[0];
 #else
