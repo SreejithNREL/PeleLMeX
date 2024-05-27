@@ -981,7 +981,9 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
       massfrac[N2_ID] = 1.0 - sumYs;
 #endif
 
+      
       if(lprobparm->do_ignit==1){
+
       const amrex::Real* prob_lo = geom[a_lev].ProbLo();
       const amrex::Real* prob_hi = geom[a_lev].ProbHi();
       const amrex::Real* dx      = geom[a_lev].CellSize();
