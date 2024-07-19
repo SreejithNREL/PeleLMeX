@@ -7,6 +7,7 @@ class BPatch
 {
 
 public:
+
   BPatch() = default;
   ~BPatch() = default;
 

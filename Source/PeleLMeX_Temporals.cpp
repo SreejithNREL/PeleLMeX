@@ -35,6 +35,19 @@ PeleLM::initTemporals(const PeleLM::TimeStamp& a_time)
       }
     }
   }
+
+  if ((m_do_patch_mfr != 0) && (m_incompressible == 0)) {
+      for (int n = 0; n < 2; n++) {
+
+    	  m_domainRhoYFlux_pilot[n] = 0.0;
+    	  m_domainRhoYFlux_CP00[n] = 0.0;
+    	  m_domainRhoYFlux_CP01[n] = 0.0;
+    	  m_domainRhoYFlux_CP02[n] = 0.0;
+    	  m_domainRhoYFlux_CP03[n] = 0.0;
+    	  m_domainRhoYFlux_wch[n] = 0.0;
+
+      }
+    }
 }
 
 void
@@ -54,6 +67,41 @@ PeleLM::massBalance()
               << " " << massFluxBalance       // domain boundaries mass fluxes
               << " " << std::abs(dmdt - massFluxBalance) << " \n"; // balance
   tmpMassFile.flush();
+}
+
+void PeleLM::speciesBalancePatch()
+{
+	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
+	for(int n=0;n<m_bPatches.size();n++){
+		BPatch* patch = m_bPatches[n].get();
+		BPatch::BpatchDataContainer bphost = patch->getHostData();
+		for(int i=0;i<bphost.num_species;i++){
+		tmppatchmfrFile << " " << bphost.speciesFlux[i];
+		}}
+		tmppatchmfrFile << "\n";
+		tmppatchmfrFile.flush();
+
+}
+
+void PeleLM::speciesBalance_A74()
+{
+	tmppatchmfrFile << m_nstep << " " << m_cur_time; // Time info
+	tmppatchmfrFile << " " << m_domainRhoYFlux_pilot[0]
+	                << " " << m_domainRhoYFlux_CP00[0]
+	                << " " << m_domainRhoYFlux_CP01[0]
+	                << " " << m_domainRhoYFlux_CP02[0]
+					<< " " << m_domainRhoYFlux_CP03[0]
+					<< " " << m_domainRhoYFlux_wch[0]
+					<< " " << m_domainRhoYFlux_pilot[1]
+					<< " " << m_domainRhoYFlux_CP00[1]
+					<< " " << m_domainRhoYFlux_CP01[1]
+					<< " " << m_domainRhoYFlux_CP02[1]
+					<< " " << m_domainRhoYFlux_CP03[1]
+					<< " " << m_domainRhoYFlux_wch[1];
+
+	tmppatchmfrFile << "\n";
+	tmppatchmfrFile.flush();
+
 }
 
 void
@@ -516,6 +564,314 @@ PeleLM::addRhoYFluxes(
   }
 }
 
+void PeleLM::initBPatches(Geometry& a_geom)
+{
+	std::string pele_prefix = "peleLM.bpatch";
+	ParmParse pp(pele_prefix);
+	int num_bPatches = 0;
+	num_bPatches = pp.countval("patchnames");
+	//amrex::Print()<<"\nThere are "<<num_bPatches<<" boundary patches in the input file.\n";
+
+	Vector<std::string> bpatch_name;
+	if (num_bPatches > 0){
+
+		m_bPatches.resize(num_bPatches);
+		bpatch_name.resize(num_bPatches);
+	}
+	for (int n = 0; n < num_bPatches; ++n){
+		pp.get("patchnames", bpatch_name[n], n);
+		m_bPatches[n] = std::make_unique<BPatch>(bpatch_name[n],a_geom);
+	}
+
+
+
+}
+
+
+void
+PeleLM::addRhoYFluxesPatch(
+  const Array<const MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+  const Geometry& a_geom,
+  const Real& a_factor)
+{
+
+  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
+	    return;
+	  }
+
+	  const auto dx = a_geom.CellSizeArray();
+	  auto prob_lo = a_geom.ProbLoArray();
+	  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> area;
+
+
+	#if (AMREX_SPACEDIM == 1)
+	  area[0] = 1.0;
+	#elif (AMREX_SPACEDIM == 2)
+	  area[0] = dx[1];
+	  area[1] = dx[0];
+	#else
+	  area[0] = dx[1] * dx[2];
+	  area[1] = dx[0] * dx[2];
+	  area[2] = dx[0] * dx[1];
+	#endif
+
+
+	  //Loop through all patches
+	  for (int n=0;n<m_bPatches.size();n++){
+
+		  BPatch* patch = m_bPatches[n].get();
+		  BPatch::BpatchDataContainer const* bpdevice = patch->getDeviceData();
+
+		  int idim=bpdevice->m_boundary_dir;
+
+		  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
+		  auto const& fma = a_fluxes[idim]->const_arrays();
+
+		  //Loop through species specified by user
+		  for(int m=0;m<bpdevice->num_species;m++){
+
+		  Real sum_species_flux_global = 0.0;
+
+
+		  {
+		  auto r = amrex::ParReduce(
+				  TypeList<ReduceOpSum,ReduceOpSum>{},
+				  TypeList<Real,Real>{},
+		          *a_fluxes[idim], IntVect(0),
+		          [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real>{
+
+					  Array4<const Real> const& flux = fma[box_no];
+					  int idx = (bpdevice->m_boundary_dir==0?i:(bpdevice->m_boundary_dir==1?j:k));
+					  int idx_lo_hi = (bpdevice->m_boundary_lo_hi==0?faceDomain.smallEnd(idim):faceDomain.bigEnd(idim));
+
+					  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point_coordinates{prob_lo[0]+(i+0.5)*dx[0],prob_lo[1]+(j+0.5)*dx[1],prob_lo[2]+(k+0.5)*dx[2]};
+
+					  Real sum_species_flux	= 0.0;
+					  Real dummy=0.0;
+					  const bool ifinside=bpdevice->CheckifPointInside(point_coordinates,dx[0]);
+
+					  if (idx == idx_lo_hi and ifinside)
+					  {
+						  int species_idx=bpdevice->speciesIndex[m];
+						  sum_species_flux+=flux(i, j, k, species_idx) * area[idim];
+					  }
+					  return {sum_species_flux,dummy};
+		            });
+		  	  	  sum_species_flux_global = amrex::get<0>(r);
+
+
+		  		  ParallelAllReduce::Sum<Real>({sum_species_flux_global}, ParallelContext::CommunicatorSub());
+		  		  bpdevice->speciesFlux[m]=a_factor * sum_species_flux_global;
+		  		  //amrex::Print()<<"\nNew func = "<<a_factor * sum_species_flux_global;
+
+		  }
+		}
+
+	  }
+
+
+
+
+}
+
+void
+PeleLM::addRhoYFluxesA74(
+  const Array<const MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+  const Geometry& a_geom,
+  const Real& a_factor)
+{
+
+  // Do when m_nstep is -1 since m_nstep is increased by one before
+  // the writeTemporals
+  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
+    return;
+  }
+
+  const auto dx = a_geom.CellSizeArray();
+  auto prob_lo = a_geom.ProbLoArray();
+  // Get the face areas
+  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> area;
+#if (AMREX_SPACEDIM == 1)
+  area[0] = 1.0;
+#elif (AMREX_SPACEDIM == 2)
+  area[0] = dx[1];
+  area[1] = dx[0];
+#else
+  area[0] = dx[1] * dx[2];
+  area[1] = dx[0] * dx[2];
+  area[2] = dx[0] * dx[1];
+#endif
+
+  // Inner loop over dimensions
+  int idim=2;
+  auto faceDomain = amrex::convert(a_geom.Domain(), IntVect::TheDimensionVector(idim));
+  auto const& fma = a_fluxes[idim]->const_arrays();
+
+  const Real rmin_cp_actual = 11.4808/2.0*0.001;
+  const Real rmax_cp_actual = 16.6624/2.0*0.001;
+  const Real xycenter_cp = 0.0163322;   //The x,y cooridnates of all the CPs have this as their absolute values.
+
+  const Real rmax_pilot_actual = 0.005080;
+  const Real xymin_wch_actual = 43.18*0.001-1.5875*0.001/2.0;
+  const Real sqrt2 = sqrt(2.0);
+
+  Real rmin_cp_touse = 11.4808/2.0*0.001-dx[0]*sqrt2/2.0;
+  Real rmax_cp_touse = 16.6624/2.0*0.001+dx[0]*sqrt2/2.0;
+
+  Real rmax_pilot_touse = 0.005080+dx[0]*sqrt2/2.0;
+  Real xymin_wch_touse = 43.18*0.001-1.5875*0.001/2.0-dx[0]*sqrt2/2.0;
+
+  Real sum_pilot	= 0.0;
+  Real sum_CP00 	= 0.0;
+  Real sum_CP01 	= 0.0;
+  Real sum_CP02 	= 0.0;
+  Real sum_CP03 	= 0.0;
+  Real sum_wch 		= 0.0;
+
+  auto r = amrex::ParReduce(
+          TypeList<ReduceOpSum, ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, 
+	  TypeList<Real, Real,Real, Real,Real, Real>{},
+          *a_fluxes[idim], IntVect(0),
+          [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real>
+          {
+        	  Array4<const Real> const& flux = fma[box_no];
+		  int idx = k;
+
+		  Real xp = prob_lo[0]+(i+0.5)*dx[0];
+		  Real yp = prob_lo[1]+(j+0.5)*dx[1];
+		  Real radp_origin = sqrt(xp*xp+yp*yp);
+		  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+
+		  Real sum_pilot_loc	= 0.0;
+		  Real sum_CP00_loc 	= 0.0;
+		  Real sum_CP01_loc 	= 0.0;
+		  Real sum_CP02_loc 	= 0.0;
+		  Real sum_CP03_loc 	= 0.0;
+		  Real sum_wch_loc 	= 0.0;
+
+		  //Window cooling hole MFR calculation
+		  if (idx == faceDomain.smallEnd(idim))// and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  {
+			  sum_wch_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
+		  {
+			  sum_CP00_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.bigEnd(idim))// and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  {
+			  sum_CP01_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
+		  {
+			  sum_CP02_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
+		  {
+			  sum_CP03_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
+		  {
+			  sum_pilot_loc += flux(i, j, k, NC12H26_ID) * area[idim];
+		  }
+		  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
+		  });
+		  sum_pilot = amrex::get<0>(r);
+		  sum_CP00 = amrex::get<1>(r);
+		  sum_CP01 = amrex::get<2>(r);
+		  sum_CP02 = amrex::get<3>(r);
+		  sum_CP03 = amrex::get<4>(r);
+		  sum_wch = amrex::get<5>(r);
+
+		  ParallelAllReduce::Sum<Real>({sum_pilot, sum_CP00, sum_CP01,sum_CP02,sum_CP03,sum_wch}, ParallelContext::CommunicatorSub());
+		  m_domainRhoYFlux_CP00[0] = a_factor * sum_CP00;
+		  m_domainRhoYFlux_CP01[0] = a_factor * sum_CP01;
+		  m_domainRhoYFlux_CP02[0] = a_factor * sum_CP02;
+		  m_domainRhoYFlux_CP03[0] = a_factor * sum_CP03;
+		  m_domainRhoYFlux_pilot[0] = a_factor * sum_pilot;
+		  m_domainRhoYFlux_wch[0] = a_factor * sum_wch;
+
+		  //amrex::Print()<<"\nOld function fuel (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[0]<<" "<<m_domainRhoYFlux_CP00[0]<<" "<<m_domainRhoYFlux_wch[0]<<" "<<m_domainRhoYFlux_CP01[1];
+		  sum_pilot	= 0.0;
+		  sum_CP00 	= 0.0;
+		  sum_CP01 	= 0.0;
+		  sum_CP02 	= 0.0;
+		  sum_CP03 	= 0.0;
+		  sum_wch 	= 0.0;
+
+       r = amrex::ParReduce(
+           TypeList<ReduceOpSum, ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum,ReduceOpSum>{}, 
+	   TypeList<Real, Real,Real, Real,Real, Real>{},
+	   *a_fluxes[idim], IntVect(0),
+	   [=] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept -> GpuTuple<Real, Real, Real, Real, Real, Real>
+	   {
+		  Array4<const Real> const& flux = fma[box_no];
+		  int idx = k;
+
+		  Real xp = prob_lo[0]+(i+0.5)*dx[0];
+		  Real yp = prob_lo[1]+(j+0.5)*dx[1];
+
+		  Real radp_origin = sqrt(xp*xp+yp*yp);
+		  Real radp_CP00 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP01 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp-xycenter_cp)*(yp-xycenter_cp));
+		  Real radp_CP02 = sqrt((xp+xycenter_cp)*(xp+xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+		  Real radp_CP03 = sqrt((xp-xycenter_cp)*(xp-xycenter_cp)+(yp+xycenter_cp)*(yp+xycenter_cp));
+
+		  Real sum_pilot_loc	= 0.0;
+		  Real sum_CP00_loc 	= 0.0;
+		  Real sum_CP01_loc 	= 0.0;
+		  Real sum_CP02_loc 	= 0.0;
+		  Real sum_CP03_loc 	= 0.0;
+		  Real sum_wch_loc	= 0.0;
+
+		  //Window cooling hole MFR calculation
+		  if (idx == faceDomain.smallEnd(idim))// and ((xp>=xymin_wch_touse) or (yp>=xymin_wch_touse) or (xp<=-xymin_wch_touse) or (yp<=-xymin_wch_touse)))
+		  {
+			  sum_wch_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP00<=rmax_cp_touse  and radp_CP00>=rmin_cp_touse))
+		  {
+			  sum_CP00_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.bigEnd(idim))// and (radp_CP01<=rmax_cp_touse  and radp_CP01>=rmin_cp_touse))
+		  {
+			  sum_CP01_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP02<=rmax_cp_touse  and radp_CP02>=rmin_cp_touse))
+		  {
+			  sum_CP02_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_CP03<=rmax_cp_touse  and radp_CP03>=rmin_cp_touse))
+		  {
+			  sum_CP03_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  if (idx == faceDomain.smallEnd(idim) and (radp_origin<=rmax_pilot_touse))
+		  {
+			  sum_pilot_loc += (flux(i, j, k, O2_ID)+flux(i, j, k, N2_ID)) * area[idim];
+		  }
+		  return {sum_pilot_loc, sum_CP00_loc, sum_CP01_loc, sum_CP02_loc, sum_CP03_loc, sum_wch_loc};
+		});
+		sum_pilot = amrex::get<0>(r);
+		sum_CP00 = amrex::get<1>(r);
+		sum_CP01 = amrex::get<2>(r);
+		sum_CP02 = amrex::get<3>(r);
+		sum_CP03 = amrex::get<4>(r);
+		sum_wch = amrex::get<5>(r);
+
+		ParallelAllReduce::Sum<Real>({sum_pilot, sum_CP00, sum_CP01,sum_CP02,sum_CP03,sum_wch}, ParallelContext::CommunicatorSub());
+		m_domainRhoYFlux_CP00[1] = a_factor * sum_CP00;
+		m_domainRhoYFlux_CP01[1] = a_factor * sum_CP01;
+		m_domainRhoYFlux_CP02[1] = a_factor * sum_CP02;
+		m_domainRhoYFlux_CP03[1] = a_factor * sum_CP03;
+		m_domainRhoYFlux_pilot[1] = a_factor * sum_pilot;
+		m_domainRhoYFlux_wch[1] = a_factor * sum_wch;
+		//amrex::Print()<<"\nOld function air (pilot,CPOO,WCH) == "<<m_domainRhoYFlux_pilot[1]<<" "<<m_domainRhoYFlux_CP00[1]<<" "<<m_domainRhoYFlux_wch[1]<<" "<<m_domainRhoYFlux_CP01[1];
+ }
+
+
 void
 PeleLM::initBPatches(Geometry& a_geom)
 {
@@ -647,6 +1003,7 @@ PeleLM::writeTemporals()
   if ((m_do_patch_mfr != 0) && (m_incompressible == 0)) {
     speciesBalancePatch();
   }
+
 
   //----------------------------------------------------------------
   // State
