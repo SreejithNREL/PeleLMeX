@@ -381,7 +381,7 @@ PeleLM::SprayInjectRedist()
     bool lev_injected =
       SprayPC->injectParticles(cur_time, dt, nstep, lev, finest_level);
 #ifndef AMREX_USE_GPU
-      SprayPC->WriteSprayInjectionTemporal(cur_time, nstep, lev);
+      //SprayPC->WriteSprayInjectionTemporal(cur_time, nstep, lev);
 #endif
 
     if (lev_injected) {
