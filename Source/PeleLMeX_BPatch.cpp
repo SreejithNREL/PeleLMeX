@@ -1,7 +1,6 @@
 #include "PeleLMeX_BPatch.H"
 #include "PelePhysics.H"
 
-
 BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
   : m_patchname(std::move(patch_name))
 {
@@ -180,4 +179,3 @@ BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
   allocate();
   amrex::Gpu::streamSynchronize();
 }
-

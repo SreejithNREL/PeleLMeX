@@ -35,19 +35,6 @@ PeleLM::initTemporals(const PeleLM::TimeStamp& a_time)
       }
     }
   }
-
-  if ((m_do_patch_mfr != 0) && (m_incompressible == 0)) {
-      for (int n = 0; n < 2; n++) {
-
-    	  m_domainRhoYFlux_pilot[n] = 0.0;
-    	  m_domainRhoYFlux_CP00[n] = 0.0;
-    	  m_domainRhoYFlux_CP01[n] = 0.0;
-    	  m_domainRhoYFlux_CP02[n] = 0.0;
-    	  m_domainRhoYFlux_CP03[n] = 0.0;
-    	  m_domainRhoYFlux_wch[n] = 0.0;
-
-      }
-    }
 }
 
 void
@@ -529,7 +516,6 @@ PeleLM::addRhoYFluxes(
   }
 }
 
-
 void
 PeleLM::initBPatches(Geometry& a_geom)
 {
@@ -660,7 +646,6 @@ PeleLM::writeTemporals()
   if ((m_do_patch_mfr != 0) && (m_incompressible == 0)) {
     speciesBalancePatch();
   }
-
 
   //----------------------------------------------------------------
   // State

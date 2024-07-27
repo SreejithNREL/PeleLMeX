@@ -380,16 +380,11 @@ PeleLM::SprayInjectRedist()
     Real dt = m_dt;
     bool lev_injected =
       SprayPC->injectParticles(cur_time, dt, nstep, lev, finest_level);
-#ifndef AMREX_USE_GPU
-      //SprayPC->WriteSprayInjectionTemporal(cur_time, nstep, lev);
-#endif
-
     if (lev_injected) {
       injected = true;
     }
   }
   // We must redistribute after each time step
-
   SprayPC->Redistribute();
   if (spray_verbose >= 3 && injected) {
     Long new_count = SprayPC->TotalNumberOfParticles(true, false);

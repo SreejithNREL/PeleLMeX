@@ -1919,7 +1919,6 @@ public:
   // Temporals
   int m_do_temporals = 0;
   int m_do_patch_mfr = 0;
-
   amrex::Vector<std::unique_ptr<BPatch>> m_bPatches;
   int m_temp_int = 5;
   int m_do_extremas = 0;
@@ -1936,12 +1935,6 @@ public:
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainRhoHFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM * NUM_SPECIES> m_domainRhoYFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainUmacFlux;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_pilot;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP00;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP01;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP02;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_CP03;
-  amrex::GpuArray<amrex::Real, 2> m_domainRhoYFlux_wch;
 
   std::ofstream tmpStateFile;
   std::ofstream tmpExtremasFile;

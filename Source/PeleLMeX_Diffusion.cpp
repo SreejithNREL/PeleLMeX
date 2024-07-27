@@ -117,12 +117,6 @@ PeleLM::computeDifferentialDiffusionTerms(
     addRhoYFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0], sdc_weight);
   }
 
-  if (
-      (m_sdcIter == 0 || m_sdcIter == m_nSDCmax) && (m_do_patch_mfr != 0)) {
-      Real sdc_weight = (a_time == AmrOldTime) ? 0.5 : -0.5;
-      //addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0], sdc_weight);
-    }
-
   //----------------------------------------------------------------
   // Compute divergence/fill a_viscTerm
   // [0:NUM_SPECIES-1] Species           : \nabla \cdot \Flux_k
@@ -1068,10 +1062,6 @@ PeleLM::differentialDiffusionUpdate(
   if (m_sdcIter == m_nSDCmax && (m_do_speciesBalance != 0)) {
     addRhoYFluxes(GetArrOfConstPtrs(fluxes[0]), geom[0]);
   }
-
-  if (m_sdcIter == m_nSDCmax && (m_do_patch_mfr != 0)) {
-      //addRhoYFluxesA74(GetArrOfConstPtrs(fluxes[0]), geom[0]);
-    }
   //------------------------------------------------------------------------
 
   //------------------------------------------------------------------------

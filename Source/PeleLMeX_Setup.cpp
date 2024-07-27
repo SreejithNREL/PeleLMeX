@@ -44,7 +44,6 @@ PeleLM::Setup()
 
   // Ensure grid is isotropic
   {
-
     auto const dx = geom[0].CellSizeArray();
     AMREX_ALWAYS_ASSERT(AMREX_D_TERM(
       , amrex::almostEqual(dx[0], dx[1], 10),
