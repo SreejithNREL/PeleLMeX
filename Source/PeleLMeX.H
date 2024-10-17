@@ -958,8 +958,10 @@ public:
   //-----------------------------------------------------------------------------
   // I/O
   void WritePlotFile();
+  void WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool);
   bool writePlotNow() const;
   bool checkMessage(const std::string& a_action) const;
+  void WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> , bool );
   void WriteCheckPointFile();
   void ReadCheckPointFile();
   bool writeCheckNow() const;
@@ -1290,6 +1292,8 @@ public:
   // Derived variable evaluation
   std::unique_ptr<amrex::MultiFab>
   derive(const std::string& a_name, amrex::Real a_time, int lev, int nGrow);
+  std::unique_ptr<amrex::MultiFab>
+  derive(const std::string& a_name, amrex::Real a_time, int lev, int nGrow, amrex::Vector<amrex::BoxArray> grid_lev_singlebox,amrex::Vector<amrex::DistributionMapping> dmap_lev_singlebox);
   std::unique_ptr<amrex::MultiFab>
   deriveComp(const std::string& a_name, amrex::Real a_time, int lev, int nGrow);
 

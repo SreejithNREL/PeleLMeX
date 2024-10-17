@@ -60,6 +60,716 @@ PeleLM::WriteDebugPlotFile(
 }
 
 void
+PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels)
+{
+	//write_all_levels -> will write plot file for all levels of single boxes which contains the point
+  BL_PROFILE("PeleLMeX::WritePlotFile()");
+
+  const std::string& plotfilename =
+    amrex::Concatenate(m_plot_file, m_nstep, m_ioDigits);
+
+  if (m_verbose != 0) {
+    amrex::Print() << "\n Writing plotfile: " << plotfilename << "\n";
+  }
+
+  //----------------------------------------------------------------
+  // Delete plotfiles if present and requested (and have same name)
+  if (m_plot_overwrite) {
+    if (amrex::ParallelContext::IOProcessorSub()) {
+      if (amrex::FileExists(plotfilename)) {
+        amrex::FileSystem::RemoveAll(plotfilename);
+      }
+    }
+  }
+
+  VisMF::SetNOutFiles(m_nfiles);
+
+  //----------------------------------------------------------------
+  // Average down the state
+  averageDownState(AmrNewTime);
+
+  // Get consistent reaction data across level
+  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+    averageDownReaction();
+  }
+
+  //----------------------------------------------------------------
+  // Number of components
+  int ncomp = 0;
+
+  // State
+  if (m_incompressible != 0) {
+    // Velocity + pressure gradients
+    ncomp = 2 * AMREX_SPACEDIM;
+    amrex::Print()<<"\nm_incompressible = "<<m_incompressible;
+  } else {
+    // State + pressure gradients
+    if (m_plot_grad_p != 0) {
+      ncomp = NVAR + AMREX_SPACEDIM;
+    } else {
+      ncomp = NVAR;
+    }
+    // Make the plot lighter by dropping species by default
+    if (m_plotStateSpec == 0) {
+      ncomp -= NUM_SPECIES;
+    }
+    if (m_has_divu != 0) {
+      ncomp += 1;
+    }
+  }
+
+  // Reactions
+  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+    // Cons Rate
+    ncomp += nCompIR();
+    // FunctCall
+    ncomp += 1;
+    // Extras:
+    if (m_plotHeatRelease != 0) {
+      ncomp += 1;
+    }
+  }
+
+#ifdef AMREX_USE_EB
+  // Include volume fraction in plotfile
+  ncomp += 1;
+#endif
+
+#ifdef PELE_USE_RADIATION
+  if (do_rad_solve) {
+    ncomp += 3;
+  }
+#endif
+
+  // Derive
+  int deriveEntryCount = 0;
+  for (int ivar = 0; ivar < m_derivePlotVarCount; ivar++) {
+    const PeleLMDeriveRec* rec = derive_lst.get(m_derivePlotVars[ivar]);
+    deriveEntryCount += rec->numDerive();
+  }
+  ncomp += deriveEntryCount;
+
+#ifdef PELE_USE_SPRAY
+  if (do_spray_particles) {
+    ncomp += SprayParticleContainer::NumDeriveVars();
+    if (SprayParticleContainer::plot_spray_src) {
+      ncomp += AMREX_SPACEDIM + 2 + SPRAY_FUEL_NUM;
+    }
+  }
+#endif
+
+#ifdef PELE_USE_EFIELD
+  if (m_do_extraEFdiags) {
+    ncomp += NUM_IONS * AMREX_SPACEDIM;
+  }
+#endif
+
+  if (m_do_les && m_plot_les) {
+    ncomp += 1;
+  }
+
+  //----------------------------------------------------------------
+  //The following block is written by Sreejith-->begin
+  //Define temporary Leveldata for storing the single boxes
+
+  amrex::Vector<amrex::IntVect> point_idx;
+  amrex::Vector<amrex::BoxArray> grid_lev_singlebox;
+  amrex::Vector<amrex::DistributionMapping> dmap_lev_singlebox;
+  amrex::Vector<int> level_map;
+
+  Vector<MultiFab> mf_plt;
+  amrex::Vector<std::unique_ptr<LevelData>> m_leveldata_tmp;
+  amrex::Vector<std::unique_ptr<LevelDataReact>> m_leveldatareact_tmp;
+
+  int finest_level_point = 0;
+  int num_of_levels;
+
+  if(write_all_levels)
+  {
+	  //First find out at which finest level the point lies in. Then write down all the single boxes (across all levels) in which the point is located
+	  bool probe_found=false;
+
+	  int box_idx=-1;
+
+	  for (int lev = finest_level; lev >=0 && !probe_found; lev--)
+	  {
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  amrex::BoxList bl;
+		  bl.set(grids[0].ixType());
+		  bl.reserve(1);
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+			  // index of the cell where probe is located.
+			  amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+			  if (cBox.contains(idx_lev) && !probe_found)
+			  {
+				  finest_level_point=lev;
+				  probe_found = true;
+			  }
+		  }
+	  }
+	  if(!probe_found)
+	  {
+		  amrex::Abort("\n The point cannot be located inside the domain. Please check..\n");
+	  }
+
+	  num_of_levels=finest_level_point+1;
+	  mf_plt.resize(num_of_levels);
+	  grid_lev_singlebox.resize(num_of_levels);
+	  dmap_lev_singlebox.resize(num_of_levels);
+	  m_leveldata_tmp.resize(num_of_levels);
+	  m_leveldatareact_tmp.resize(num_of_levels);
+	  level_map.resize(num_of_levels);
+
+	  //Now loop through all levels and all boxes to find out inside which box the point lies
+	  probe_found=false;
+	  for (int lev = 0; lev <num_of_levels && !probe_found; lev++)
+	  {
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  probe_found=false;
+
+		  amrex::BoxList bl;
+		  bl.set(grids[0].ixType());
+		  bl.reserve(1);
+		  amrex::Vector<int> pmap_point;
+		  level_map[lev]=lev;
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+
+	  		 // index of the cell where probe is located.
+	  		amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+	  		bool probe_found_lev=false;
+	  		if (cBox.contains(idx_lev) && !probe_found_lev)
+	  		{
+	  			bl.push_back(cBox);
+	  			pmap_point.push_back(dmap[lev][i]);
+	  			point_idx.push_back(idx_lev);
+	  			box_idx = i;
+	  			probe_found_lev=true;	//come out of the loop once the box is found
+	  		}
+		  }
+		  grid_lev_singlebox[lev].define(bl);
+		  dmap_lev_singlebox[lev].define(pmap_point);
+
+		  m_leveldata_tmp[lev] = std::make_unique<LevelData>(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], *m_factory[lev], m_incompressible, m_has_divu, m_nAux, m_nGrowState, m_use_soret, static_cast<int>(m_do_les));
+		  m_leveldatareact_tmp[lev] = std::make_unique<LevelDataReact>(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], *m_factory[lev]);
+		  mf_plt[lev].define(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], ncomp, 0, MFInfo(), Factory(lev));
+
+		  //Now loop through all state MFs in the original LevelData, identify the single box we are interested in and then copy only the required FArrayBox to the temp leveldata
+		  for (amrex::MFIter mfi(m_leveldata_new[lev]->state, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  {
+			  const auto& bx = mfi.tilebox();
+			   if(bx.contains(point_idx[lev]))
+			   {
+				   m_leveldata_tmp[lev]->state[0].copy(m_leveldata_new[lev]->state[mfi], 0,0,NVAR);
+			   }
+		  }
+		  if (m_has_divu != 0) {
+		 		  for (amrex::MFIter mfi(m_leveldata_new[lev]->divu, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 		  	  {
+		 			  	  const auto& bx = mfi.tilebox();
+		 		  	        if(bx.contains(point_idx[lev]))
+		 		  	        {
+		 		  	        	m_leveldata_tmp[lev]->divu[0].copy(m_leveldata_new[lev]->divu[mfi], 0,0,1);
+		 		  	        }
+		 		  	  }
+		 	  }
+		  if (m_plot_grad_p != 0) {
+		  		  for (amrex::MFIter mfi(m_leveldata_new[lev]->gp, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  		  		  	  {
+		  		  		  		    const auto& bx = mfi.tilebox();
+		  		  		  	        if(bx.contains(point_idx[lev]))
+		  		  		  	        {
+		  		  		  	        	 m_leveldata_tmp[lev]->gp[0].copy(m_leveldata_new[lev]->gp[mfi], 0,0,AMREX_SPACEDIM);
+		  		  		  	        }
+		  		  		  	  }
+		  }
+		  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+		 	  		  for (amrex::MFIter mfi(m_leveldatareact[lev]->I_R, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 	  		  {
+		 	  			  const auto& bx = mfi.tilebox();
+		 	  			  if(bx.contains(point_idx[lev]))
+		 	  			  {
+		 	  				m_leveldatareact_tmp[lev]->I_R[0].copy(m_leveldatareact[lev]->I_R[mfi], 0,0,nCompIR());
+		 	  			  }
+		 	  		  }
+		 	  	  }
+		 	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+		 	  	  		  for (amrex::MFIter mfi(m_leveldatareact[lev]->functC, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 	  	  		  {
+		 	  	  			  const auto& bx = mfi.tilebox();
+		 	  	  			  if(bx.contains(point_idx[lev]))
+		 	  	  			  {
+		 	  	  				m_leveldatareact_tmp[lev]->functC[0].copy(m_leveldatareact[lev]->functC[mfi], 0,0,1);
+		 	  	  			  }
+		 	  	  		  }
+		 	  	  	  }
+	  }
+
+  }
+  else
+  {
+	  num_of_levels=1;
+	  mf_plt.resize(num_of_levels);
+	  grid_lev_singlebox.resize(num_of_levels);
+	  dmap_lev_singlebox.resize(num_of_levels);
+	  m_leveldata_tmp.resize(num_of_levels);
+	  m_leveldatareact_tmp.resize(num_of_levels);
+	  level_map.resize(num_of_levels);
+
+	  amrex::BoxList bl;
+	  bl.set(grids[0].ixType());
+	  bl.reserve(1);
+	  amrex::Vector<int> pmap_point;
+
+	  bool probe_found=false;
+
+	  //Loop through all levels starting from finest to coarsest
+	  for (int lev = finest_level; lev >=0 && !probe_found; lev--)
+	  {
+		  //Loop through each box in a level
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+			  // index of the cell where probe is located.
+			  amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+			  if (cBox.contains(idx_lev) && !probe_found)
+			  {
+				  //Define box array with the single box
+				  bl.push_back(cBox);
+				  pmap_point.push_back(dmap[lev][i]);
+				  finest_level_point=lev;
+				  point_idx.push_back(idx_lev);
+				  probe_found = true;
+			  }
+		  }
+	  }
+	  level_map[0]=finest_level_point;
+
+
+	  grid_lev_singlebox[0].define(bl);
+	  dmap_lev_singlebox[0].define(pmap_point);
+	  m_leveldata_tmp[0] = std::make_unique<LevelData>(grid_lev_singlebox[0], dmap_lev_singlebox[0], *m_factory[finest_level_point], m_incompressible, m_has_divu, m_nAux, m_nGrowState, m_use_soret, static_cast<int>(m_do_les));
+	  m_leveldatareact_tmp[0] = std::make_unique<LevelDataReact>(grid_lev_singlebox[0], dmap_lev_singlebox[0], *m_factory[finest_level_point]);
+	  mf_plt[0].define(grid_lev_singlebox[0], dmap_lev_singlebox[0], ncomp, 0, MFInfo(), Factory(finest_level_point));
+
+	  //Now loop through all state MFs in the original LevelData, identify the single box we are interested in and then copy only the required MF to the temp leveldata
+	  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->state, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  {
+	        const auto& bx = mfi.tilebox();
+	        if(bx.contains(point_idx[0]))
+	        {
+	        	 m_leveldata_tmp[0]->state[0].copy(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
+	        }
+	  }
+	  if (m_has_divu != 0) {
+		  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->divu, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  	  {
+		  	        const auto& bx = mfi.tilebox();
+		  	        if(bx.contains(point_idx[0]))
+		  	        {
+		  	        	 m_leveldata_tmp[0]->divu[0].copy(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
+		  	        }
+		  	  }
+	  }
+	  if (m_plot_grad_p != 0) {
+		  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->gp, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  {
+			  const auto& bx = mfi.tilebox();
+			  if(bx.contains(point_idx[0]))
+			  {
+				  m_leveldata_tmp[0]->gp[0].copy(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
+			  }
+		  }
+	  }
+	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+	  		  for (amrex::MFIter mfi(m_leveldatareact[finest_level_point]->I_R, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  		  {
+	  			  const auto& bx = mfi.tilebox();
+	  			  if(bx.contains(point_idx[0]))
+	  			  {
+	  				m_leveldatareact_tmp[0]->I_R[0].copy(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
+	  			  }
+	  		  }
+	  	  }
+	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+	  	  		  for (amrex::MFIter mfi(m_leveldatareact[finest_level_point]->functC, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  	  		  {
+	  	  			  const auto& bx = mfi.tilebox();
+	  	  			  if(bx.contains(point_idx[0]))
+	  	  			  {
+	  	  				m_leveldatareact_tmp[0]->functC[0].copy(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
+	  	  			  }
+	  	  		  }
+	  	  	  }
+
+  }
+
+  //----------------------------------------------------------------
+  // Components names
+  Vector<std::string> names;
+  pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(names);
+
+  Vector<std::string> plt_VarsName;
+  AMREX_D_TERM(plt_VarsName.push_back("x_velocity");
+               , plt_VarsName.push_back("y_velocity");
+               , plt_VarsName.push_back("z_velocity"));
+  if (m_incompressible == 0) {
+    plt_VarsName.push_back("density");
+    if (m_plotStateSpec != 0) {
+      for (int n = 0; n < NUM_SPECIES; n++) {
+        plt_VarsName.push_back("rho.Y(" + names[n] + ")");
+      }
+    }
+    plt_VarsName.push_back("rhoh");
+    plt_VarsName.push_back("temp");
+    plt_VarsName.push_back("RhoRT");
+#ifdef PELE_USE_EFIELD
+    plt_VarsName.push_back("nE");
+    plt_VarsName.push_back("phiV");
+#endif
+#ifdef PELE_USE_SOOT
+    for (int mom = 0; mom < NUMSOOTVAR; mom++) {
+      std::string sootname = soot_model->sootVariableName(mom);
+      plt_VarsName.push_back(sootname);
+    }
+#endif
+#ifdef PELE_USE_RADIATION
+    if (do_rad_solve) {
+      plt_VarsName.push_back("rad.G");
+      plt_VarsName.push_back("rad.kappa");
+      plt_VarsName.push_back("rad.emis");
+    }
+#endif
+    if (m_has_divu != 0) {
+      plt_VarsName.push_back("divu");
+    }
+  }
+
+  if (m_plot_grad_p != 0) {
+    AMREX_D_TERM(plt_VarsName.push_back("gradpx");
+                 , plt_VarsName.push_back("gradpy");
+                 , plt_VarsName.push_back("gradpz"));
+  }
+
+  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+    for (int n = 0; n < NUM_SPECIES; n++) {
+      plt_VarsName.push_back("I_R(" + names[n] + ")");
+    }
+#ifdef PELE_USE_EFIELD
+    plt_VarsName.push_back("I_R(nE)");
+#endif
+    plt_VarsName.push_back("FunctCall");
+    // Extras:
+    if (m_plotHeatRelease != 0) {
+      plt_VarsName.push_back("HeatRelease");
+    }
+  }
+
+
+#ifdef AMREX_USE_EB
+  plt_VarsName.push_back("volFrac");
+#endif
+
+  for (int ivar = 0; ivar < m_derivePlotVarCount; ivar++) {
+    const PeleLMDeriveRec* rec = derive_lst.get(m_derivePlotVars[ivar]);
+    for (int dvar = 0; dvar < rec->numDerive(); dvar++) {
+      plt_VarsName.push_back(rec->variableName(dvar));
+    }
+  }
+#ifdef PELE_USE_SPRAY
+  if (SprayParticleContainer::NumDeriveVars() > 0) {
+    // We need virtual particles for the lower levels
+    setupVirtualParticles(0);
+    for (const auto& spray_derive_name :
+         SprayParticleContainer::DeriveVarNames()) {
+      plt_VarsName.push_back(spray_derive_name);
+    }
+  }
+  if (do_spray_particles && SprayParticleContainer::plot_spray_src) {
+    plt_VarsName.push_back("spray_mass_src");
+    plt_VarsName.push_back("spray_energy_src");
+    AMREX_D_TERM(plt_VarsName.push_back("spray_momentumX_src");
+                 , plt_VarsName.push_back("spray_momentumY_src");
+                 , plt_VarsName.push_back("spray_momentumZ_src"));
+    for (const auto& spray_fuel_name :
+         SprayParticleContainer::m_sprayDepNames) {
+      plt_VarsName.push_back("spray_" + spray_fuel_name + "_src");
+    }
+  }
+#endif
+
+#ifdef PELE_USE_EFIELD
+  if (m_do_extraEFdiags) {
+    for (int ivar = 0; ivar < NUM_IONS; ++ivar) {
+      for (int idim = 0; idim < AMREX_SPACEDIM; ++idim) {
+        std::string dir = (idim == 0) ? "X" : ((idim == 1) ? "Y" : "Z");
+        plt_VarsName.push_back(
+          "DriftFlux_" + names[NUM_SPECIES - NUM_IONS + ivar] + "_" + dir);
+      }
+    }
+  }
+#endif
+
+  if (m_do_les && m_plot_les) {
+    plt_VarsName.push_back("viscturb");
+  }
+
+  //----------------------------------------------------------------
+  // Fill the plot MultiFabs
+  //Before that, create a new LevelData with only the required set of boxes
+
+
+  for (int lev = 0; lev < num_of_levels; ++lev) {
+    int cnt = 0;
+    if (m_incompressible != 0) {
+
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldata_tmp[lev]->state, 0, cnt, AMREX_SPACEDIM, 0);
+      cnt += AMREX_SPACEDIM;
+    } else {
+      // Velocity and density
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldata_tmp[lev]->state, 0, cnt, AMREX_SPACEDIM + 1,
+        0);
+      cnt += AMREX_SPACEDIM + 1;
+      // Species only if requested
+      if (m_plotStateSpec != 0) {
+        MultiFab::Copy(
+          mf_plt[lev], m_leveldata_tmp[lev]->state, FIRSTSPEC, cnt, NUM_SPECIES,
+          0);
+        cnt += NUM_SPECIES;
+      }
+      MultiFab::Copy(mf_plt[lev], m_leveldata_tmp[lev]->state, RHOH, cnt, 3, 0);
+      cnt += 3;
+#ifdef PELE_USE_EFIELD
+      MultiFab::Copy(mf_plt[lev], m_leveldata_tmp[lev]->state, NE, cnt, 2, 0);
+      cnt += 2;
+#endif
+#ifdef PELE_USE_SOOT
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldata_tmp[lev]->state, FIRSTSOOT, cnt, NUMSOOTVAR,
+        0);
+      cnt += NUMSOOTVAR;
+#endif
+#ifdef PELE_USE_RADIATION
+      if (do_rad_solve) {
+        MultiFab::Copy(mf_plt[lev], rad_model->G()[lev], 0, cnt, 1, 0);
+        cnt += 1;
+        MultiFab::Copy(mf_plt[lev], rad_model->kappa()[lev], 0, cnt, 1, 0);
+        cnt += 1;
+        MultiFab::Copy(mf_plt[lev], rad_model->emis()[lev], 0, cnt, 1, 0);
+        cnt += 1;
+      }
+#endif
+      if (m_has_divu != 0) {
+        MultiFab::Copy(mf_plt[lev], m_leveldata_tmp[lev]->divu, 0, cnt, 1, 0);
+        cnt += 1;
+      }
+    }
+    if (m_plot_grad_p != 0) {
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldata_tmp[lev]->gp, 0, cnt, AMREX_SPACEDIM, 0);
+      cnt += AMREX_SPACEDIM;
+    }
+
+    if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldatareact_tmp[lev]->I_R, 0, cnt, nCompIR(), 0);
+      cnt += nCompIR();
+
+      MultiFab::Copy(mf_plt[lev], m_leveldatareact_tmp[lev]->functC, 0, cnt, 1, 0);
+      cnt += 1;
+
+      if (m_plotHeatRelease != 0) {
+        std::unique_ptr<MultiFab> mf;
+        mf = std::make_unique<MultiFab>(grids[level_map[lev]], dmap[level_map[lev]], 1, 0);
+        getHeatRelease(level_map[lev], mf.get());
+
+        for (amrex::MFIter mfi(*mf, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+        {
+        	const auto& bx = mfi.tilebox();
+        	if(bx.contains(point_idx[lev]))
+        	{
+        		mf_plt[lev][0].copy((*mf.get())[mfi], 0,cnt,1);
+        		cnt+=1;
+        	}
+        }
+      }
+    }
+
+#ifdef AMREX_USE_EB
+    MultiFab::Copy(mf_plt[lev], EBFactory(lev).getVolFrac(), 0, cnt, 1, 0);
+    cnt += 1;
+#endif
+
+    int cnt_tmp=cnt;
+    for (int ivar = 0; ivar < m_derivePlotVarCount; ivar++) {
+      std::unique_ptr<MultiFab> mf;
+      mf = derive(m_derivePlotVars[ivar], m_cur_time, level_map[lev], 0);
+    for (amrex::MFIter mfi(*mf, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+   	  {
+   	        const auto& bx = mfi.tilebox();
+   	        if(bx.contains(point_idx[lev]))
+   	        {
+   	        	mf_plt[lev][0].copy((*mf.get())[mfi], 0,cnt_tmp,mf->nComp());
+   	        	cnt_tmp+=1;
+   	        }
+   	  }
+
+
+    }
+    //amrex::Print()<<"\n Just before crash, cnt= "<<cnt<<" "<<mf->nComp()<<" "<<m_derivePlotVarCount;
+
+          cnt = cnt_tmp;
+
+#ifdef PELE_USE_SPRAY
+    if (SprayParticleContainer::NumDeriveVars() > 0) {
+      const int num_spray_derive = SprayParticleContainer::NumDeriveVars();
+      mf_plt[lev].setVal(0., cnt, num_spray_derive);
+      SprayPC->computeDerivedVars(mf_plt[lev], lev, cnt);
+      if (lev < finest_level) {
+        MultiFab tmp_plt(
+          grids[finest_level_point], dmap[finest_level_point], num_spray_derive, 0, MFInfo(), Factory(lev));
+        tmp_plt.setVal(0.);
+        VirtPC->computeDerivedVars(tmp_plt, lev, 0);
+        MultiFab::Add(mf_plt[lev], tmp_plt, 0, cnt, num_spray_derive, 0);
+      }
+      cnt += num_spray_derive;
+    }
+    if (do_spray_particles && SprayParticleContainer::plot_spray_src) {
+      SprayComps scomps = SprayParticleContainer::getSprayComps();
+      MultiFab::Copy(
+        mf_plt[lev], *m_spraysource[finest_level_point], scomps.rhoSrcIndx, cnt++, 1, 0);
+      MultiFab::Copy(
+        mf_plt[lev], *m_spraysource[finest_level_point], scomps.engSrcIndx, cnt++, 1, 0);
+      MultiFab::Copy(
+        mf_plt[lev], *m_spraysource[finest_level_point], scomps.momSrcIndx, cnt,
+        AMREX_SPACEDIM, 0);
+      cnt += AMREX_SPACEDIM;
+      for (int spf = 0; spf < SPRAY_FUEL_NUM; ++spf) {
+        MultiFab::Copy(
+          mf_plt[lev], *m_spraysource[finest_level_point], scomps.specSrcIndx + spf, cnt++, 1,
+          0);
+      }
+    }
+#endif
+#ifdef PELE_USE_EFIELD
+    if (m_do_extraEFdiags) {
+      MultiFab::Copy(
+        mf_plt[lev], *m_ionsFluxes[finest_level_point], 0, cnt, m_ionsFluxes[finest_level_point]->nComp(), 0);
+      cnt += m_ionsFluxes[finest_level_point]->nComp();
+    }
+#endif
+
+    if (m_do_les && m_plot_les) {
+
+      constexpr amrex::Real fact = 0.5 / AMREX_SPACEDIM;
+      auto const& plot_arr = mf_plt[lev].arrays();
+      AMREX_D_TERM(auto const& mut_arr_x =
+                     m_leveldata_old[finest_level_point]->visc_turb_fc[0].const_arrays();
+                   , auto const& mut_arr_y =
+                       m_leveldata_old[finest_level_point]->visc_turb_fc[1].const_arrays();
+                   , auto const& mut_arr_z =
+                       m_leveldata_old[finest_level_point]->visc_turb_fc[2].const_arrays();)
+      // interpolate turbulent viscosity from faces to centers
+      amrex::ParallelFor(
+        mf_plt[lev],
+        [plot_arr, AMREX_D_DECL(mut_arr_x, mut_arr_y, mut_arr_z),
+         cnt] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept {
+          plot_arr[box_no](i, j, k, cnt) =
+            fact *
+            (AMREX_D_TERM(
+              mut_arr_x[box_no](i, j, k) + mut_arr_x[box_no](i + 1, j, k),
+              +mut_arr_y[box_no](i, j, k) + mut_arr_y[box_no](i, j + 1, k),
+              +mut_arr_z[box_no](i, j, k) + mut_arr_z[box_no](i, j, k + 1)));
+        });
+      Gpu::streamSynchronize();
+    }
+
+#ifdef AMREX_USE_EB
+    if (m_plot_zeroEBcovered != 0) {
+      EB_set_covered(mf_plt[lev], 0.0);
+    }
+#endif
+}
+
+  // No SubCycling, all levels the same step.
+  Vector<int> istep(num_of_levels, m_nstep);
+
+#ifdef AMREX_USE_HDF5
+  if (m_write_hdf5_pltfile) {
+    amrex::WriteMultiLevelPlotfileHDF5(
+      plotfilename, 1, GetVecOfConstPtrs(mf_plt), plt_VarsName,
+      Geom(), m_cur_time, istep, refRatio());
+  } else
+#endif
+  {
+
+	  amrex::Vector<amrex::Geometry> g_lev;
+	  if(num_of_levels==1)
+	  {
+		  g_lev.push_back(geom[finest_level_point]);
+	  }
+	  else
+	  {
+		  for(int i=0;i<num_of_levels;i++)
+		  	  {
+			  g_lev.push_back(geom[i]);
+		  	  }
+	  }
+
+    amrex::WriteMultiLevelPlotfile(
+      plotfilename, num_of_levels, GetVecOfConstPtrs(mf_plt), plt_VarsName,
+	  g_lev, m_cur_time, istep, refRatio());
+  }
+
+#ifdef PELE_USE_SPRAY
+  if (do_spray_particles) {
+    bool is_spraycheck = false;
+
+      SprayPC->SprayParticleIO(lev, is_spraycheck, plotfilename);
+      // Remove virtual particles that were made for derived variables
+      removeVirtualParticles(lev);
+
+  }
+#endif
+}
+
+void
 PeleLM::WritePlotFile()
 {
   BL_PROFILE("PeleLMeX::WritePlotFile()");
@@ -523,6 +1233,79 @@ PeleLM::WriteHeader(const std::string& name, bool is_checkpoint) const
   }
 }
 
+/*
+void
+PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels)
+{
+  BL_PROFILE("PeleLMeX::WriteCheckPointFile()");
+
+  std::string m_check_file_singlemf="chk_singlemf";
+  const std::string& checkpointname =
+    amrex::Concatenate(m_check_file_singlemf, m_nstep, m_ioDigits);
+
+  if (m_verbose != 0) {
+    amrex::Print() << "\n Writing checkpoint file: " << checkpointname << "\n";
+  }
+
+  //----------------------------------------------------------------
+  // Delete checkfiles if present and requested (and have same name)
+  if (m_check_overwrite) {
+    if (amrex::ParallelContext::IOProcessorSub()) {
+      if (amrex::FileExists(checkpointname)) {
+        amrex::FileSystem::RemoveAll(checkpointname);
+      }
+    }
+  }
+
+  VisMF::SetNOutFiles(m_nfiles);
+
+  amrex::PreBuildDirectorHierarchy(
+    checkpointname, level_prefix, 1, true);
+
+  bool is_checkpoint = true;
+  WriteHeader(checkpointname, is_checkpoint);
+  WriteJobInfo(checkpointname);
+
+
+    VisMF::Write(
+      m_leveldata_new[lev]->state,
+      amrex::MultiFabFileFullPrefix(
+        lev, checkpointname, level_prefix, "state"));
+
+    VisMF::Write(
+      m_leveldata_new[lev]->gp, amrex::MultiFabFileFullPrefix(
+                                  lev, checkpointname, level_prefix, "gradp"));
+
+    VisMF::Write(
+      m_leveldata_new[lev]->press,
+      amrex::MultiFabFileFullPrefix(lev, checkpointname, level_prefix, "p"));
+
+    if (m_incompressible == 0) {
+      if (m_has_divu != 0) {
+        VisMF::Write(
+          m_leveldata_new[lev]->divu,
+          amrex::MultiFabFileFullPrefix(
+            lev, checkpointname, level_prefix, "divU"));
+      }
+
+      if (m_do_react != 0) {
+        VisMF::Write(
+          m_leveldatareact[lev]->I_R,
+          amrex::MultiFabFileFullPrefix(
+            lev, checkpointname, level_prefix, "I_R"));
+      }
+
+  }
+#ifdef PELE_USE_SPRAY
+  if (do_spray_particles) {
+    bool is_spraycheck = true;
+    for (int lev = 0; lev <= finest_level; ++lev) {
+      SprayPC->SprayParticleIO(lev, is_spraycheck, checkpointname);
+    }
+  }
+#endif
+}*/
+
 void
 PeleLM::WriteCheckPointFile()
 {
@@ -579,6 +1362,352 @@ PeleLM::WriteCheckPointFile()
       if (m_do_react != 0) {
         VisMF::Write(
           m_leveldatareact[lev]->I_R,
+          amrex::MultiFabFileFullPrefix(
+            lev, checkpointname, level_prefix, "I_R"));
+      }
+    }
+  }
+#ifdef PELE_USE_SPRAY
+  if (do_spray_particles) {
+    bool is_spraycheck = true;
+    for (int lev = 0; lev <= finest_level; ++lev) {
+      SprayPC->SprayParticleIO(lev, is_spraycheck, checkpointname);
+    }
+  }
+#endif
+}
+
+void
+PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels)
+{
+  BL_PROFILE("PeleLMeX::WriteCheckPointFile()");
+
+  const std::string checkpointname1 =m_check_file+ "_debug";
+
+  const std::string& checkpointname =
+    amrex::Concatenate(checkpointname1, m_nstep, m_ioDigits);
+
+  if (m_verbose != 0) {
+    amrex::Print() << "\n Writing checkpoint file: " << checkpointname << "\n";
+  }
+
+  //----------------------------------------------------------------
+  // Delete checkfiles if present and requested (and have same name)
+  if (m_check_overwrite) {
+    if (amrex::ParallelContext::IOProcessorSub()) {
+      if (amrex::FileExists(checkpointname)) {
+        amrex::FileSystem::RemoveAll(checkpointname);
+      }
+    }
+  }
+
+  VisMF::SetNOutFiles(m_nfiles);
+
+  amrex::PreBuildDirectorHierarchy(
+    checkpointname, level_prefix, finest_level + 1, true);
+
+  bool is_checkpoint = true;
+  WriteHeader(checkpointname, is_checkpoint);
+  WriteJobInfo(checkpointname);
+
+  //----------------------------------------------------------------
+  //The following block is written by Sreejith-->begin
+  //Define temporary Leveldata for storing the single boxes
+
+  amrex::Vector<amrex::IntVect> point_idx;
+  amrex::Vector<amrex::BoxArray> grid_lev_singlebox;
+  amrex::Vector<amrex::DistributionMapping> dmap_lev_singlebox;
+  amrex::Vector<int> level_map;
+
+  Vector<MultiFab> mf_plt;
+  amrex::Vector<std::unique_ptr<LevelData>> m_leveldata_tmp;
+  amrex::Vector<std::unique_ptr<LevelDataReact>> m_leveldatareact_tmp;
+
+  int finest_level_point = 0;
+  int num_of_levels;
+
+  if(write_all_levels)
+  {
+	  //First find out at which finest level the point lies in. Then write down all the single boxes (across all levels) in which the point is located
+	  bool probe_found=false;
+
+	  int box_idx=-1;
+
+	  for (int lev = finest_level; lev >=0 && !probe_found; lev--)
+	  {
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  amrex::BoxList bl;
+		  bl.set(grids[0].ixType());
+		  bl.reserve(1);
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+			  // index of the cell where probe is located.
+			  amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+			  if (cBox.contains(idx_lev) && !probe_found)
+			  {
+				  finest_level_point=lev;
+				  probe_found = true;
+			  }
+		  }
+	  }
+	  if(!probe_found)
+	  {
+		  amrex::Abort("\n The point cannot be located inside the domain. Please check..\n");
+	  }
+
+
+	  num_of_levels=finest_level_point+1;
+	  mf_plt.resize(num_of_levels);
+	  grid_lev_singlebox.resize(num_of_levels);
+	  dmap_lev_singlebox.resize(num_of_levels);
+	  m_leveldata_tmp.resize(num_of_levels);
+	  m_leveldatareact_tmp.resize(num_of_levels);
+	  level_map.resize(num_of_levels);
+
+	  //Now loop through all levels and all boxes to find out inside which box the point lies
+	  probe_found=false;
+	  for (int lev = 0; lev <num_of_levels && !probe_found; lev++)
+	  {
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  probe_found=false;
+
+		  amrex::BoxList bl;
+		  bl.set(grids[0].ixType());
+		  bl.reserve(1);
+		  amrex::Vector<int> pmap_point;
+		  level_map[lev]=lev;
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+
+	  		 // index of the cell where probe is located.
+	  		amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+	  		bool probe_found_lev=false;
+	  		if (cBox.contains(idx_lev) && !probe_found_lev)
+	  		{
+	  			bl.push_back(cBox);
+	  			pmap_point.push_back(dmap[lev][i]);
+	  			point_idx.push_back(idx_lev);
+	  			box_idx = i;
+	  			probe_found_lev=true;	//come out of the loop once the box is found
+	  		}
+		  }
+
+
+		  grid_lev_singlebox[lev].define(bl);
+		  dmap_lev_singlebox[lev].define(pmap_point);
+		  m_leveldata_tmp[lev] = std::make_unique<LevelData>(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], *m_factory[lev], m_incompressible, m_has_divu, m_nAux, m_nGrowState, m_use_soret, static_cast<int>(m_do_les));
+		  m_leveldatareact_tmp[lev] = std::make_unique<LevelDataReact>(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], *m_factory[lev]);
+		  mf_plt[lev].define(grid_lev_singlebox[lev], dmap_lev_singlebox[lev], m_leveldata_new[lev]->state.nComp(), 0, MFInfo(), Factory(lev));
+
+		  //Now loop through all state MFs in the original LevelData, identify the single box we are interested in and then copy only the required FArrayBox to the temp leveldata
+		  for (amrex::MFIter mfi(m_leveldata_new[lev]->state, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  {
+			  const auto& bx = mfi.tilebox();
+			   if(bx.contains(point_idx[lev]))
+			   {
+				   m_leveldata_tmp[lev]->state[0].copy(m_leveldata_new[lev]->state[mfi], 0,0,NVAR);
+			   }
+		  }
+		  if (m_has_divu != 0) {
+		 		  for (amrex::MFIter mfi(m_leveldata_new[lev]->divu, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 		  	  {
+		 			  	  const auto& bx = mfi.tilebox();
+		 		  	        if(bx.contains(point_idx[lev]))
+		 		  	        {
+		 		  	        	m_leveldata_tmp[lev]->divu[0].copy(m_leveldata_new[lev]->divu[mfi], 0,0,1);
+		 		  	        }
+		 		  	  }
+		 	  }
+		  if (m_plot_grad_p != 0) {
+		  		  for (amrex::MFIter mfi(m_leveldata_new[lev]->gp, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  		  		  	  {
+		  		  		  		    const auto& bx = mfi.tilebox();
+		  		  		  	        if(bx.contains(point_idx[lev]))
+		  		  		  	        {
+		  		  		  	        	 m_leveldata_tmp[lev]->gp[0].copy(m_leveldata_new[lev]->gp[mfi], 0,0,AMREX_SPACEDIM);
+		  		  		  	        }
+		  		  		  	  }
+		  }
+		  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+		 	  		  for (amrex::MFIter mfi(m_leveldatareact[lev]->I_R, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 	  		  {
+		 	  			  const auto& bx = mfi.tilebox();
+		 	  			  if(bx.contains(point_idx[lev]))
+		 	  			  {
+		 	  				m_leveldatareact_tmp[lev]->I_R[0].copy(m_leveldatareact[lev]->I_R[mfi], 0,0,nCompIR());
+		 	  			  }
+		 	  		  }
+		 	  	  }
+		 	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+		 	  	  		  for (amrex::MFIter mfi(m_leveldatareact[lev]->functC, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		 	  	  		  {
+		 	  	  			  const auto& bx = mfi.tilebox();
+		 	  	  			  if(bx.contains(point_idx[lev]))
+		 	  	  			  {
+		 	  	  				m_leveldatareact_tmp[lev]->functC[0].copy(m_leveldatareact[lev]->functC[mfi], 0,0,1);
+		 	  	  			  }
+		 	  	  		  }
+		 	  	  	  }
+	  }
+
+  }
+  else
+  {
+	  num_of_levels=1;
+	  mf_plt.resize(num_of_levels);
+	  grid_lev_singlebox.resize(num_of_levels);
+	  dmap_lev_singlebox.resize(num_of_levels);
+	  m_leveldata_tmp.resize(num_of_levels);
+	  m_leveldatareact_tmp.resize(num_of_levels);
+	  level_map.resize(num_of_levels);
+
+	  amrex::BoxList bl;
+	  bl.set(grids[0].ixType());
+	  bl.reserve(1);
+	  amrex::Vector<int> pmap_point;
+
+	  bool probe_found=false;
+
+	  //Loop through all levels starting from finest to coarsest
+	  for (int lev = finest_level; lev >=0 && !probe_found; lev--)
+	  {
+		  //Loop through each box in a level
+		  const amrex::Real* dx = Geom()[lev].CellSize();
+		  const amrex::Real* problo = Geom()[lev].ProbLo();
+		  amrex::Real dist[AMREX_SPACEDIM];
+
+		  for (int i = 0; i < grids[lev].size() && !probe_found; ++i)
+		  {
+			  auto cBox = grids[lev][i];
+
+			  // Calculate distance of probe from the domain low values
+			  for (int idim = 0; idim < AMREX_SPACEDIM; idim++)
+			  {
+				  dist[idim] = (point[idim] - (problo[idim])) / dx[idim];
+			  }
+			  // index of the cell where probe is located.
+			  amrex::IntVect idx_lev(AMREX_D_DECL(static_cast<int>(dist[0]), static_cast<int>(dist[1]), static_cast<int>(dist[2])));
+
+			  if (cBox.contains(idx_lev) && !probe_found)
+			  {
+				  //Define box array with the single box
+				  bl.push_back(cBox);
+				  pmap_point.push_back(dmap[lev][i]);
+				  finest_level_point=lev;
+				  point_idx.push_back(idx_lev);
+				  probe_found = true;
+			  }
+		  }
+	  }
+	  level_map[0]=finest_level_point;
+
+
+	  grid_lev_singlebox[0].define(bl);
+	  dmap_lev_singlebox[0].define(pmap_point);
+	  m_leveldata_tmp[0] = std::make_unique<LevelData>(grid_lev_singlebox[0], dmap_lev_singlebox[0], *m_factory[finest_level_point], m_incompressible, m_has_divu, m_nAux, m_nGrowState, m_use_soret, static_cast<int>(m_do_les));
+	  m_leveldatareact_tmp[0] = std::make_unique<LevelDataReact>(grid_lev_singlebox[0], dmap_lev_singlebox[0], *m_factory[finest_level_point]);
+	  mf_plt[0].define(grid_lev_singlebox[0], dmap_lev_singlebox[0], m_leveldata_new[finest_level_point]->state.nComp(), 0, MFInfo(), Factory(finest_level_point));
+
+	  //Now loop through all state MFs in the original LevelData, identify the single box we are interested in and then copy only the required MF to the temp leveldata
+	  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->state, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  {
+	        const auto& bx = mfi.tilebox();
+	        if(bx.contains(point_idx[0]))
+	        {
+	        	 m_leveldata_tmp[0]->state[0].copy(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
+	        }
+	  }
+	  if (m_has_divu != 0) {
+		  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->divu, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  	  {
+		  	        const auto& bx = mfi.tilebox();
+		  	        if(bx.contains(point_idx[0]))
+		  	        {
+		  	        	 m_leveldata_tmp[0]->divu[0].copy(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
+		  	        }
+		  	  }
+	  }
+	  if (m_plot_grad_p != 0) {
+		  for (amrex::MFIter mfi(m_leveldata_new[finest_level_point]->gp, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+		  {
+			  const auto& bx = mfi.tilebox();
+			  if(bx.contains(point_idx[0]))
+			  {
+				  m_leveldata_tmp[0]->gp[0].copy(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
+			  }
+		  }
+	  }
+	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+	  		  for (amrex::MFIter mfi(m_leveldatareact[finest_level_point]->I_R, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  		  {
+	  			  const auto& bx = mfi.tilebox();
+	  			  if(bx.contains(point_idx[0]))
+	  			  {
+	  				m_leveldatareact_tmp[0]->I_R[0].copy(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
+	  			  }
+	  		  }
+	  	  }
+	  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+	  	  		  for (amrex::MFIter mfi(m_leveldatareact[finest_level_point]->functC, amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+	  	  		  {
+	  	  			  const auto& bx = mfi.tilebox();
+	  	  			  if(bx.contains(point_idx[0]))
+	  	  			  {
+	  	  				m_leveldatareact_tmp[0]->functC[0].copy(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
+	  	  			  }
+	  	  		  }
+	  	  	  }
+
+  }
+
+
+  for (int lev = 0; lev <num_of_levels; ++lev) {
+    VisMF::Write(
+    		m_leveldata_tmp[lev]->state,
+      amrex::MultiFabFileFullPrefix(
+        lev, checkpointname, level_prefix, "state"));
+
+    VisMF::Write(
+    		m_leveldata_tmp[lev]->gp, amrex::MultiFabFileFullPrefix(
+                                  lev, checkpointname, level_prefix, "gradp"));
+
+    VisMF::Write(
+    		m_leveldata_tmp[lev]->press,
+      amrex::MultiFabFileFullPrefix(lev, checkpointname, level_prefix, "p"));
+
+    if (m_incompressible == 0) {
+      if (m_has_divu != 0) {
+        VisMF::Write(
+        		m_leveldata_tmp[lev]->divu,
+          amrex::MultiFabFileFullPrefix(
+            lev, checkpointname, level_prefix, "divU"));
+      }
+
+      if (m_do_react != 0) {
+        VisMF::Write(
+        		m_leveldatareact_tmp[lev]->I_R,
           amrex::MultiFabFileFullPrefix(
             lev, checkpointname, level_prefix, "I_R"));
       }
