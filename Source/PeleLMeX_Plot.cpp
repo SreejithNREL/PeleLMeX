@@ -191,6 +191,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 
 	  int box_idx=-1;
 
+
 	  for (int lev = finest_level; lev >=0 && !probe_found; lev--)
 	  {
 		  const amrex::Real* dx = Geom()[lev].CellSize();
@@ -218,7 +219,11 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 				  probe_found = true;
 			  }
 		  }
+
 	  }
+
+
+
 	  if(!probe_found)
 	  {
 		  amrex::Abort("\n The point cannot be located inside the domain. Please check..\n");
@@ -270,6 +275,9 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 	  			probe_found_lev=true;	//come out of the loop once the box is found
 	  		}
 		  }
+		  amrex::AllPrint()<<"\n Idx lev = "<<point_idx[lev][0]<<" "<<point_idx[lev][1];
+
+		  amrex::AllPrint()<<"\n Point found in lev = "<<lev<<" idx = "<<point_idx[lev];
 		  grid_lev_singlebox[lev].define(bl);
 		  dmap_lev_singlebox[lev].define(pmap_point);
 
