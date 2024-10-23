@@ -406,7 +406,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 	        const auto& bx = mfi.tilebox();
 	        if(bx.contains(point_idx[0]))
 	        {
-	        	 m_leveldata_tmp[0]->state[0].copy(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
+	        	 m_leveldata_tmp[0]->state[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
 	        }
 	  }
 	  if (m_has_divu != 0) {
@@ -415,7 +415,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 		  	        const auto& bx = mfi.tilebox();
 		  	        if(bx.contains(point_idx[0]))
 		  	        {
-		  	        	 m_leveldata_tmp[0]->divu[0].copy(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
+		  	        	 m_leveldata_tmp[0]->divu[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
 		  	        }
 		  	  }
 	  }
@@ -425,7 +425,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 			  const auto& bx = mfi.tilebox();
 			  if(bx.contains(point_idx[0]))
 			  {
-				  m_leveldata_tmp[0]->gp[0].copy(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
+				  m_leveldata_tmp[0]->gp[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
 			  }
 		  }
 	  }
@@ -435,7 +435,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 	  			  const auto& bx = mfi.tilebox();
 	  			  if(bx.contains(point_idx[0]))
 	  			  {
-	  				m_leveldatareact_tmp[0]->I_R[0].copy(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
+	  				m_leveldatareact_tmp[0]->I_R[0].copy<RunOn::Host>(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
 	  			  }
 	  		  }
 	  	  }
@@ -445,7 +445,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 	  	  			  const auto& bx = mfi.tilebox();
 	  	  			  if(bx.contains(point_idx[0]))
 	  	  			  {
-	  	  				m_leveldatareact_tmp[0]->functC[0].copy(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
+	  	  				m_leveldatareact_tmp[0]->functC[0].copy<RunOn::Host>(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
 	  	  			  }
 	  	  		  }
 	  	  	  }
