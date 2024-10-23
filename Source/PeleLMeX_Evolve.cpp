@@ -13,18 +13,7 @@ PeleLM::Evolve()
   int plt_justDidIt = 0;
   int chk_justDidIt = 0;
 
-  amrex::ParmParse pp("amr");
-      int plot_debug=0;
-      bool plot_all_levels=false;
-      amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point;
-      amrex::Vector<amrex::Real> point_vect;
-      pp.query("plot_debug",plot_debug);
-      pp.query("plot_all_levels",plot_all_levels);
-      pp.getarr("point_plot_debug",point_vect);
-      for(int ii=0;ii<AMREX_SPACEDIM;ii++)
-      {
-    	  point[ii]=point_vect[ii];
-      }
+
 
   while (!do_not_evolve) {
 
@@ -94,26 +83,17 @@ PeleLM::Evolve()
 
     // Check for plot file
     if (writePlotNow() || dump_and_stop || plt_and_continue) {
-      if(plot_debug==1)
-      {
-      WritePlotFile(point,plot_all_levels);
       WritePlotFile();
-      }else
-      {
-    	  WritePlotFile();
-
-      }
-     //WritePlotFile();
       plt_justDidIt = 1;
     }
 
     if (writeCheckNow() || dump_and_stop || chk_and_continue) {
       WriteCheckPointFile();
       chk_justDidIt = 1;
-      if(plot_debug)
+      /*if(plot_debug)
          	        {
           WriteCheckPointFile(point,plot_all_levels);
-         	        }
+         	        }*/
     }
 
     // Check for the end of the simulation
@@ -142,24 +122,24 @@ PeleLM::Evolve()
   if (
     (m_plot_int > 0 || m_plot_per_approx > 0. || m_plot_per_exact > 0.) &&
     (plt_justDidIt == 0) && m_nstep > 0) {
-	  if(plot_debug)
+	 /* if(plot_debug)
 	        {
 	        WritePlotFile(point,plot_all_levels);
 	        WritePlotFile();
 	        }else
-	        {
+	        {*/
 	      	  WritePlotFile();
-	        }
+	        //}
 
   }
   if (
     (m_check_int > 0 || m_check_per > 0.) && (chk_justDidIt == 0) &&
     m_nstep > 0) {
     WriteCheckPointFile();
-    if(plot_debug)
+    /*if(plot_debug)
    	        {
     WriteCheckPointFile(point,plot_all_levels);
-   	        }
+   	        }*/
   }
 }
 

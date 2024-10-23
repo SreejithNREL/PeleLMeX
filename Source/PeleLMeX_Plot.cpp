@@ -60,7 +60,7 @@ PeleLM::WriteDebugPlotFile(
 }
 
 void
-PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels)
+PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels,std::unique_ptr<AdvanceAdvData>& advData)
 {
 	//write_all_levels -> will write plot file for all levels of single boxes which contains the point
   BL_PROFILE("PeleLMeX::WritePlotFile()");
@@ -151,6 +151,13 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
   }
   ncomp += deriveEntryCount;
 
+  //Forcing terms
+  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+      // Cons Rate
+      ncomp += nCompIR()+1; //rhoy and rhoh external forcing terms
+  }
+
+
 #ifdef PELE_USE_SPRAY
   if (do_spray_particles) {
     ncomp += SprayParticleContainer::NumDeriveVars();
@@ -182,8 +189,8 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
   Vector<MultiFab> mf_plt;
   amrex::Vector<std::unique_ptr<LevelData>> m_leveldata_tmp;
   amrex::Vector<std::unique_ptr<LevelDataReact>> m_leveldatareact_tmp;
-  std::unique_ptr<AdvanceAdvData> advData;
-  /*advData = std::make_unique<AdvanceAdvData>(
+  /*std::unique_ptr<AdvanceAdvData> advData;
+  advData = std::make_unique<AdvanceAdvData>(
     finest_level, grids, dmap, m_factory, m_incompressible, m_nGrowAdv,
     m_nGrowMAC);*/
 
@@ -225,10 +232,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 				  probe_found = true;
 			  }
 		  }
-
 	  }
-
-
 
 	  if(!probe_found)
 	  {
@@ -514,6 +518,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
   }
 
 
+
 #ifdef AMREX_USE_EB
   plt_VarsName.push_back("volFrac");
 #endif
@@ -524,6 +529,13 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
       plt_VarsName.push_back(rec->variableName(dvar));
     }
   }
+
+  //Forcing terms
+  for (int n = 0; n < NUM_SPECIES; n++) {
+          plt_VarsName.push_back("F_rhoY(" + names[n] + ")");
+        }
+  plt_VarsName.push_back("F_rhoH");
+
 
 #ifdef PELE_USE_SPRAY
   if (SprayParticleContainer::NumDeriveVars() > 0) {
@@ -666,9 +678,22 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
    	  }
 
     }
+    cnt = cnt_tmp;
 
 
-          cnt = cnt_tmp;
+    for (amrex::MFIter mfi(advData->Forcing[level_map[lev]], amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
+      	  {
+      	        const auto& bx = mfi.tilebox();
+      	        if(bx.contains(point_idx[lev]))
+      	        {
+      	        	mf_plt[lev][0].copy<RunOn::Host>(advData->Forcing[level_map[lev]][mfi], 0,cnt_tmp,advData->Forcing[level_map[lev]].nComp());
+      	        	cnt_tmp+=advData->Forcing[level_map[lev]].nComp();
+      	        }
+      	  }
+
+    cnt=cnt_tmp;
+
+
 
 #ifdef PELE_USE_SPRAY
     if (SprayParticleContainer::NumDeriveVars() > 0) {

@@ -958,7 +958,7 @@ public:
   //-----------------------------------------------------------------------------
   // I/O
   void WritePlotFile();
-  void WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool);
+  void WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool,std::unique_ptr<AdvanceAdvData>& advData);
   bool writePlotNow() const;
   bool checkMessage(const std::string& a_action) const;
   void WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> , bool );
