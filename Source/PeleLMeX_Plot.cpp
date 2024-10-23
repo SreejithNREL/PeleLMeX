@@ -639,7 +639,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
         	const auto& bx = mfi.tilebox();
         	if(bx.contains(point_idx[lev]))
         	{
-        		mf_plt[lev][0].copy((*mf.get())[mfi], 0,cnt,1);
+        		mf_plt[lev][0].copy<RunOn::Host>((*mf.get())[mfi], 0,cnt,1);
         		cnt+=1;
         	}
         }
@@ -660,7 +660,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
    	        const auto& bx = mfi.tilebox();
    	        if(bx.contains(point_idx[lev]))
    	        {
-   	        	mf_plt[lev][0].copy((*mf.get())[mfi], 0,cnt_tmp,mf->nComp());
+   	        	mf_plt[lev][0].copy<RunOn::Host>((*mf.get())[mfi], 0,cnt_tmp,mf->nComp());
    	        	cnt_tmp+=mf->nComp();
    	        }
    	  }
@@ -1543,7 +1543,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 			  const auto& bx = mfi.tilebox();
 			   if(bx.contains(point_idx[lev]))
 			   {
-				   m_leveldata_tmp[lev]->state[0].copy(m_leveldata_new[lev]->state[mfi], 0,0,NVAR);
+				   m_leveldata_tmp[lev]->state[0].copy<RunOn::Host>(m_leveldata_new[lev]->state[mfi], 0,0,NVAR);
 			   }
 		  }
 		  if (m_has_divu != 0) {
@@ -1552,7 +1552,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 		 			  	  const auto& bx = mfi.tilebox();
 		 		  	        if(bx.contains(point_idx[lev]))
 		 		  	        {
-		 		  	        	m_leveldata_tmp[lev]->divu[0].copy(m_leveldata_new[lev]->divu[mfi], 0,0,1);
+		 		  	        	m_leveldata_tmp[lev]->divu[0].copy<RunOn::Host>(m_leveldata_new[lev]->divu[mfi], 0,0,1);
 		 		  	        }
 		 		  	  }
 		 	  }
@@ -1562,7 +1562,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 		  		  		  		    const auto& bx = mfi.tilebox();
 		  		  		  	        if(bx.contains(point_idx[lev]))
 		  		  		  	        {
-		  		  		  	        	 m_leveldata_tmp[lev]->gp[0].copy(m_leveldata_new[lev]->gp[mfi], 0,0,AMREX_SPACEDIM);
+		  		  		  	        	 m_leveldata_tmp[lev]->gp[0].copy<RunOn::Host>(m_leveldata_new[lev]->gp[mfi], 0,0,AMREX_SPACEDIM);
 		  		  		  	        }
 		  		  		  	  }
 		  }
@@ -1572,7 +1572,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 		 	  			  const auto& bx = mfi.tilebox();
 		 	  			  if(bx.contains(point_idx[lev]))
 		 	  			  {
-		 	  				m_leveldatareact_tmp[lev]->I_R[0].copy(m_leveldatareact[lev]->I_R[mfi], 0,0,nCompIR());
+		 	  				m_leveldatareact_tmp[lev]->I_R[0].copy<RunOn::Host>(m_leveldatareact[lev]->I_R[mfi], 0,0,nCompIR());
 		 	  			  }
 		 	  		  }
 		 	  	  }
@@ -1582,7 +1582,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 		 	  	  			  const auto& bx = mfi.tilebox();
 		 	  	  			  if(bx.contains(point_idx[lev]))
 		 	  	  			  {
-		 	  	  				m_leveldatareact_tmp[lev]->functC[0].copy(m_leveldatareact[lev]->functC[mfi], 0,0,1);
+		 	  	  				m_leveldatareact_tmp[lev]->functC[0].copy<RunOn::Host>(m_leveldatareact[lev]->functC[mfi], 0,0,1);
 		 	  	  			  }
 		 	  	  		  }
 		 	  	  	  }
@@ -1652,7 +1652,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 	        const auto& bx = mfi.tilebox();
 	        if(bx.contains(point_idx[0]))
 	        {
-	        	 m_leveldata_tmp[0]->state[0].copy(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
+	        	 m_leveldata_tmp[0]->state[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->state[mfi], 0,0,NVAR);
 	        }
 	  }
 	  if (m_has_divu != 0) {
@@ -1661,7 +1661,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 		  	        const auto& bx = mfi.tilebox();
 		  	        if(bx.contains(point_idx[0]))
 		  	        {
-		  	        	 m_leveldata_tmp[0]->divu[0].copy(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
+		  	        	 m_leveldata_tmp[0]->divu[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->divu[mfi], 0,0,1);
 		  	        }
 		  	  }
 	  }
@@ -1671,7 +1671,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 			  const auto& bx = mfi.tilebox();
 			  if(bx.contains(point_idx[0]))
 			  {
-				  m_leveldata_tmp[0]->gp[0].copy(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
+				  m_leveldata_tmp[0]->gp[0].copy<RunOn::Host>(m_leveldata_new[finest_level_point]->gp[mfi], 0,0,AMREX_SPACEDIM);
 			  }
 		  }
 	  }
@@ -1681,7 +1681,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 	  			  const auto& bx = mfi.tilebox();
 	  			  if(bx.contains(point_idx[0]))
 	  			  {
-	  				m_leveldatareact_tmp[0]->I_R[0].copy(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
+	  				m_leveldatareact_tmp[0]->I_R[0].copy<RunOn::Host>(m_leveldatareact[finest_level_point]->I_R[mfi], 0,0,nCompIR());
 	  			  }
 	  		  }
 	  	  }
@@ -1691,7 +1691,7 @@ PeleLM::WriteCheckPointFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, 
 	  	  			  const auto& bx = mfi.tilebox();
 	  	  			  if(bx.contains(point_idx[0]))
 	  	  			  {
-	  	  				m_leveldatareact_tmp[0]->functC[0].copy(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
+	  	  				m_leveldatareact_tmp[0]->functC[0].copy<RunOn::Host>(m_leveldatareact[finest_level_point]->functC[mfi], 0,0,1);
 	  	  			  }
 	  	  		  }
 	  	  	  }
