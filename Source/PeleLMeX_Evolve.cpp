@@ -97,9 +97,11 @@ PeleLM::Evolve()
       if(plot_debug==1)
       {
       WritePlotFile(point,plot_all_levels);
+      WritePlotFile();
       }else
       {
     	  WritePlotFile();
+
       }
      //WritePlotFile();
       plt_justDidIt = 1;
@@ -143,6 +145,7 @@ PeleLM::Evolve()
 	  if(plot_debug)
 	        {
 	        WritePlotFile(point,plot_all_levels);
+	        WritePlotFile();
 	        }else
 	        {
 	      	  WritePlotFile();

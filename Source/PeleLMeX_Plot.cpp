@@ -65,8 +65,10 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
 	//write_all_levels -> will write plot file for all levels of single boxes which contains the point
   BL_PROFILE("PeleLMeX::WritePlotFile()");
 
+  const std::string plotfilename1 =m_plot_file+ "_debug";
+
   const std::string& plotfilename =
-    amrex::Concatenate(m_plot_file, m_nstep, m_ioDigits);
+    amrex::Concatenate(plotfilename1, m_nstep, m_ioDigits);
 
   if (m_verbose != 0) {
     amrex::Print() << "\n Writing plotfile: " << plotfilename << "\n";
@@ -654,13 +656,12 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
    	        if(bx.contains(point_idx[lev]))
    	        {
    	        	mf_plt[lev][0].copy((*mf.get())[mfi], 0,cnt_tmp,mf->nComp());
-   	        	cnt_tmp+=1;
+   	        	cnt_tmp+=mf->nComp();
    	        }
    	  }
 
-
     }
-    //amrex::Print()<<"\n Just before crash, cnt= "<<cnt<<" "<<mf->nComp()<<" "<<m_derivePlotVarCount;
+
 
           cnt = cnt_tmp;
 
@@ -958,6 +959,7 @@ PeleLM::WritePlotFile()
   for (int ivar = 0; ivar < m_derivePlotVarCount; ivar++) {
     const PeleLMDeriveRec* rec = derive_lst.get(m_derivePlotVars[ivar]);
     for (int dvar = 0; dvar < rec->numDerive(); dvar++) {
+    	amrex::Print()<<"\n Derived variables = "<<rec->variableName(dvar);
       plt_VarsName.push_back(rec->variableName(dvar));
     }
   }
@@ -1074,6 +1076,7 @@ PeleLM::WritePlotFile()
     MultiFab::Copy(mf_plt[lev], EBFactory(lev).getVolFrac(), 0, cnt, 1, 0);
     cnt += 1;
 #endif
+
 
     for (int ivar = 0; ivar < m_derivePlotVarCount; ivar++) {
       std::unique_ptr<MultiFab> mf;
