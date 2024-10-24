@@ -60,7 +60,7 @@ PeleLM::WriteDebugPlotFile(
 }
 
 void
-PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels,std::unique_ptr<AdvanceAdvData>& advData)
+PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool write_all_levels,bool write_forcing,std::unique_ptr<AdvanceAdvData>& advData)
 {
 	//write_all_levels -> will write plot file for all levels of single boxes which contains the point
   BL_PROFILE("PeleLMeX::WritePlotFile()");
@@ -152,7 +152,8 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
   ncomp += deriveEntryCount;
 
   //Forcing terms
-  if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
+
+  if (write_forcing && (m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
       // Cons Rate
       ncomp += nCompIR()+1; //rhoy and rhoh external forcing terms
   }
@@ -531,10 +532,13 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
   }
 
   //Forcing terms
+  if(write_forcing)
+  {
   for (int n = 0; n < NUM_SPECIES; n++) {
           plt_VarsName.push_back("F_rhoY(" + names[n] + ")");
         }
   plt_VarsName.push_back("F_rhoH");
+  }
 
 
 #ifdef PELE_USE_SPRAY
@@ -678,8 +682,11 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
    	  }
 
     }
-    cnt = cnt_tmp;
 
+
+    cnt = cnt_tmp;
+    if(write_forcing )
+    {
 
     for (amrex::MFIter mfi(advData->Forcing[level_map[lev]], amrex::TilingIfNotGPU()); mfi.isValid(); ++mfi)
       	  {
@@ -692,6 +699,7 @@ PeleLM::WritePlotFile(amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point, bool w
       	  }
 
     cnt=cnt_tmp;
+    }
 
 
 
