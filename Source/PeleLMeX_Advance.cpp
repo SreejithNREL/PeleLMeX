@@ -423,6 +423,26 @@ PeleLM::oneSDC(
   // Get external forcing for chemistry
   getScalarReactForce(advData);
 
+  amrex::ParmParse pp("amr");
+    int plot_debug=0;
+    bool plot_all_levels=false;
+    bool plot_forcing=false;
+    amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point;
+    amrex::Vector<amrex::Real> point_vect;
+    pp.query("plot_debug",plot_debug);
+    pp.query("plot_all_levels",plot_all_levels);
+    pp.getarr("point_plot_debug",point_vect);
+    pp.query("plot_forcing",plot_forcing);
+    for(int ii=0;ii<AMREX_SPACEDIM;ii++)
+    {
+  	  point[ii]=point_vect[ii];
+    }
+    if(plot_debug==1)
+    {
+  	  amrex::Print()<<"\nCalling plot file inside advance ";
+  	  WritePlotFile(point,plot_all_levels,plot_forcing,advData);
+    }
+
   // Integrate chemistry
   advanceChemistry(advData);
 
@@ -446,23 +466,5 @@ PeleLM::oneSDC(
   floorSpecies(AmrNewTime);
   setThermoPress(AmrNewTime);
 
-  amrex::ParmParse pp("amr");
-  int plot_debug=0;
-  bool plot_all_levels=false;
-  bool plot_forcing=false;
-  amrex::GpuArray<amrex::Real,AMREX_SPACEDIM> point;
-  amrex::Vector<amrex::Real> point_vect;
-  pp.query("plot_debug",plot_debug);
-  pp.query("plot_all_levels",plot_all_levels);
-  pp.getarr("point_plot_debug",point_vect);
-  pp.query("plot_forcing",plot_forcing);
-  for(int ii=0;ii<AMREX_SPACEDIM;ii++)
-  {
-	  point[ii]=point_vect[ii];
-  }
-  if(plot_debug==1)
-  {
-	  amrex::Print()<<"\nCalling plot file inside advance ";
-	  WritePlotFile(point,plot_all_levels,plot_forcing,advData);
-  }
+
 }
