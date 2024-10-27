@@ -703,6 +703,7 @@ PeleLM::resetCoveredMask()
     }
 
     for (int lev = 0; lev < finest_level; ++lev) {
+    	amrex::Print()<<"\n Lev = "<<lev;
       // Set a fine-covered mask
       BoxArray baf = grids[lev + 1];
       baf.coarsen(ref_ratio[lev]);
@@ -724,6 +725,9 @@ PeleLM::resetCoveredMask()
           }
         }
       }
+
+
+
 
       //----------------------------------------------------------------------------
       // Setup a BoxArray for the chemistry
@@ -761,6 +765,20 @@ PeleLM::resetCoveredMask()
         loadBalanceChemLev(lev);
       }
     }
+
+    //Sreejith. Checking coveredmask
+         for (MFIter mfi(*m_coveredMask[0], TilingIfNotGPU()); mfi.isValid(); ++mfi) {
+       	  Box const& bx = mfi.tilebox();
+       	  amrex::Print()<<"\n Box  = "<<bx;
+       	  auto const& mask = m_coveredMask[0]->array(mfi);
+       	  amrex::ParallelFor(bx,
+       	                [=] AMREX_GPU_DEVICE(int i, int j, int k) noexcept {
+       	                  amrex::Print()<<"\n Lev  = "<<0<<" "<<i<<" "<<j<<" "<<mask(i,j,k);
+       	                });
+
+             }
+
+
 
     // Set a BoxArray for the chemistry on the finest level too
     m_baChem[finest_level] = std::make_unique<BoxArray>(grids[finest_level]);
