@@ -20,6 +20,7 @@ PeleLM::advanceChemistry(std::unique_ptr<AdvanceAdvData>& advData)
       if (m_max_grid_size_chem.min() > 0) {
         advanceChemistryBAChem(lev, m_dt, advData->Forcing[lev]);
       } else {
+    	  amrex::Print()<<"\n Second else condition";
         advanceChemistry(lev, m_dt, advData->Forcing[lev]);
       }
     }
