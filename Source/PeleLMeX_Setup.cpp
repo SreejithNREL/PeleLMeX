@@ -75,14 +75,23 @@ PeleLM::Setup()
   makeEBGeometry();
 #endif
 
-  // Setup the state variables
-  variablesSetup();
-
-  // Initialize EOS and others
+  // Initialize EOS
   if (m_incompressible == 0) {
     amrex::Print() << " Initialization of Eos ... \n";
     eos_parms.initialize();
+    // TODO: this is a bit of a hack so the host eos_parm has access to
+    // the host blackboxfunction data (manfunc_data)
+#ifdef USE_MANIFOLD_EOS
+    eos_parms.host_parm().manf_data =
+      &(eos_parms.host_only_parm().manfunc_par->host_parm());
+#endif
+  }
 
+  // Setup the state variables
+  variablesSetup();
+
+  // Initialize Transport and others
+  if (m_incompressible == 0) {
     amrex::Print() << " Initialization of Transport ... \n";
 #ifdef USE_MANIFOLD_TRANSPORT
     trans_parms.host_only_parm().manfunc_par =
@@ -102,6 +111,12 @@ PeleLM::Setup()
           amrex::Print()
             << "    Using mixture-averaged transport with Soret effects"
             << std::endl;
+          if (m_soret_boundary_override != 0) {
+            amrex::Print()
+              << "    Imposing inhomogeneous Neumann conditions "
+                 "for species on isothermal walls. WARNING: use_wbar disabled."
+              << std::endl;
+          }
         }
       } else {
         if (m_fixed_Le != 0) {
@@ -124,7 +139,8 @@ PeleLM::Setup()
       m_reactor =
         pele::physics::reactions::ReactorBase::create(m_chem_integrator);
       m_reactor->init(reactor_type, ncells_chem);
-      m_reactor->set_eos_parm(eos_parms.device_parm());
+      m_reactor->set_eos_parm(
+        &(eos_parms.host_parm()), eos_parms.device_parm());
       // For ReactorNull, we need to also skip instantaneous RR used in divU
       if (m_chem_integrator == "ReactorNull") {
         m_skipInstantRR = 1;
@@ -173,10 +189,8 @@ PeleLM::Setup()
   resizeArray();
 
   // Mixture fraction & Progress variable
-  if (pele::physics::PhysicsType::eos_type::identifier() != "Manifold") {
-    initMixtureFraction();
-    initProgressVariable();
-  }
+  initMixtureFraction();
+  initProgressVariable();
 
   // Initialize turbulence injection
   turb_inflow.init(Geom(0));
@@ -201,6 +215,9 @@ PeleLM::Setup()
 
   // Initialize active control
   initActiveControl();
+
+  // Check setup parameters
+  checkSetupParams();
 }
 
 void
@@ -242,12 +259,6 @@ PeleLM::readParameters()
   pp.query("closed_chamber", m_closed_chamber);
   if ((verbose != 0) && (m_closed_chamber != 0)) {
     Print() << " Simulation performed with the closed chamber algorithm \n";
-  }
-  if (
-    (m_closed_chamber != 0) &&
-    (pele::physics::PhysicsType::eos_type::identifier() == "Manifold")) {
-    amrex::Abort(
-      "Simulation with closed chamber not supported for Manifold EOS");
   }
 
 #ifdef PELE_USE_EFIELD
@@ -421,6 +432,23 @@ PeleLM::readParameters()
   ParmParse pptrans("transport");
   pptrans.query("use_soret", m_use_soret);
   pp.query("use_wbar", m_use_wbar);
+  if (m_use_soret != 0) {
+    bool isothermal = false;
+    for (int idim = 0; idim < AMREX_SPACEDIM; idim++) {
+      isothermal |=
+        (m_phys_bc.lo(idim) == BoundaryCondition::BCSlipWallIsotherm ||
+         m_phys_bc.lo(idim) == BoundaryCondition::BCNoSlipWallIsotherm ||
+         m_phys_bc.hi(idim) == BoundaryCondition::BCSlipWallIsotherm ||
+         m_phys_bc.hi(idim) == BoundaryCondition::BCNoSlipWallIsotherm);
+    }
+    if (isothermal) {
+      m_soret_boundary_override = 1;
+      m_use_wbar = 0;
+#if PELE_USE_EFIELD
+      amrex::Abort("Isothermal walls with Soret incompatible with Efield");
+#endif
+    }
+  }
   pp.query("unity_Le", m_unity_Le);
   pp.query("fixed_Le", m_fixed_Le);
   pp.query("fixed_Pr", m_fixed_Pr);
@@ -466,11 +494,6 @@ PeleLM::readParameters()
     amrex::Print() << "WARNING: use_wbar and use_soret set to false because "
                       "fixed_Pr or fixed_Le is true"
                    << std::endl;
-  }
-  if (
-    (m_use_wbar != 0) &&
-    (pele::physics::PhysicsType::eos_type::identifier() == "Manifold")) {
-    amrex::Abort("Use of Wbar fluxes is not compatible with Manifold EOS");
   }
 
   pp.query("deltaT_verbose", m_deltaT_verbose);
@@ -739,7 +762,51 @@ PeleLM::readParameters()
   // -----------------------------------------
   m_user_defined_ext_sources = false;
   m_ext_sources_SDC = false; // TODO: add capability to update ext_srcs in SDC
+  m_plot_extSource = false;
   pp.query("user_defined_ext_sources", m_user_defined_ext_sources);
+  pp.query("plot_extSource", m_plot_extSource);
+}
+
+void
+PeleLM::checkSetupParams()
+{
+  BL_PROFILE("PeleLMeX::checkSetupParams()");
+  // Ensure unsupported physics is not used with manifiold models
+  if (pele::physics::PhysicsType::eos_type::identifier() == "Manifold") {
+    if (m_closed_chamber != 0) {
+      amrex::Abort(
+        "Simulation with closed chamber is not yet supported for Manifold EOS");
+    }
+    if (m_use_wbar != 0) {
+      amrex::Abort("Use of Wbar fluxes is not compatible with Manifold EOS");
+    }
+#ifdef PELE_USE_RADIATION
+    if (do_rad_solve) {
+      amrex::Abort("Radiation models are not yet supported for Manifold EOS");
+    }
+#endif
+#ifdef PELE_USE_SOOT
+    if (do_soot_solve) {
+      amrex::Abort("Soot models are not yet supported for Manifold EOS");
+    }
+#endif
+#ifdef PELE_USE_SPRAY
+    amrex::Abort("Spray models are not yet supported for Manifold EOS");
+#endif
+#ifdef PELE_USE_EFIELD
+    amrex::Abort("Efield models are not yet supported for Manifold EOS");
+#endif
+#ifdef USE_MANIFOLD_EOS
+    if (
+      std::abs(
+        (0.1 * eos_parms.host_parm().Pnom_cgs - prob_parm->P_mean) /
+        prob_parm->P_mean) > 1e-6) {
+      amrex::Abort("For Manifold EOS, pressure in manifold model "
+                   "(manifold.nominal_pressure_cgs) and pressure in PeleLMeX "
+                   "(prob.Pmean) must match");
+    }
+#endif
+  }
 }
 
 void
@@ -759,6 +826,7 @@ PeleLM::readIOParameters()
   pp.query("plot_file", m_plot_file);
   pp.query("plot_int", m_plot_int);
   pp.query("plot_overwrite", m_plot_overwrite);
+  pp.query("plot_init_state", m_plot_init_state);
   if (pp.contains("plot_per")) {
     int do_exact = 0;
     pp.query("plot_per_exact", do_exact);
@@ -820,7 +888,7 @@ PeleLM::variablesSetup()
     Print() << " First species: " << FIRSTSPEC << "\n";
     Vector<std::string> names;
     pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(
-      names);
+      names, &(eos_parms.host_parm()));
     for (int n = 0; n < NUM_SPECIES; n++) {
       stateComponents.emplace_back(FIRSTSPEC + n, "rho.Y(" + names[n] + ")");
       reactComponents.emplace_back(n, "I_R(" + names[n] + ")");
@@ -848,7 +916,15 @@ PeleLM::variablesSetup()
 #if NUM_ODE > 0
     Print() << " First ODE: " << FIRSTODE << "\n";
     set_ode_names(m_ode_names);
-    for (int n = 0; n < NUM_ODE; n++) {
+    if (m_ode_names.size() != NUM_ODE) {
+      Abort("ODEQty names improperly set. Adjust set_ode_names in "
+            "ProblemSpecificFunctions or NUM_ODE in GNUMakefile");
+    }
+    for (int n = 0; n < NUM_ODE; ++n) {
+      if (m_ode_names[n].empty()) {
+        Abort("ODEQty names improperly set. Adjust set_ode_names in "
+              "ProblemSpecificFunctions or NUM_ODE in GNUMakefile");
+      }
       stateComponents.emplace_back(FIRSTODE + n, m_ode_names[n]);
     }
 #endif
@@ -1001,7 +1077,7 @@ PeleLM::derivedSetup()
     // Get species names
     Vector<std::string> spec_names;
     pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(
-      spec_names);
+      spec_names, &(eos_parms.host_parm()));
 
     // Set species mass fractions
     Vector<std::string> var_names_massfrac(NUM_SPECIES);
@@ -1196,7 +1272,7 @@ PeleLM::evaluateSetup()
   // Get species names
   Vector<std::string> spec_names;
   pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(
-    spec_names);
+    spec_names, &(eos_parms.host_parm()));
 
   // divU
   evaluate_lst.add("divU", IndexType::TheCellType(), 1, the_same_box);

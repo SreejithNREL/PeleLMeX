@@ -345,13 +345,13 @@ compute_divu<pele::physics::eos::Manifold>(
 
   auto eos = pele::physics::PhysicsType::eos(eosparm);
   eos.RY2RRinvY(massdens, rho, rhoinv, y);
-  amrex::Real derivs[NUM_SPECIES - 1] = {0.0};
+  amrex::Real derivs[MANIFOLD_DIM] = {0.0};
   rho /= 1.0e3; // Unit conversion MKS -> CGS
   eos.RY2dRdY(rho, y, derivs);
 
   divu(i, j, k) = 0.0;
 
-  for (int n = 0; n < NUM_SPECIES - 1; n++) {
+  for (int n = 0; n < MANIFOLD_DIM; n++) {
     derivs[n] *= 1.0e3; // Unit conversion CGS -> MKS
     divu(i, j, k) += derivs[n] * specDiff(i, j, k, n);
     if (do_react != 0) {
@@ -560,6 +560,33 @@ getMwmixGivenRY(
 
   eos.Y2WBAR(y, Mwmix(i, j, k));
   Mwmix(i, j, k) = Mwmix(i, j, k) * 0.001_rt; // CGS -> MKS conversion
+}
+
+AMREX_GPU_DEVICE
+AMREX_FORCE_INLINE
+void
+getGradMwmixGivengradYMwmix(
+  int i,
+  int j,
+  int k,
+  amrex::Array4<const amrex::Real> const& gradY,
+  amrex::Array4<const amrex::Real> const& Mwmix,
+  amrex::Array4<amrex::Real> const& gradMwmix,
+  pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type> const*
+    eosparm) noexcept
+{
+  using namespace amrex::literals;
+
+  auto eos = pele::physics::PhysicsType::eos(eosparm);
+  amrex::Real imw[NUM_SPECIES] = {0.0_rt};
+  eos.inv_molecular_weight(imw);
+  gradMwmix(i, j, k) = 0.0;
+  for (int n = 0; n < NUM_SPECIES; n++) {
+    imw[n] *= 1000.0; // CGS -> MKS
+    gradMwmix(i, j, k) += gradY(i, j, k, n) * imw[n];
+  }
+  // gradWbar = -Wbar^2 * sum(grad Y_k / W_k)
+  gradMwmix(i, j, k) *= -Mwmix(i, j, k) * Mwmix(i, j, k);
 }
 
 AMREX_GPU_DEVICE
