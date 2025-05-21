@@ -1,6 +1,5 @@
 #include <PeleLMeX.H>
 #include <PeleLMeX_K.H>
-#include <PeleLMeX_ProblemSpecificFunctions.H>
 
 using namespace amrex;
 
@@ -82,7 +81,7 @@ PeleLM::getVelForces(
       lev, bx, time, force_arr, vel_arr, rho_arr, rhoY_arr, rhoh_arr, temp_arr,
       extmom_arr, extrho_arr);
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     const auto& phiV_arr = ldata_p->state.const_array(mfi, PHIV);
     const auto& ne_arr = ldata_p->state.const_array(mfi, NE);
     addLorentzVelForces(lev, bx, time, force_arr, rhoY_arr, phiV_arr, ne_arr);
@@ -274,9 +273,9 @@ PeleLM::getExternalSources(
       auto* ldata_p_old = getLevelDataPtr(lev, a_timestamp_old);
       auto* ldata_p_new = getLevelDataPtr(lev, a_timestamp_new);
       auto& ext_src = m_extSource[lev];
-      problem_modify_ext_sources(
+      ProblemSpecificFunctions::modify_ext_sources(
         getTime(lev, a_timestamp_old), m_dt, ldata_p_old->state,
-        ldata_p_new->state, ext_src, geom[lev].data(), *prob_parm_d);
+        ldata_p_new->state, ext_src, geom[lev].data(), prob_parm_d);
     }
   }
 }

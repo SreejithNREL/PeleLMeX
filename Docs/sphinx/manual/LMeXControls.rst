@@ -36,8 +36,12 @@ Computational domain definition
     peleLM.lo_bc = Interior Interior Inflow
     peleLM.hi_bc = Interior Interior Inflow
 
-If specifying boundaries as ``Inflow``, the bcnormal function must be defined
+If specifying boundaries as ``Inflow``, the `MyProblemSpecificFunctions::bcnormal` function must be defined
 in the ``pelelmex_prob.H`` file for the case to define the inflow conditions.
+Note that the ``bcnormal`` function is also called for wall boundaries but should
+not modify them (except setting temperature on isothermal walls). Therefore, if
+there are a mixture of inflows with other boundary types, the bcnormal function
+should check which face is being set when applying the inflow boundary condition.
 ``Inflow`` boundaries may also be augmented with spatially and temporally
 varying turbulent fluctuations using the ``TurbInflow`` utility from
 PelePhysics. See the ``Exec/RegTests/TurbInflow`` test for an example of how
@@ -232,8 +236,8 @@ The following list of derived variables are available in PeleLMeX:
 Note that `mixture_fraction` and `progress_variable` requires additional inputs from the users as described below.
 The `derUserDefined` allow the user to define its own derived variable which can comprise several components. To do
 so, the user need to copy the Source/DeriveUserDefined.cpp file into their run folder and update the file. The number of
-components is defined based on the size of the vector returned by `pelelmex_setuserderives()`.  Be sure to add the 
-user derived variables to the input file via `amr.derive_plot_vars`.  
+components is defined based on the size of the vector returned by `pelelmex_setuserderives()`.  Be sure to add the
+user derived variables to the input file via `amr.derive_plot_vars`.
 
 PeleLMeX algorithm
 ------------------
@@ -252,8 +256,8 @@ PeleLMeX algorithm
     peleLM.chi_correction_type = DivuFirstIter  # [OPT, DEF=DivuEveryIter] When to compute divu for MAC proj divu constraint [DivuEveryIter, DivuFirstIter, NoDivu]
     peleLM.print_chi_convergence = 1            # [OPT, DEF=(peleLM.v > 1)] Boolean flag on whether to print size of chi correction on each SDC iter
     peleLM.incompressible = 0              # [OPT, DEF=0] Enable to run fully incompressible, scalar advance is bypassed
-    peleLM.m_rho = 1.17                    # [OPT, DEF=-1] If incompressible, density value [MKS]
-    peleLM.m_mu = 1.8e-5                   # [OPT, DEF=-1] If incompressible, kinematic visc. value [MKS]
+    peleLM.rho = 1.17                      # [OPT, DEF=-1] If incompressible, density value [MKS]
+    peleLM.mu = 1.8e-5                     # [OPT, DEF=-1] If incompressible, dynamic visc. value [MKS]
     peleLM.gravity = 0.0 0.0 -9.81         # [OPT, DEF=Vec{0.0}] Gravity vector [MKS]
     peleLM.gradP0 = 0.0 0.0 10.0           # [OPT, DEF=Vec{0.0}] Average background pressure gradient [Pa/m]
     peleLM.do_periodic_channel = 0         # [OPT, DEF= 0] Add an automatic pressure gradient to maintain initial condition mass flow rate in periodic channel
@@ -272,6 +276,12 @@ PeleLMeX algorithm
     peleLM.spark1.radius = 1e-3            # [OPT] Radius of the spark [m]
     peleLM.spark1.duration = 1e-3          # [OPT] Duration of the spark [s]
     peleLM.spark1.time = 1e-2              # [OPT] Time when spark starts [s]
+
+    peleLM.aux_vars = a b ...              # [OPT] Names of auxiliary variables
+    peleLM.a.advect = 1                    # [OPT, DEF = 1] Flag whether this variable is advected
+    peleLM.a.conservative = 1              # [OPT, DEF = 1] Flag whether this variable is conservative
+    peleLM.a.diffuse = 0                   # [OPT, DEF = 1] Flag whether this variable is diffused
+    peleLM.a.Schmidt = 0.7                 # [OPT, DEF = -1] Schmidt number for auxiliary variable. If unspecified or negative, assumed to diffuse with unity Lewis number.
 
     peleLM.user_defined_ext_sources = 0    # [OPT, DEF=0] Enable user defined source terms. Requires local ProblemSpecificFunctions.cpp.
 
@@ -419,23 +429,72 @@ Linear solvers are a key component of PeleLMeX algorithm, separate controls are 
 ::
 
     #-------------------------LINEAR SOLVERS-----------------------
-    nodal_proj.verbose = 1                      # [OPT, DEF=0] Verbose of the nodal projector
-    nodal_proj.rtol = 1.0e-11                   # [OPT, DEF=1e-11] Relative tolerance of the nodal projection
-    nodal_proj.atol = 1.0e-12                   # [OPT, DEF=1e-14] Absolute tolerance of the nodal projection
-    nodal_proj.mg_max_coarsening_level = 5      # [OPT, DEF=100] Maximum number of MG levels (useful when using EB)
+    nodal_proj.verbose = 1                    # [OPT, DEF=0] Verbose of the nodal projector
+    nodal_proj.rtol = 1.0e-11                 # [OPT, DEF=1e-11] Relative tolerance of the nodal projection
+    nodal_proj.atol = 1.0e-12                 # [OPT, DEF=1e-14] Absolute tolerance of the nodal projection
+    nodal_proj.maxiter = 50                   # [OPT, DEF=] Maximum number of iterations of the nodal projection
+    nodal_proj.mg_max_coarsening_level = 5    # [OPT, DEF=100] Maximum number of MG levels (useful when using EB)
+    nodal_proj.bottom_verbose = 1             # [OPT, DEF=0] Verbose of the bottom solve for nodal projector
+    nodal_proj.bottom_rtol = 1e-3             # [OPT, DEF=1e-4] Relative tolerance of the bottom solve for nodal projection
+    nodal_proj.bottom_atol = 1e-10            # [OPT, DEF=0] Absolute tolerance of the bottom solve for nodal projection
+    nodal_proj.bottom_maxiter = 200           # [OPT, DEF=100] Maximum number of iterations of the bottom solve for nodal projection
 
-    mac_proj.verbose = 1                        # [OPT, DEF=0] Verbose of the MAC projector
-    mac_proj.rtol = 1.0e-11                     # [OPT, DEF=1e-11] Relative tolerance of the MAC projection
-    mac_proj.atol = 1.0e-12                     # [OPT, DEF=1e-14] Absolute tolerance of the MAC projection
-    mac_proj.mg_max_coarsening_level = 5        # [OPT, DEF=100] Maximum number of MG levels (useful when using EB)
+    mac_proj.verbose = 1                      # [OPT, DEF=0] Verbose of the MAC projector
+    mac_proj.rtol = 1.0e-11                   # [OPT, DEF=1e-11] Relative tolerance of the MAC projection
+    mac_proj.atol = 1.0e-12                   # [OPT, DEF=1e-14] Absolute tolerance of the MAC projection
+    mac_proj.mg_max_coarsening_level = 5      # [OPT, DEF=100] Maximum number of MG levels (useful when using EB)
+    mac_proj.bottom_verbose = 1               # [OPT, DEF=0] Verbose of the bottom solve for MAC projector
+    mac_proj.bottom_rtol = 1e-3               # [OPT, DEF=1e-4] Relative tolerance of the bottom solve for MAC projection
+    mac_proj.bottom_atol = 1e-10              # [OPT, DEF=0] Absolute tolerance of the bottom solve for MAC projection
+    mac_proj.bottom_maxiter = 200             # [OPT, DEF=100] Maximum number of iterations of the bottom solve for MAC projection
 
-    diffusion.verbose = 1                       # [OPT, DEF=0] Verbose of the scalar diffusion solve
-    diffusion.rtol = 1.0e-11                    # [OPT, DEF=1e-11] Relative tolerance of the scalar diffusion solve
-    diffusion.atol = 1.0e-12                    # [OPT, DEF=1e-14] Absolute tolerance of the scalar diffusion solve
+    diffusion.verbose = 1                     # [OPT, DEF=0] Verbose of the scalar diffusion solve
+    diffusion.rtol = 1.0e-11                  # [OPT, DEF=1e-11] Relative tolerance of the scalar diffusion solve
+    diffusion.atol = 1.0e-12                  # [OPT, DEF=1e-14] Absolute tolerance of the scalar diffusion solve
 
-    tensor_diffusion.verbose = 1                # [OPT, DEF=0] Verbose of the velocity tensor diffusion solve
-    tensor_diffusion.rtol = 1.0e-11             # [OPT, DEF=1e-11] Relative tolerance of the velocity tensor diffusion solve
-    tensor_diffusion.atol = 1.0e-12             # [OPT, DEF=1e-14] Absolute tolerance of the velocity tensor diffusion solve
+    tensor_diffusion.verbose = 1              # [OPT, DEF=0] Verbose of the velocity tensor diffusion solve
+    tensor_diffusion.rtol = 1.0e-11           # [OPT, DEF=1e-11] Relative tolerance of the velocity tensor diffusion solve
+    tensor_diffusion.atol = 1.0e-12           # [OPT, DEF=1e-14] Absolute tolerance of the velocity tensor diffusion solve
+
+Hypre support
+^^^^^^^^^^^^^
+
+Through AMReX, PeleLMeX provides interfaces to the `Hypre <https://github.com/hypre-space/hypre>`_
+preconditioners and solvers. These can be called as bottom solvers for the MLMG linear
+solvers, for both cell-centered and node-based problems.  The Hypre solvers are particularly
+useful if the geometry includes thin elements (such as tube or plate) or narrow channels,
+as coarsening of the geometry is rapidly limited by the occurrence of multi-cut cells
+(not supported by AMReX) and the linear solvers are no longer able to robustly
+tackle projections and implicit diffusion solves.
+
+To build Hypre, follow the steps outlined in the
+`AMReX documentation <https://amrex-codes.github.io/amrex/docs_html/LinearSolvers.html#external-solvers>`_.
+
+Next, in the ``GNUmakefile``, enable Hypre and define the path to the Hypre directory:
+
+::
+
+    USE_HYPRE = TRUE
+    HYPRE_HOME = /path_to_hypre_dir/hypre/src/hypre
+
+
+Select input file controls are provided below for the ``mac_proj`` bottom solver, which
+can be applied similarly for the ``nodal_proj``. Additional information on the Hypre
+solvers and parameters can be found in the `Hypre documentation <https://hypre.readthedocs.io/en/latest/>`_.
+
+::
+
+    #----------------------HYPRE LINEAR SOLVERS--------------------
+    mac_proj.bottom_solver = "hypre"
+    mac_proj.hypre_namespace = mac_proj.hypre
+    mac_proj.hypre.verbose = 1
+    mac_proj.hypre.hypre_solver = GMRES
+    mac_proj.hypre.hypre_preconditioner = BoomerAMG
+    mac_proj.hypre.bamg_verbose = 0
+    mac_proj.hypre.bamg_coarsen_type = 9
+    mac_proj.hypre.bamg_interp_type = 4
+    mac_proj.hypre.bamg_relax_type = 7
+
 
 Active control
 --------------
@@ -559,18 +618,22 @@ state:
 
 
 Analysing the data a-posteriori can become extremely cumbersome when dealing with extreme datasets.
-PeleLMeX offers a set of diagnostics available at runtime and more are under development.
+PeleLMeX offers a set of diagnostics available at runtime (supported through PelePhysics) and more are under development.
 Currently, the list of diagnostic contains:
 
-* `DiagFramePlane` : extract a plane aligned in the 'x','y' or 'z' direction across the AMR hierarchy, writing
+* ``DiagFramePlane`` : extract a plane aligned in the 'x','y' or 'z' direction across the AMR hierarchy, writing
   a 2D plotfile compatible with Amrvis, Paraview or yt. Only available for 3D simulations.
-* `DiagPDF` : extract the PDF of a given variable and write it to an ASCII file.
-* `DiagConditional` : extract statistics (average and standard deviation, integral or sum) of a
+* ``DiagPDF`` : extract the PDF of a given variable and write it to an ASCII file.
+* ``DiagConditional`` : extract statistics (average and standard deviation, integral or sum) of a
   set of variables conditioned on the value of given variable and write it to an ASCII file.
 
 When using `DiagPDF` or `DiagConditional`, it is possible to narrow down the diagnostic to a region of interest
 by specifying a set of filters, defining a range of interest for a variable. Note also the for these two diagnostics,
-fine-covered regions are masked. The following provide examples for each diagnostic:
+fine-covered regions are masked. An arbitrary number of these diagnostics may be specified in a list by setting
+``peleLM.diagnostics`` in the input file and then specifying the diagnostic type and relevant inputs for each
+diagnostic listed. See the
+`PelePhysics Diagnostics documentation <https://amrex-combustion.github.io/PelePhysics/Utility.html#diagnostics>`_ for full
+details on the options that must be specified for each diagnostic type.
 
 ::
 
@@ -579,38 +642,7 @@ fine-covered regions are masked. The following provide examples for each diagnos
     peleLM.diagnostics = xnormP condT pdfTest
 
     peleLM.xnormP.type = DiagFramePlane                             # Diagnostic type
-    peleLM.xnormP.file = xNorm5mm                                   # Output file prefix
-    peleLM.xnormP.normal = 0                                        # Plane normal (0, 1 or 2 for x, y or z)
-    peleLM.xnormP.center = 0.005                                    # Coordinate in the normal direction
-    peleLM.xnormP.int    = 5                                        # Frequency (as step #) for performing the diagnostic
-    peleLM.xnormP.interpolation = Linear                            # [OPT, DEF=Linear] Interpolation type : Linear or Quadratic
-    peleLM.xnormP.field_names = x_velocity mag_vort density         # List of variables outputted to the 2D pltfile
-    peleLM.xnormP.n_files = 2                                       # [OPT, DEF="min(256,NProcs)"] Number of files to write per level
-
-    peleLM.condT.type = DiagConditional                             # Diagnostic type
-    peleLM.condT.file = condTest                                    # Output file prefix
-    peleLM.condT.int  = 5                                           # Frequency (as step #) for performing the diagnostic
-    peleLM.condT.filters = xHigh stoich                             # [OPT, DEF=None] List of filters
-    peleLM.condT.xHigh.field_name = x                               # Filter field
-    peleLM.condT.xHigh.value_greater = 0.006                        # Filter definition : value_greater, value_less, value_inrange
-    peleLM.condT.stoich.field_name = mixture_fraction               # Filter field
-    peleLM.condT.stoich.value_inrange = 0.053 0.055                 # Filter definition : value_greater, value_less, value_inrange
-    peleLM.condT.conditional_type = Average                         # Conditional type : Average, Integral or Sum
-    peleLM.condT.nBins = 50                                         # Number of bins for the conditioning variable
-    peleLM.condT.condition_field_name = temp                        # Conditioning variable name
-    peleLM.condT.field_names = HeatRelease I_R(CH4) I_R(H2)         # List of variables to be treated
-
-    peleLM.pdfTest.type = DiagPDF                                   # Diagnostic type
-    peleLM.pdfTest.file = PDFTest                                   # Output file prefix
-    peleLM.pdfTest.int  = 5                                         # Frequency (as step #) for performing the diagnostic
-    peleLM.pdfTest.filters = innerFlame                             # [OPT, DEF=None] List of filters
-    peleLM.pdfTest.innerFlame.field_name = temp                     # Filter field
-    peleLM.pdfTest.innerFlame.value_inrange = 450.0 1500.0          # Filter definition : value_greater, value_less, value_inrange
-    peleLM.pdfTest.nBins = 50                                       # Number of bins for the PDF
-    peleLM.pdfTest.normalized = 1                                   # [OPT, DEF=1] PDF is normalized (i.e. integral is unity) ?
-    peleLM.pdfTest.volume_weighted = 1                              # [OPT, DEF=1] Computation of the PDF is volume weighted ?
-    peleLM.pdfTest.range = 0.0 2.0                                  # [OPT, DEF=data min/max] Specify the range of the PDF
-    peleLM.pdfTest.field_name = x_velocity                          # Variable of interest
+    ...
 
 Run-time control
 --------------------

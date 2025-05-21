@@ -4,9 +4,8 @@
 #include <PeleLMeX_BPatch.H>
 #include "PelePhysics.H"
 #include <AMReX_buildInfo.H>
-#include <PeleLMeX_ProblemSpecificFunctions.H>
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
 #include "PeleLMeX_EOS_Extension.H"
 #endif
 
@@ -25,7 +24,7 @@ the_same_box(const Box& b)
 {
   return b;
 }
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
 static Box
 grow_box_by_one(const Box& b)
 {
@@ -152,7 +151,7 @@ PeleLM::Setup()
       pp.query("plot_react", m_plot_react);
     }
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     pele::physics::eos::charge_mass(zk.arr);
     for (int n = 0; n < NUM_SPECIES; n++) {
       zk[n] *= 1000.0; // CGS->MKS
@@ -261,7 +260,7 @@ PeleLM::readParameters()
     Print() << " Simulation performed with the closed chamber algorithm \n";
   }
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   ParmParse ppef("ef");
 
   // Get the phiV bc
@@ -396,6 +395,33 @@ PeleLM::readParameters()
     }
   }
 
+  m_nAux = pp.countval("aux_vars");
+  if (m_nAux > 0) {
+    m_aux_names.resize(m_nAux);
+    m_AdvTypeAux.resize(m_nAux);
+    m_aux_advect.resize(m_nAux);
+    m_DiffTypeAux.resize(m_nAux);
+    m_aux_Schmidt.resize(m_nAux);
+    for (int n = 0; n < m_nAux; n++) {
+      pp.get("aux_vars", m_aux_names[n], n);
+      std::string aux_prefix = "peleLM." + m_aux_names[n];
+      ParmParse ppa(aux_prefix);
+      m_aux_advect[n] = 1;
+      ppa.query("advect", m_aux_advect[n]);
+      m_AdvTypeAux[n] = 1;
+      ppa.query("conservative", m_AdvTypeAux[n]);
+      m_aux_Schmidt[n] = -1.0;
+      ppa.query("Schmidt", m_aux_Schmidt[n]);
+      int diffuse = 1;
+      ppa.query("diffuse", diffuse);
+      if (diffuse == 0) {
+        m_DiffTypeAux[n] = 0;
+      } else {
+        m_DiffTypeAux[n] = 1;
+      }
+    }
+  }
+
   // -----------------------------------------
   // LES
   // -----------------------------------------
@@ -422,8 +448,8 @@ PeleLM::readParameters()
     for (int lev = 0; lev <= max_level; ++lev) {
       m_turb_visc_time.push_back(-1.0E200);
     }
-#ifdef PELE_USE_EFIELD
-    amrex::Abort("LES implementation is not yet compatible with efield/ions");
+#ifdef PELE_USE_PLASMA
+    amrex::Abort("LES implementation is not yet compatible with plasma/ions");
 #endif
   }
 
@@ -444,8 +470,8 @@ PeleLM::readParameters()
     if (isothermal) {
       m_soret_boundary_override = 1;
       m_use_wbar = 0;
-#if PELE_USE_EFIELD
-      amrex::Abort("Isothermal walls with Soret incompatible with Efield");
+#if PELE_USE_PLASMA
+      amrex::Abort("Isothermal walls with Soret incompatible with plasma");
 #endif
     }
   }
@@ -704,9 +730,9 @@ PeleLM::readParameters()
     }
   }
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   // -----------------------------------------
-  // EFIELD
+  // PLASMA
   // -----------------------------------------
   ppef.query("JFNK_newtonTol", m_ef_newtonTol);
   ppef.query("JFNK_maxNewton", m_ef_maxNewtonIter);
@@ -793,8 +819,8 @@ PeleLM::checkSetupParams()
 #ifdef PELE_USE_SPRAY
     amrex::Abort("Spray models are not yet supported for Manifold EOS");
 #endif
-#ifdef PELE_USE_EFIELD
-    amrex::Abort("Efield models are not yet supported for Manifold EOS");
+#ifdef PELE_USE_PLASMA
+    amrex::Abort("Plasma models are not yet supported for Manifold EOS");
 #endif
 #ifdef USE_MANIFOLD_EOS
     if (
@@ -899,7 +925,7 @@ PeleLM::variablesSetup()
     stateComponents.emplace_back(TEMP, "temp");
     Print() << " thermo. pressure: " << RHORT << "\n";
     stateComponents.emplace_back(RHORT, "RhoRT");
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     Print() << " nE: " << NE << "\n";
     stateComponents.emplace_back(NE, "nE");
     Print() << " PhiV: " << PHIV << "\n";
@@ -915,7 +941,7 @@ PeleLM::variablesSetup()
 #endif
 #if NUM_ODE > 0
     Print() << " First ODE: " << FIRSTODE << "\n";
-    set_ode_names(m_ode_names);
+    ProblemSpecificFunctions::set_ode_names(m_ode_names);
     if (m_ode_names.size() != NUM_ODE) {
       Abort("ODEQty names improperly set. Adjust set_ode_names in "
             "ProblemSpecificFunctions or NUM_ODE in GNUMakefile");
@@ -930,18 +956,25 @@ PeleLM::variablesSetup()
 #endif
   }
 
-  if (m_nAux > 0) {
-    Print() << " First passive scalar: " << FIRSTAUX << "\n";
-    for (int n = 0; n < m_nAux; n++) {
-      stateComponents.emplace_back(FIRSTAUX + n, "Aux_" + std::to_string(n));
-    }
-  }
-
   if (m_incompressible != 0) {
     Print() << " => Total number of state variables: " << AMREX_SPACEDIM
             << "\n";
   } else {
     Print() << " => Total number of state variables: " << NVAR << "\n";
+  }
+  if (m_nAux > 0) {
+    for (int n = 0; n < m_nAux; n++) {
+      Print() << " Auxiliary " + std::to_string(n + 1) + ": " << m_aux_names[n]
+              << "\n";
+      Print() << "   Advective: " << m_aux_advect[n] << "\n";
+      Print() << "   Conservative: " << m_AdvTypeAux[n] << "\n";
+      Print() << "   Diffusive: " << m_DiffTypeAux[n];
+      if (m_aux_Schmidt[n] > 0) {
+        Print() << " - Schmidt number: " << m_aux_Schmidt[n];
+      }
+      Print() << "\n";
+    }
+    Print() << " => Total number of auxiliary variables: " << m_nAux << "\n";
   }
   Print() << PrettyLine;
   Print() << "\n";
@@ -975,7 +1008,7 @@ PeleLM::variablesSetup()
     m_DiffTypeState[TEMP] = 0;
     m_AdvTypeState[RHORT] = 0;
     m_DiffTypeState[RHORT] = 0;
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     m_AdvTypeState[NE] = 0;
     m_DiffTypeState[NE] = 0;
     m_AdvTypeState[PHIV] = 0;
@@ -1221,7 +1254,7 @@ PeleLM::derivedSetup()
     pelelmex_dermaniout, the_same_box);
 #endif
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   // Charge distribution
   derive_lst.add(
     "chargedistrib", IndexType::TheCellType(), 1, pelelmex_derchargedist,
@@ -1492,7 +1525,7 @@ PeleLM::resizeArray()
   m_dmapChem.resize(max_level + 1);
   m_baChemFlag.resize(max_level + 1);
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   m_leveldatanlsolve.resize(max_level + 1);
   m_ionsFluxes.resize(max_level + 1);
 #endif

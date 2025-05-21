@@ -6,7 +6,6 @@
 #include <AMReX_ParmParse.H>
 #include <PeleLMeX_BCfill.H>
 #include <AMReX_FillPatchUtil.H>
-#include <PeleLMeX_PatchFlowVariables.H>
 #include <memory>
 #ifdef AMREX_USE_EB
 #include <AMReX_EBInterpolater.H>
@@ -86,7 +85,9 @@ PeleLM::WritePlotFile()
   //----------------------------------------------------------------
   // Average down the state
   averageDownState(AmrNewTime);
-
+  if (m_nAux > 0) {
+    averageDownAux(AmrNewTime);
+  }
   // Get consistent reaction data across level
   if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
     averageDownReaction();
@@ -115,6 +116,8 @@ PeleLM::WritePlotFile()
       ncomp += 1;
     }
   }
+
+  ncomp += m_nAux;
 
   // Reactions
   if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
@@ -155,7 +158,7 @@ PeleLM::WritePlotFile()
   }
 #endif
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   if (m_do_extraEFdiags) {
     ncomp += NUM_IONS * AMREX_SPACEDIM;
   }
@@ -197,7 +200,7 @@ PeleLM::WritePlotFile()
     plt_VarsName.push_back("rhoh");
     plt_VarsName.push_back("temp");
     plt_VarsName.push_back("RhoRT");
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     plt_VarsName.push_back("nE");
     plt_VarsName.push_back("phiV");
 #endif
@@ -225,11 +228,15 @@ PeleLM::WritePlotFile()
                  , plt_VarsName.push_back("gradpz"));
   }
 
+  for (int n = 0; n < m_nAux; n++) {
+    plt_VarsName.push_back(m_aux_names[n]);
+  }
+
   if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
     for (int n = 0; n < NUM_SPECIES; n++) {
       plt_VarsName.push_back("I_R(" + names[n] + ")");
     }
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     plt_VarsName.push_back("I_R(nE)");
 #endif
     plt_VarsName.push_back("FunctCall");
@@ -271,7 +278,7 @@ PeleLM::WritePlotFile()
   }
 #endif
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   if (m_do_extraEFdiags) {
     for (int ivar = 0; ivar < NUM_IONS; ++ivar) {
       for (int idim = 0; idim < AMREX_SPACEDIM; ++idim) {
@@ -323,7 +330,7 @@ PeleLM::WritePlotFile()
       }
       MultiFab::Copy(mf_plt[lev], m_leveldata_new[lev]->state, RHOH, cnt, 3, 0);
       cnt += 3;
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
       MultiFab::Copy(mf_plt[lev], m_leveldata_new[lev]->state, NE, cnt, 2, 0);
       cnt += 2;
 #endif
@@ -352,6 +359,12 @@ PeleLM::WritePlotFile()
       MultiFab::Copy(
         mf_plt[lev], m_leveldata_new[lev]->gp, 0, cnt, AMREX_SPACEDIM, 0);
       cnt += AMREX_SPACEDIM;
+    }
+
+    if (m_nAux > 0) {
+      MultiFab::Copy(
+        mf_plt[lev], m_leveldata_new[lev]->auxiliaries, 0, cnt, m_nAux, 0);
+      cnt += m_nAux;
     }
 
     if ((m_do_react != 0) && (m_skipInstantRR == 0) && (m_plot_react != 0)) {
@@ -413,7 +426,7 @@ PeleLM::WritePlotFile()
       }
     }
 #endif
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     if (m_do_extraEFdiags) {
       MultiFab::Copy(
         mf_plt[lev], *m_ionsFluxes[lev], 0, cnt, m_ionsFluxes[lev]->nComp(), 0);
@@ -598,6 +611,13 @@ PeleLM::WriteCheckPointFile()
       m_leveldata_new[lev]->press,
       amrex::MultiFabFileFullPrefix(lev, checkpointname, level_prefix, "p"));
 
+    if (m_nAux > 0) {
+      VisMF::Write(
+        m_leveldata_new[lev]->auxiliaries,
+        amrex::MultiFabFileFullPrefix(
+          lev, checkpointname, level_prefix, "aux"));
+    }
+
     if (m_incompressible == 0) {
       if (m_has_divu != 0) {
         VisMF::Write(
@@ -756,7 +776,7 @@ PeleLM::ReadCheckPointFile()
 
   // Load the field data
   for (int lev = 0; lev <= finest_level; ++lev) {
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     if (!m_restart_nonEF) {
       VisMF::Read(
         m_leveldata_new[lev]->state,
@@ -786,6 +806,12 @@ PeleLM::ReadCheckPointFile()
     VisMF::Read(
       m_leveldata_new[lev]->press,
       amrex::MultiFabFileFullPrefix(lev, m_restart_chkfile, level_prefix, "p"));
+    if (m_nAux > 0) {
+      VisMF::Read(
+        m_leveldata_new[lev]->auxiliaries,
+        amrex::MultiFabFileFullPrefix(
+          lev, m_restart_chkfile, level_prefix, "aux"));
+    }
 
     if (m_incompressible == 0) {
       if (m_has_divu != 0) {
@@ -795,7 +821,7 @@ PeleLM::ReadCheckPointFile()
             lev, m_restart_chkfile, level_prefix, "divU"));
       }
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
       if (!m_restart_nonEF) {
         if (m_do_react) {
           VisMF::Read(
@@ -840,7 +866,10 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
     Abort(" initializing data from a pltfile only available for low-Mach "
           "simulations");
   }
-
+  if (m_nAux > 0) {
+    Warning(" restarting from plotfile with auxiliaries not currently "
+            "implemented, and will not be captured");
+  }
   amrex::Print() << " initData on level " << a_lev << " from pltfile "
                  << a_dataPltFile << "\n";
   if (pltfileSource == "LM") {
@@ -862,7 +891,7 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
   pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(
     spec_names, &(eos_parms.host_parm()));
   int idT = -1, idV = -1, idY = -1, nSpecPlt = 0;
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   int inE = -1, iPhiV = -1;
 #endif
 #ifdef PELE_USE_SOOT
@@ -890,7 +919,7 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
     if (firstChars == "Y(") {
       nSpecPlt += 1;
     }
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
     if (plt_vars[i] == "nE")
       inE = i;
     if (plt_vars[i] == "phiV")
@@ -958,7 +987,7 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
     }
   }
 
-#ifdef PELE_USE_EFIELD
+#ifdef PELE_USE_PLASMA
   // nE
   pltData.fillPatchFromPlt(a_lev, geom[a_lev], inE, NE, 1, ldata_p->state);
   // phiV
@@ -1010,7 +1039,8 @@ PeleLM::initLevelDataFromPlt(int a_lev, const std::string& a_dataPltFile)
   // If m_do_patch_flow_variables is set as true, call user-defined function to
   // patch flow variables
   if (m_do_patch_flow_variables) {
-    patchFlowVariables(geom[a_lev], *lprobparm, ldata_p->state);
+    ProblemSpecificFunctions::patchFlowVariables(
+      geom[a_lev], *lprobparm, ldata_p->state);
   }
 
   // Enforce rho and rhoH consistent with temperature and mixture
