@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\pelelmex_prob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveUserDefined.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DiffusionOp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Advance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Advection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Derive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Diagnostics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Diffusion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_EB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Eos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Evaluate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Evolve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_FlowController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Forces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Init.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_ODEQty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Plot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Projection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Reactions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Regrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Setup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Tagging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BPatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Temporals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Timestep.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_TransportProp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_UMac.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\pelelmex_prob.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DiffusionOp.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_FlowControllerData.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BCfill.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Derive.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveFunc.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BPatch.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_UserKeys.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Utils.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Index.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_ProblemSpecificFunctions.H" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_K.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\turbinflow.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\TurbForcing.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\MersenneTwister.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagBase.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagConditional.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagFilter.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagFramePlane.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagPDF.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\PltFileManager.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\BlackBoxFunction.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\PMFData.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_Sundials_Core.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_NVector_MultiFab.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_SUNMemory.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\Transport.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\mechanism.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorArkode.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorBase.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvode.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeCustomLinSolver.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeJacobian.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodePreconditioner.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeUtils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorNull.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorRK64.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorUtils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_utils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_extrap_vel_to_faces.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_compute_edgestate_and_flux.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_enforce_inout_solvability.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_edge_state.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces_box.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_edge_state_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_extrap_vel_to_faces_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_plm.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_bds_edge_state_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_MacProjector.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_NodalProjector.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{BFD72926-6BC0-39C5-98B3-36315134BD3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6B2F8754-6C36-30EC-A116-0F1967D1A35E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -77,8 +77,8 @@ struct PeleLMCCFillExtDirState
           // if needed
           if (m_do_turbInflow != 0) {
             if (n >= VELX && n < DENSITY) {
-              if (!isnan(
-                    state(iv, VELX + n))) { // During fillcoarsepatch, get here
+              if (!std::isnan(static_cast<amrex::Real>(
+                    state(iv, VELX + n)))) { // During fillcoarsepatch, get here
                                             // with nan. TODO: find a better fix
                 s_ext[VELX + n] = state(iv, VELX + n);
               }
@@ -114,8 +114,8 @@ struct PeleLMCCFillExtDirState
           // if needed
           if (m_do_turbInflow != 0) {
             if (n >= VELX && n < DENSITY) {
-              if (!isnan(
-                    state(iv, VELX + n))) { // During fillcoarsepatch, get here
+              if (!std::isnan(static_cast<amrex::Real>(
+                    state(iv, VELX + n)))) { // During fillcoarsepatch, get here
                                             // with nan. TODO: find a better fix
                 s_ext[VELX + n] = state(iv, VELX + n);
               }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\2a3efde6918308c658cfc8f37fc16fb7\Experimental.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\PeleLMeX_Dev\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\Experimental" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{84D3A49A-8AE2-325C-B16C-89DC8C890FBB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

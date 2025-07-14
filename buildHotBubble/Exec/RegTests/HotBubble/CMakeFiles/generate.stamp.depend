@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageMessage.cmake
+E:/PeleLMeX_Dev/CMake/BuildExeAndLib.cmake
+E:/PeleLMeX_Dev/CMake/BuildPeleExe.cmake
+E:/PeleLMeX_Dev/CMake/BuildPelePhysicsLib.cmake
+E:/PeleLMeX_Dev/CMake/SetPeleCompileFlags.cmake
+E:/PeleLMeX_Dev/Exec/RegTests/HotBubble/CMakeLists.txt
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXBuildInfo.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXGenexHelpers.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXTargetHelpers.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_buildInfo.cpp.in

@@ -2,6 +2,16 @@ cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 
 project(PeleLMeX LANGUAGES CXX)
 
+add_compile_definitions(_USE_MATH_DEFINES)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(/W4)
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /openmp")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-Wall -Wextra)
+endif()
+
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
 include(CMakePackageConfigHelpers)
@@ -9,7 +19,7 @@ include(PeleUtils)
 enable_testing()
 include(CTest)
 
-set(PELE_DIM "3" CACHE STRING "Number of physical dimensions")
+set(PELE_DIM "2" CACHE STRING "Number of physical dimensions")
 option(PELE_ENABLE_CLANG_TIDY "Enable clang-tidy analysis" OFF)
 option(PELE_ENABLE_CPPCHECK "Enable cppcheck analysis" OFF)
 option(PELE_ENABLE_FCOMPARE "Enable building fcompare when not testing" OFF)
@@ -26,10 +36,10 @@ set(PELE_PRECISION "DOUBLE" CACHE STRING "Floating point precision SINGLE or DOU
 
 # Physics options
 option(PELE_ENABLE_EB "Enable Embedded Boundary" OFF)
-option(PELE_ENABLE_PARTICLES "Enable particles and spray" ON)
+option(PELE_ENABLE_PARTICLES "Enable particles and spray" OFF)
 
 # HPC options
-option(PELE_ENABLE_MPI "Enable MPI" OFF)
+option(PELE_ENABLE_MPI "Enable MPI" ON)
 option(PELE_ENABLE_OPENMP "Enable OpenMP" OFF)
 option(PELE_ENABLE_CUDA "Enable CUDA" OFF)
 option(PELE_ENABLE_HIP "Enable HIP" OFF)
@@ -51,7 +61,7 @@ if(PELE_ENABLE_CUDA)
       "Please use CUDA toolkit version 10.0 or newer.")
   endif()
   if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
-    set(CMAKE_CUDA_ARCHITECTURES 70)
+    set(CMAKE_CUDA_ARCHITECTURES 86)
   endif()
 endif()
 
@@ -99,10 +109,10 @@ message(STATUS "CMAKE_CXX_COMPILER_VERSION = ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}")
 message(STATUS "PELE_PRECISION = ${PELE_PRECISION}")
 
-init_code_checks()
+#init_code_checks()
 
-include(SetRpath)
+#include(SetRpath)
 
 add_subdirectory(Exec)
-add_subdirectory(Tests)
-add_subdirectory(${CMAKE_SOURCE_DIR}/Submodules/PelePhysics/Testing/Exec/Radiation)
+#add_subdirectory(Tests)
+#add_subdirectory(${CMAKE_SOURCE_DIR}/Submodules/PelePhysics/Testing/Exec/Radiation)

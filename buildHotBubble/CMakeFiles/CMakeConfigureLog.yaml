@@ -1,0 +1,2030 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.26100 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.12.12+1cce77968 for .NET Framework
+      Build started 7/13/2025 9:00:36 PM.
+      
+      Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.51
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/3.31.5/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-lda529"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-lda529"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-lda529'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_15398.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:37 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-lda529\\cmTC_15398.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_15398.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-lda529\\Debug\\".
+          Creating directory "cmTC_15398.dir\\Debug\\cmTC_15398.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_15398.dir\\Debug\\cmTC_15398.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_15398.dir\\Debug\\cmTC_15398.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_15398.dir\\Debug\\\\" /Fd"cmTC_15398.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_15398.dir\\Debug\\\\" /Fd"cmTC_15398.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-lda529\\Debug\\cmTC_15398.exe" /INCREMENTAL /ILK:"cmTC_15398.dir\\Debug\\cmTC_15398.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-lda529/Debug/cmTC_15398.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-lda529/Debug/cmTC_15398.lib" /MACHINE:X64  /machine:x64 cmTC_15398.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_15398.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-lda529\\Debug\\cmTC_15398.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_15398.dir\\Debug\\cmTC_15398.tlog\\unsuccessfulbuild".
+          Touching "cmTC_15398.dir\\Debug\\cmTC_15398.tlog\\cmTC_15398.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-lda529\\cmTC_15398.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34435.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "Submodules/PelePhysics/Submodules/amrex/CMakeLists.txt:67 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.12.12+1cce77968 for .NET Framework
+      Build started 7/13/2025 9:00:38 PM.
+      
+      Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\3.31.5\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.37
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/3.31.5/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "Submodules/PelePhysics/Submodules/amrex/CMakeLists.txt:67 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vrjmma"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vrjmma"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vrjmma'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_62d1e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:38 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vrjmma\\cmTC_62d1e.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_62d1e.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vrjmma\\Debug\\".
+          Creating directory "cmTC_62d1e.dir\\Debug\\cmTC_62d1e.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_62d1e.dir\\Debug\\cmTC_62d1e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_62d1e.dir\\Debug\\cmTC_62d1e.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_62d1e.dir\\Debug\\\\" /Fd"cmTC_62d1e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_62d1e.dir\\Debug\\\\" /Fd"cmTC_62d1e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vrjmma\\Debug\\cmTC_62d1e.exe" /INCREMENTAL /ILK:"cmTC_62d1e.dir\\Debug\\cmTC_62d1e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vrjmma/Debug/cmTC_62d1e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vrjmma/Debug/cmTC_62d1e.lib" /MACHINE:X64  /machine:x64 cmTC_62d1e.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_62d1e.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vrjmma\\Debug\\cmTC_62d1e.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_62d1e.dir\\Debug\\cmTC_62d1e.tlog\\unsuccessfulbuild".
+          Touching "cmTC_62d1e.dir\\Debug\\cmTC_62d1e.tlog\\cmTC_62d1e.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vrjmma\\cmTC_62d1e.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "Submodules/PelePhysics/Submodules/amrex/CMakeLists.txt:67 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "Submodules/PelePhysics/Submodules/amrex/CMakeLists.txt:67 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34435.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:7 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-86jah4"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-86jah4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-86jah4'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d688b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:39 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\cmTC_d688b.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_d688b.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\Debug\\".
+          Creating directory "cmTC_d688b.dir\\Debug\\cmTC_d688b.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_d688b.dir\\Debug\\cmTC_d688b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d688b.dir\\Debug\\cmTC_d688b.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d688b.dir\\Debug\\\\" /Fd"cmTC_d688b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d688b.dir\\Debug\\\\" /Fd"cmTC_d688b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\src.c"
+          src.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\cmTC_d688b.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\cmTC_d688b.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\cmTC_d688b.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-86jah4\\cmTC_d688b.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.21
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckLibraryExists.cmake:78 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:7 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-m2ax1i"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-m2ax1i"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-m2ax1i'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a15d8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:39 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\cmTC_a15d8.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_a15d8.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\Debug\\".
+          Creating directory "cmTC_a15d8.dir\\Debug\\cmTC_a15d8.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_a15d8.dir\\Debug\\cmTC_a15d8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a15d8.dir\\Debug\\cmTC_a15d8.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a15d8.dir\\Debug\\\\" /Fd"cmTC_a15d8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a15d8.dir\\Debug\\\\" /Fd"cmTC_a15d8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\Debug\\cmTC_a15d8.exe" /INCREMENTAL /ILK:"cmTC_a15d8.dir\\Debug\\cmTC_a15d8.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-m2ax1i/Debug/cmTC_a15d8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-m2ax1i/Debug/cmTC_a15d8.lib" /MACHINE:X64  /machine:x64 cmTC_a15d8.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\cmTC_a15d8.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\cmTC_a15d8.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\cmTC_a15d8.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-m2ax1i\\cmTC_a15d8.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.27
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckLibraryExists.cmake:78 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:7 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mmy6k8"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mmy6k8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mmy6k8'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c14a4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:39 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\cmTC_c14a4.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_c14a4.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\Debug\\".
+          Creating directory "cmTC_c14a4.dir\\Debug\\cmTC_c14a4.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_c14a4.dir\\Debug\\cmTC_c14a4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_c14a4.dir\\Debug\\cmTC_c14a4.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c14a4.dir\\Debug\\\\" /Fd"cmTC_c14a4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c14a4.dir\\Debug\\\\" /Fd"cmTC_c14a4.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\Debug\\cmTC_c14a4.exe" /INCREMENTAL /ILK:"cmTC_c14a4.dir\\Debug\\cmTC_c14a4.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mmy6k8/Debug/cmTC_c14a4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mmy6k8/Debug/cmTC_c14a4.lib" /MACHINE:X64  /machine:x64 cmTC_c14a4.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\cmTC_c14a4.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\cmTC_c14a4.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\cmTC_c14a4.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mmy6k8\\cmTC_c14a4.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.27
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h5xp9p"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h5xp9p"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h5xp9p'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4a0b1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:40 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\cmTC_4a0b1.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_4a0b1.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\Debug\\".
+          Creating directory "cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4a0b1.dir\\Debug\\\\" /Fd"cmTC_4a0b1.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TC /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\test_mpi.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4a0b1.dir\\Debug\\\\" /Fd"cmTC_4a0b1.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TC /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\test_mpi.c"
+          test_mpi.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\Debug\\cmTC_4a0b1.exe" /INCREMENTAL /ILK:"cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h5xp9p/Debug/cmTC_4a0b1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h5xp9p/Debug/cmTC_4a0b1.lib" /MACHINE:X64  /machine:x64 cmTC_4a0b1.dir\\Debug\\test_mpi.obj
+          cmTC_4a0b1.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\Debug\\cmTC_4a0b1.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.tlog\\unsuccessfulbuild".
+          Touching "cmTC_4a0b1.dir\\Debug\\cmTC_4a0b1.tlog\\cmTC_4a0b1.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h5xp9p\\cmTC_4a0b1.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0a901x"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0a901x"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0a901x'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_8dc0f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:41 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\cmTC_8dc0f.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_8dc0f.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\Debug\\".
+          Creating directory "cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_8dc0f.dir\\Debug\\\\" /Fd"cmTC_8dc0f.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_8dc0f.dir\\Debug\\\\" /Fd"cmTC_8dc0f.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\Debug\\cmTC_8dc0f.exe" /INCREMENTAL /ILK:"cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0a901x/Debug/cmTC_8dc0f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0a901x/Debug/cmTC_8dc0f.lib" /MACHINE:X64  /machine:x64 cmTC_8dc0f.dir\\Debug\\test_mpi.obj
+          cmTC_8dc0f.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\Debug\\cmTC_8dc0f.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.tlog\\unsuccessfulbuild".
+          Touching "cmTC_8dc0f.dir\\Debug\\cmTC_8dc0f.tlog\\cmTC_8dc0f.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0a901x\\cmTC_8dc0f.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.39
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1677 (_MPI_try_staged_settings)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mjlqqu"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mjlqqu"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mjlqqu'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0393f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:42 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\cmTC_0393f.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_0393f.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\Debug\\".
+          Creating directory "cmTC_0393f.dir\\Debug\\cmTC_0393f.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_0393f.dir\\Debug\\cmTC_0393f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_0393f.dir\\Debug\\cmTC_0393f.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_0393f.dir\\Debug\\\\" /Fd"cmTC_0393f.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_0393f.dir\\Debug\\\\" /Fd"cmTC_0393f.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\Debug\\cmTC_0393f.exe" /INCREMENTAL /ILK:"cmTC_0393f.dir\\Debug\\cmTC_0393f.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mjlqqu/Debug/cmTC_0393f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-mjlqqu/Debug/cmTC_0393f.lib" /MACHINE:X64  /machine:x64 cmTC_0393f.dir\\Debug\\test_mpi.obj
+          cmTC_0393f.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\Debug\\cmTC_0393f.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_0393f.dir\\Debug\\cmTC_0393f.tlog\\unsuccessfulbuild".
+          Touching "cmTC_0393f.dir\\Debug\\cmTC_0393f.tlog\\cmTC_0393f.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-mjlqqu\\cmTC_0393f.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake:262 (check_include_file)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsIndexSize.cmake:68 (check_type_size)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:21 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-3lg3be"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-3lg3be"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-3lg3be'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ca9d6.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:42 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\cmTC_ca9d6.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_ca9d6.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\Debug\\".
+          Creating directory "cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca9d6.dir\\Debug\\\\" /Fd"cmTC_ca9d6.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca9d6.dir\\Debug\\\\" /Fd"cmTC_ca9d6.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\CheckIncludeFile.c"
+          CheckIncludeFile.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\Debug\\cmTC_ca9d6.exe" /INCREMENTAL /ILK:"cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-3lg3be/Debug/cmTC_ca9d6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-3lg3be/Debug/cmTC_ca9d6.lib" /MACHINE:X64  /machine:x64 cmTC_ca9d6.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_ca9d6.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\Debug\\cmTC_ca9d6.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.tlog\\unsuccessfulbuild".
+          Touching "cmTC_ca9d6.dir\\Debug\\cmTC_ca9d6.tlog\\cmTC_ca9d6.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-3lg3be\\cmTC_ca9d6.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake:263 (check_include_file)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsIndexSize.cmake:68 (check_type_size)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:21 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-4e4k4b"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-4e4k4b"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-4e4k4b'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5d9e7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:43 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\cmTC_5d9e7.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_5d9e7.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\Debug\\".
+          Creating directory "cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5d9e7.dir\\Debug\\\\" /Fd"cmTC_5d9e7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5d9e7.dir\\Debug\\\\" /Fd"cmTC_5d9e7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\CheckIncludeFile.c"
+          CheckIncludeFile.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\Debug\\cmTC_5d9e7.exe" /INCREMENTAL /ILK:"cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-4e4k4b/Debug/cmTC_5d9e7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-4e4k4b/Debug/cmTC_5d9e7.lib" /MACHINE:X64  /machine:x64 cmTC_5d9e7.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_5d9e7.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\Debug\\cmTC_5d9e7.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.tlog\\unsuccessfulbuild".
+          Touching "cmTC_5d9e7.dir\\Debug\\cmTC_5d9e7.tlog\\cmTC_5d9e7.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-4e4k4b\\cmTC_5d9e7.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake:264 (check_include_file)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsIndexSize.cmake:68 (check_type_size)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:21 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-wc4203"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-wc4203"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-wc4203'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0b376.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:43 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\cmTC_0b376.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_0b376.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\Debug\\".
+          Creating directory "cmTC_0b376.dir\\Debug\\cmTC_0b376.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_0b376.dir\\Debug\\cmTC_0b376.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_0b376.dir\\Debug\\cmTC_0b376.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0b376.dir\\Debug\\\\" /Fd"cmTC_0b376.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0b376.dir\\Debug\\\\" /Fd"cmTC_0b376.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\CheckIncludeFile.c"
+          CheckIncludeFile.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\Debug\\cmTC_0b376.exe" /INCREMENTAL /ILK:"cmTC_0b376.dir\\Debug\\cmTC_0b376.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-wc4203/Debug/cmTC_0b376.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-wc4203/Debug/cmTC_0b376.lib" /MACHINE:X64  /machine:x64 cmTC_0b376.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_0b376.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\Debug\\cmTC_0b376.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_0b376.dir\\Debug\\cmTC_0b376.tlog\\unsuccessfulbuild".
+          Touching "cmTC_0b376.dir\\Debug\\cmTC_0b376.tlog\\cmTC_0b376.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-wc4203\\cmTC_0b376.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake:156 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake:283 (__check_type_size_impl)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsIndexSize.cmake:68 (check_type_size)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:21 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Check size of int32_t"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-o95dcn"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-o95dcn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "HAVE_HAS_int32_t"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-o95dcn'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7cda1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:44 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\cmTC_7cda1.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_7cda1.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\Debug\\".
+          Creating directory "cmTC_7cda1.dir\\Debug\\cmTC_7cda1.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_7cda1.dir\\Debug\\cmTC_7cda1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7cda1.dir\\Debug\\cmTC_7cda1.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7cda1.dir\\Debug\\\\" /Fd"cmTC_7cda1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\HAS_int32_t.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7cda1.dir\\Debug\\\\" /Fd"cmTC_7cda1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\HAS_int32_t.c"
+          HAS_int32_t.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\Debug\\cmTC_7cda1.exe" /INCREMENTAL /ILK:"cmTC_7cda1.dir\\Debug\\cmTC_7cda1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-o95dcn/Debug/cmTC_7cda1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-o95dcn/Debug/cmTC_7cda1.lib" /MACHINE:X64  /machine:x64 cmTC_7cda1.dir\\Debug\\HAS_int32_t.obj
+          cmTC_7cda1.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\Debug\\cmTC_7cda1.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_7cda1.dir\\Debug\\cmTC_7cda1.tlog\\unsuccessfulbuild".
+          Touching "cmTC_7cda1.dir\\Debug\\cmTC_7cda1.tlog\\cmTC_7cda1.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-o95dcn\\cmTC_7cda1.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:196 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test SUNDIALS_C_COMPILER_HAS_BUILTIN_EXPECT"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-fwqrg1"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-fwqrg1"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "SUNDIALS_C_COMPILER_HAS_BUILTIN_EXPECT"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-fwqrg1'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3c1a1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:44 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_3c1a1.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\Debug\\".
+          Creating directory "cmTC_3c1a1.dir\\Debug\\cmTC_3c1a1.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_3c1a1.dir\\Debug\\cmTC_3c1a1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_3c1a1.dir\\Debug\\cmTC_3c1a1.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_BUILTIN_EXPECT /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3c1a1.dir\\Debug\\\\" /Fd"cmTC_3c1a1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_BUILTIN_EXPECT /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3c1a1.dir\\Debug\\\\" /Fd"cmTC_3c1a1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\src.c"
+          src.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\Debug\\cmTC_3c1a1.exe" /INCREMENTAL /ILK:"cmTC_3c1a1.dir\\Debug\\cmTC_3c1a1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-fwqrg1/Debug/cmTC_3c1a1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-fwqrg1/Debug/cmTC_3c1a1.lib" /MACHINE:X64  /machine:x64 cmTC_3c1a1.dir\\Debug\\src.obj
+        src.obj : error LNK2019: unresolved external symbol __builtin_expect referenced in function main [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\Debug\\cmTC_3c1a1.exe : fatal error LNK1120: 1 unresolved externals [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          src.obj : error LNK2019: unresolved external symbol __builtin_expect referenced in function main [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\Debug\\cmTC_3c1a1.exe : fatal error LNK1120: 1 unresolved externals [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-fwqrg1\\cmTC_3c1a1.vcxproj]
+        
+            0 Warning(s)
+            2 Error(s)
+        
+        Time Elapsed 00:00:00.32
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:216 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_ASSUME"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0k99cs"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0k99cs"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_ASSUME"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-0k99cs'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4a99a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:44 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\cmTC_4a99a.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_4a99a.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\Debug\\".
+          Creating directory "cmTC_4a99a.dir\\Debug\\cmTC_4a99a.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_4a99a.dir\\Debug\\cmTC_4a99a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4a99a.dir\\Debug\\cmTC_4a99a.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4a99a.dir\\Debug\\\\" /Fd"cmTC_4a99a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4a99a.dir\\Debug\\\\" /Fd"cmTC_4a99a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\src.c"
+          src.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\src.c(10,1): error C1189: #error:  no __has_attribute [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\cmTC_4a99a.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\cmTC_4a99a.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\cmTC_4a99a.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\src.c(10,1): error C1189: #error:  no __has_attribute [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-0k99cs\\cmTC_4a99a.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.22
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:238 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test SUNDIALS_C_COMPILER_HAS_BUILTIN_ASSUME"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-c5atn2"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-c5atn2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "SUNDIALS_C_COMPILER_HAS_BUILTIN_ASSUME"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-c5atn2'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_eef8a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:45 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_eef8a.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\Debug\\".
+          Creating directory "cmTC_eef8a.dir\\Debug\\cmTC_eef8a.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_eef8a.dir\\Debug\\cmTC_eef8a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_eef8a.dir\\Debug\\cmTC_eef8a.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_BUILTIN_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_eef8a.dir\\Debug\\\\" /Fd"cmTC_eef8a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_BUILTIN_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_eef8a.dir\\Debug\\\\" /Fd"cmTC_eef8a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\src.c"
+          src.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\Debug\\cmTC_eef8a.exe" /INCREMENTAL /ILK:"cmTC_eef8a.dir\\Debug\\cmTC_eef8a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-c5atn2/Debug/cmTC_eef8a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-c5atn2/Debug/cmTC_eef8a.lib" /MACHINE:X64  /machine:x64 cmTC_eef8a.dir\\Debug\\src.obj
+        src.obj : error LNK2019: unresolved external symbol __builtin_assume referenced in function main [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\Debug\\cmTC_eef8a.exe : fatal error LNK1120: 1 unresolved externals [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          src.obj : error LNK2019: unresolved external symbol __builtin_assume referenced in function main [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\Debug\\cmTC_eef8a.exe : fatal error LNK1120: 1 unresolved externals [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-c5atn2\\cmTC_eef8a.vcxproj]
+        
+            0 Warning(s)
+            2 Error(s)
+        
+        Time Elapsed 00:00:00.33
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:255 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test SUNDIALS_C_COMPILER_HAS_ASSUME"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-picyyh"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-picyyh"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "SUNDIALS_C_COMPILER_HAS_ASSUME"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-picyyh'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ec0af.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:45 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\cmTC_ec0af.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_ec0af.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\Debug\\".
+          Creating directory "cmTC_ec0af.dir\\Debug\\cmTC_ec0af.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_ec0af.dir\\Debug\\cmTC_ec0af.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ec0af.dir\\Debug\\cmTC_ec0af.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ec0af.dir\\Debug\\\\" /Fd"cmTC_ec0af.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ASSUME /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ec0af.dir\\Debug\\\\" /Fd"cmTC_ec0af.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\src.c"
+          src.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\src.c(5,25): error C2059: syntax error: ')' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\cmTC_ec0af.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\cmTC_ec0af.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\cmTC_ec0af.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\src.c(5,25): error C2059: syntax error: ')' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-picyyh\\cmTC_ec0af.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.21
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:273 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_UNUSED"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-k5bx5z"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-k5bx5z"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_UNUSED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-k5bx5z'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_45d43.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:45 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_45d43.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\Debug\\".
+          Creating directory "cmTC_45d43.dir\\Debug\\cmTC_45d43.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_45d43.dir\\Debug\\cmTC_45d43.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_45d43.dir\\Debug\\cmTC_45d43.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_UNUSED /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_45d43.dir\\Debug\\\\" /Fd"cmTC_45d43.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D SUNDIALS_C_COMPILER_HAS_ATTRIBUTE_UNUSED /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_45d43.dir\\Debug\\\\" /Fd"cmTC_45d43.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c"
+          src.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c(3,20): error C2065: 'unused': undeclared identifier [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c(3,29): error C2143: syntax error: missing ';' before 'type' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c(3,20): error C2065: 'unused': undeclared identifier [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\src.c(3,29): error C2143: syntax error: missing ';' before 'type' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-k5bx5z\\cmTC_45d43.vcxproj]
+        
+            0 Warning(s)
+            2 Error(s)
+        
+        Time Elapsed 00:00:00.21
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:68 (try_compile)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:78 (posix_timers_test)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:285 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+    buildResult:
+      variable: "COMPILE_OK"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" ALL_BUILD.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:46 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" on node 1 (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "x64\\Debug\\ZERO_CHECK\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\".
+        InitializeBuildStatus:
+          Creating "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          1>Checking Build System
+        FinalizeBuildStatus:
+          Deleting file "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\ZERO_CHECK.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (3) on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "ltest.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\Debug\\".
+          Creating directory "ltest.dir\\Debug\\ltest.tlog\\".
+        InitializeBuildStatus:
+          Creating "ltest.dir\\Debug\\ltest.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "ltest.dir\\Debug\\ltest.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          Building Custom Rule E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST/CMakeLists.txt
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          ltest.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default targets) -- FAILED.
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default target) (1) ->
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default target) (3) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.41
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:68 (try_compile)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:85 (posix_timers_test)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:285 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+    buildResult:
+      variable: "COMPILE_OK"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" ALL_BUILD.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:46 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" on node 1 (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Creating "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        FinalizeBuildStatus:
+          Deleting file "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\ZERO_CHECK.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (3) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Touching "ltest.dir\\Debug\\ltest.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _POSIX_C_SOURCE=200112L /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _POSIX_C_SOURCE=200112L /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          ltest.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default targets) -- FAILED.
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default target) (1) ->
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default target) (3) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.26
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:306 (check_c_source_compiles)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED_MSG"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-r2jidq"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-r2jidq"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED_MSG"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-r2jidq'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_46cbf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:47 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\cmTC_46cbf.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_46cbf.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\Debug\\".
+          Creating directory "cmTC_46cbf.dir\\Debug\\cmTC_46cbf.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_46cbf.dir\\Debug\\cmTC_46cbf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_46cbf.dir\\Debug\\cmTC_46cbf.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_MSG /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_46cbf.dir\\Debug\\\\" /Fd"cmTC_46cbf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_MSG /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_46cbf.dir\\Debug\\\\" /Fd"cmTC_46cbf.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\src.c"
+          src.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\Debug\\cmTC_46cbf.exe" /INCREMENTAL /ILK:"cmTC_46cbf.dir\\Debug\\cmTC_46cbf.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-r2jidq/Debug/cmTC_46cbf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-r2jidq/Debug/cmTC_46cbf.lib" /MACHINE:X64  /machine:x64 cmTC_46cbf.dir\\Debug\\src.obj
+          cmTC_46cbf.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\Debug\\cmTC_46cbf.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_46cbf.dir\\Debug\\cmTC_46cbf.tlog\\unsuccessfulbuild".
+          Touching "cmTC_46cbf.dir\\Debug\\cmTC_46cbf.tlog\\cmTC_46cbf.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-r2jidq\\cmTC_46cbf.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSourceCompiles.cmake:89 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "Submodules/PelePhysics/Submodules/sundials/src/sundials/CMakeLists.txt:150 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-cu1svx"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-cu1svx"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED_ATTR"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-cu1svx'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_365ac.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:47 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_365ac.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\Debug\\".
+          Creating directory "cmTC_365ac.dir\\Debug\\cmTC_365ac.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_365ac.dir\\Debug\\cmTC_365ac.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_365ac.dir\\Debug\\cmTC_365ac.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_365ac.dir\\Debug\\\\" /Fd"cmTC_365ac.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED_ATTR /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_365ac.dir\\Debug\\\\" /Fd"cmTC_365ac.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx"
+          src.cxx
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,16): error C2065: '__deprecated__': undeclared identifier [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,33): error C2062: type 'int' unexpected [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,48): error C2143: syntax error: missing ';' before '{' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,48): error C2447: '{': missing function header (old-style formal list?) [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(2,25): error C3861: 'somefunc': identifier not found [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,16): error C2065: '__deprecated__': undeclared identifier [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,33): error C2062: type 'int' unexpected [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,48): error C2143: syntax error: missing ';' before '{' [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(1,48): error C2447: '{': missing function header (old-style formal list?) [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+          E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\src.cxx(2,25): error C3861: 'somefunc': identifier not found [E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-cu1svx\\cmTC_365ac.vcxproj]
+        
+            0 Warning(s)
+            6 Error(s)
+        
+        Time Elapsed 00:00:00.22
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSourceCompiles.cmake:89 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:269 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "Submodules/PelePhysics/Submodules/sundials/src/sundials/CMakeLists.txt:150 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-45kdmv"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-45kdmv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/macros;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/cmake/tpl"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-45kdmv'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f824b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:47 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\cmTC_f824b.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_f824b.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\Debug\\".
+          Creating directory "cmTC_f824b.dir\\Debug\\cmTC_f824b.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_f824b.dir\\Debug\\cmTC_f824b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_f824b.dir\\Debug\\cmTC_f824b.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_f824b.dir\\Debug\\\\" /Fd"cmTC_f824b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_DEPRECATED /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_f824b.dir\\Debug\\\\" /Fd"cmTC_f824b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\src.cxx"
+          src.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\Debug\\cmTC_f824b.exe" /INCREMENTAL /ILK:"cmTC_f824b.dir\\Debug\\cmTC_f824b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-45kdmv/Debug/cmTC_f824b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-45kdmv/Debug/cmTC_f824b.lib" /MACHINE:X64  /machine:x64 cmTC_f824b.dir\\Debug\\src.obj
+          cmTC_f824b.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\Debug\\cmTC_f824b.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_f824b.dir\\Debug\\cmTC_f824b.tlog\\unsuccessfulbuild".
+          Touching "cmTC_f824b.dir\\Debug\\cmTC_f824b.tlog\\cmTC_f824b.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-45kdmv\\cmTC_f824b.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.36
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:101 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-e0fxj9"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-e0fxj9"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-e0fxj9'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_30f3d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:48 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\cmTC_30f3d.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_30f3d.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\Debug\\".
+          Creating directory "cmTC_30f3d.dir\\Debug\\cmTC_30f3d.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_30f3d.dir\\Debug\\cmTC_30f3d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_30f3d.dir\\Debug\\cmTC_30f3d.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_30f3d.dir\\Debug\\\\" /Fd"cmTC_30f3d.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_30f3d.dir\\Debug\\\\" /Fd"cmTC_30f3d.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\Debug\\cmTC_30f3d.exe" /INCREMENTAL /ILK:"cmTC_30f3d.dir\\Debug\\cmTC_30f3d.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-e0fxj9/Debug/cmTC_30f3d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-e0fxj9/Debug/cmTC_30f3d.lib" /MACHINE:X64  /machine:x64 cmTC_30f3d.dir\\Debug\\test_mpi.obj
+          cmTC_30f3d.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\Debug\\cmTC_30f3d.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_30f3d.dir\\Debug\\cmTC_30f3d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_30f3d.dir\\Debug\\cmTC_30f3d.tlog\\cmTC_30f3d.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-e0fxj9\\cmTC_30f3d.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1677 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:101 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vh1g1h"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vh1g1h"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vh1g1h'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0190b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:00:49 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\cmTC_0190b.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_0190b.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\Debug\\".
+          Creating directory "cmTC_0190b.dir\\Debug\\cmTC_0190b.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_0190b.dir\\Debug\\cmTC_0190b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_0190b.dir\\Debug\\cmTC_0190b.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_0190b.dir\\Debug\\\\" /Fd"cmTC_0190b.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_0190b.dir\\Debug\\\\" /Fd"cmTC_0190b.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\Debug\\cmTC_0190b.exe" /INCREMENTAL /ILK:"cmTC_0190b.dir\\Debug\\cmTC_0190b.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vh1g1h/Debug/cmTC_0190b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-vh1g1h/Debug/cmTC_0190b.lib" /MACHINE:X64  /machine:x64 cmTC_0190b.dir\\Debug\\test_mpi.obj
+          cmTC_0190b.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\Debug\\cmTC_0190b.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_0190b.dir\\Debug\\cmTC_0190b.tlog\\unsuccessfulbuild".
+          Touching "cmTC_0190b.dir\\Debug\\cmTC_0190b.tlog\\cmTC_0190b.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-vh1g1h\\cmTC_0190b.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-hkdriu"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-hkdriu"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-hkdriu'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e2e04.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:24 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\cmTC_e2e04.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_e2e04.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\Debug\\".
+          Creating directory "cmTC_e2e04.dir\\Debug\\cmTC_e2e04.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_e2e04.dir\\Debug\\cmTC_e2e04.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_e2e04.dir\\Debug\\cmTC_e2e04.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e2e04.dir\\Debug\\\\" /Fd"cmTC_e2e04.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TC /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\test_mpi.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e2e04.dir\\Debug\\\\" /Fd"cmTC_e2e04.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TC /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\test_mpi.c"
+          test_mpi.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\Debug\\cmTC_e2e04.exe" /INCREMENTAL /ILK:"cmTC_e2e04.dir\\Debug\\cmTC_e2e04.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-hkdriu/Debug/cmTC_e2e04.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-hkdriu/Debug/cmTC_e2e04.lib" /MACHINE:X64  /machine:x64 cmTC_e2e04.dir\\Debug\\test_mpi.obj
+          cmTC_e2e04.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\Debug\\cmTC_e2e04.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_e2e04.dir\\Debug\\cmTC_e2e04.tlog\\unsuccessfulbuild".
+          Touching "cmTC_e2e04.dir\\Debug\\cmTC_e2e04.tlog\\cmTC_e2e04.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-hkdriu\\cmTC_e2e04.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.37
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h4ygjb"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h4ygjb"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h4ygjb'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2f8b0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:25 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\cmTC_2f8b0.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_2f8b0.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\Debug\\".
+          Creating directory "cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_2f8b0.dir\\Debug\\\\" /Fd"cmTC_2f8b0.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_2f8b0.dir\\Debug\\\\" /Fd"cmTC_2f8b0.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\Debug\\cmTC_2f8b0.exe" /INCREMENTAL /ILK:"cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h4ygjb/Debug/cmTC_2f8b0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-h4ygjb/Debug/cmTC_2f8b0.lib" /MACHINE:X64  /machine:x64 cmTC_2f8b0.dir\\Debug\\test_mpi.obj
+          cmTC_2f8b0.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\Debug\\cmTC_2f8b0.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2f8b0.dir\\Debug\\cmTC_2f8b0.tlog\\cmTC_2f8b0.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-h4ygjb\\cmTC_2f8b0.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1677 (_MPI_try_staged_settings)"
+      - "Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake:23 (find_package)"
+      - "Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt:40 (include)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-qje7mj"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-qje7mj"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-qje7mj'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_89928.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:26 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\cmTC_89928.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_89928.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\Debug\\".
+          Creating directory "cmTC_89928.dir\\Debug\\cmTC_89928.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_89928.dir\\Debug\\cmTC_89928.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_89928.dir\\Debug\\cmTC_89928.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_89928.dir\\Debug\\\\" /Fd"cmTC_89928.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_89928.dir\\Debug\\\\" /Fd"cmTC_89928.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\Debug\\cmTC_89928.exe" /INCREMENTAL /ILK:"cmTC_89928.dir\\Debug\\cmTC_89928.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-qje7mj/Debug/cmTC_89928.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-qje7mj/Debug/cmTC_89928.lib" /MACHINE:X64  /machine:x64 cmTC_89928.dir\\Debug\\test_mpi.obj
+          cmTC_89928.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\Debug\\cmTC_89928.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_89928.dir\\Debug\\cmTC_89928.tlog\\unsuccessfulbuild".
+          Touching "cmTC_89928.dir\\Debug\\cmTC_89928.tlog\\cmTC_89928.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-qje7mj\\cmTC_89928.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:68 (try_compile)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:78 (posix_timers_test)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:285 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+    buildResult:
+      variable: "COMPILE_OK"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" ALL_BUILD.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:27 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" on node 1 (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Creating "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        FinalizeBuildStatus:
+          Deleting file "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\ZERO_CHECK.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (3) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Touching "ltest.dir\\Debug\\ltest.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          ltest.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default targets) -- FAILED.
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default target) (1) ->
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default target) (3) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.26
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:68 (try_compile)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/tpl/SundialsPOSIXTimers.cmake:85 (posix_timers_test)"
+      - "Submodules/PelePhysics/Submodules/sundials/cmake/SundialsSetupCompilers.cmake:285 (include)"
+      - "Submodules/PelePhysics/Submodules/sundials/CMakeLists.txt:181 (include)"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST"
+    buildResult:
+      variable: "COMPILE_OK"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/POSIX_TIMER_TEST'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" ALL_BUILD.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:27 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" on node 1 (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Creating "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        FinalizeBuildStatus:
+          Deleting file "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\unsuccessfulbuild".
+          Touching "x64\\Debug\\ZERO_CHECK\\ZERO_CHECK.tlog\\ZERO_CHECK.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ZERO_CHECK.vcxproj" (default targets).
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (1) is building "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (3) on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        InitializeBuildStatus:
+          Touching "ltest.dir\\Debug\\ltest.tlog\\unsuccessfulbuild".
+        CustomBuild:
+          All outputs are up-to-date.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _POSIX_C_SOURCE=200112L /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _POSIX_C_SOURCE=200112L /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"ltest.dir\\Debug\\\\" /Fd"ltest.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c
+          ltest.c
+        E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default targets) -- FAILED.
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ALL_BUILD.vcxproj" (default target) (1) ->
+        "E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj" (default target) (3) ->
+        (ClCompile target) -> 
+          E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.c(2,10): error C1083: Cannot open include file: 'unistd.h': No such file or directory [E:\\PeleLMeX_Dev\\buildHotBubble\\Submodules\\PelePhysics\\Submodules\\sundials\\POSIX_TIMER_TEST\\ltest.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.26
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1327 (_MPI_try_staged_settings)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1650 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:101 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-pu7fca"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-pu7fca"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-pu7fca'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d4ed7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:28 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\cmTC_d4ed7.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_d4ed7.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\Debug\\".
+          Creating directory "cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_d4ed7.dir\\Debug\\\\" /Fd"cmTC_d4ed7.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_d4ed7.dir\\Debug\\\\" /Fd"cmTC_d4ed7.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\Debug\\cmTC_d4ed7.exe" /INCREMENTAL /ILK:"cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-pu7fca/Debug/cmTC_d4ed7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-pu7fca/Debug/cmTC_d4ed7.lib" /MACHINE:X64  /machine:x64 cmTC_d4ed7.dir\\Debug\\test_mpi.obj
+          cmTC_d4ed7.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\Debug\\cmTC_d4ed7.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.tlog\\unsuccessfulbuild".
+          Touching "cmTC_d4ed7.dir\\Debug\\cmTC_d4ed7.tlog\\cmTC_d4ed7.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-pu7fca\\cmTC_d4ed7.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1283 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake:1677 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:101 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-egkbu9"
+      binary: "E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-egkbu9"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/PeleLMeX_Dev/CMake;E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake"
+      CMAKE_WARN_DEPRECATED: "OFF"
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-egkbu9'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_52d6b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.12.12+1cce77968 for .NET Framework
+        Build started 7/13/2025 9:05:28 PM.
+        
+        Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\cmTC_52d6b.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_52d6b.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\Debug\\".
+          Creating directory "cmTC_52d6b.dir\\Debug\\cmTC_52d6b.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_52d6b.dir\\Debug\\cmTC_52d6b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_52d6b.dir\\Debug\\cmTC_52d6b.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_52d6b.dir\\Debug\\\\" /Fd"cmTC_52d6b.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\test_mpi.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"cmTC_52d6b.dir\\Debug\\\\" /Fd"cmTC_52d6b.dir\\Debug\\vc143.pdb" /external:W0 /Gd /TP /errorReport:queue  /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\test_mpi.cpp"
+          test_mpi.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\Debug\\cmTC_52d6b.exe" /INCREMENTAL /ILK:"cmTC_52d6b.dir\\Debug\\cmTC_52d6b.ilk" /NOLOGO "C:\\Program Files (x86)\\Microsoft SDKs\\MPI\\Lib\\x64\\msmpi.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-egkbu9/Debug/cmTC_52d6b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/CMakeScratch/TryCompile-egkbu9/Debug/cmTC_52d6b.lib" /MACHINE:X64  /machine:x64 cmTC_52d6b.dir\\Debug\\test_mpi.obj
+          cmTC_52d6b.vcxproj -> E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\Debug\\cmTC_52d6b.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_52d6b.dir\\Debug\\cmTC_52d6b.tlog\\unsuccessfulbuild".
+          Touching "cmTC_52d6b.dir\\Debug\\cmTC_52d6b.tlog\\cmTC_52d6b.lastbuildstate".
+        Done Building Project "E:\\PeleLMeX_Dev\\buildHotBubble\\CMakeFiles\\CMakeScratch\\TryCompile-egkbu9\\cmTC_52d6b.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.38
+        
+      exitCode: 0
+...

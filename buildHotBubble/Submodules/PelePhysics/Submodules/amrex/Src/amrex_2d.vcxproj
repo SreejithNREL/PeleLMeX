@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BD851DE7-98FD-3D10-B1DF-88296074F269}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>amrex_2d</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">amrex_2d.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">amrex_2d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">amrex_2d.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">amrex_2d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">amrex_2d.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">amrex_2d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">amrex_2d.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">amrex_2d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /bigobj /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink amrex_2d.lib E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/Debug/amrex.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /bigobj /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink amrex_2d.lib E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/Release/amrex.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /bigobj /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink amrex_2d.lib E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/MinSizeRel/amrex.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /bigobj /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;AMREX_SPACEDIM=2;_USE_MATH_DEFINES;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E create_symlink amrex_2d.lib E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/RelWithDebInfo/amrex.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXClangTidy.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXFlagsTargets.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenerateConfigHeader.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXParallelBackends.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXSetDefines.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXThirdPartyLibraries.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config_ND.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_ThirdPartyProfilers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Version.H.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXClangTidy.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXFlagsTargets.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenerateConfigHeader.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXParallelBackends.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXSetDefines.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXThirdPartyLibraries.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config_ND.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_ThirdPartyProfilers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Version.H.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXClangTidy.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXFlagsTargets.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenerateConfigHeader.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXParallelBackends.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXSetDefines.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXThirdPartyLibraries.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config_ND.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_ThirdPartyProfilers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Version.H.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/amrex/Src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXClangTidy.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXFlagsTargets.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenerateConfigHeader.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXParallelBackends.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXSetDefines.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXThirdPartyLibraries.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Config_ND.H.in;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_ThirdPartyProfilers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_Version.H.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ccse-mpi.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Math.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Algorithm.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Any.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Array.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BlockMutex.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BlockMutex.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Enum.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuComplex.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Order.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_SmallMatrix.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ConstexprFor.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Vector.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_TableData.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Tuple.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_TypeList.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_error_fi.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Version.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Demangle.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Exception.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Extension.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PODVector.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PODVector.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParmParse.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_parmparse_fi.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParmParse.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Functional.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Stack.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_String.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_String.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Utility.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Utility.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FileSystem.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FileSystem.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ValLocPair.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Reduce.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Scan.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Partition.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Morton.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Random.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RandomEngine.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Random.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BLassert.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ArrayLim.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_REAL.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_INT.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CONSTANTS.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_SPACE.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_DistributionMapping.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_DistributionMapping.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParallelDescriptor.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParallelDescriptor.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_OpenMP.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_OpenMP.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParallelReduce.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ForkJoin.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ForkJoin.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParallelContext.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParallelContext.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_VisMFBuffer.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_VisMF.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_VisMF.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_AsyncOut.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_AsyncOut.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BackgroundThread.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BackgroundThread.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Arena.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Arena.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BArena.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BArena.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CArena.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CArena.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PArena.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PArena.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_DataAllocator.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BLProfiler.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BLBackTrace.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BLBackTrace.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BLFort.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_NFiles.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_NFiles.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_parstream.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_parstream.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ANSIEscCode.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabConv.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabConv.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FPC.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FPC.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_VectorIO.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_VectorIO.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Print.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IntConv.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IntConv.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IOFormat.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Box.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Box.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxIterator.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxIterator.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Dim3.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IntVect.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IntVect.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IndexType.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IndexType.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Loop.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Loop.nolint.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Orientation.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Orientation.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Periodicity.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Periodicity.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RealBox.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RealBox.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RealVect.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RealVect.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxList.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxList.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxArray.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxArray.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxDomain.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BoxDomain.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FArrayBox.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FArrayBox.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IArrayBox.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IArrayBox.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BaseFab.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BaseFab.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Array4.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MakeType.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_TypeTraits.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabDataType.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabFactory.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BaseFabUtility.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFab.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFab.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFCopyDescriptor.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFCopyDescriptor.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_iMultiFab.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_iMultiFab.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabArrayBase.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabArrayBase.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFIter.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFIter.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabArray.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FACopyDescriptor.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabArrayCommI.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FBI.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PCI.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FabArrayUtility.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_LayoutData.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CoordSys.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CoordSys.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_COORDSYS_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_COORDSYS_C.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Geometry.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Geometry.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtil.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtil.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtilI.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtil_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtil_nd_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MultiFabUtil_C.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BCRec.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BCRec.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PhysBCFunct.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PhysBCFunct.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BCUtil.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BCUtil.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BC_TYPES.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilCC_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilCC_C.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilCC_C.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilFC_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilFC_C.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilFC_C.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilND_C.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FilND_C.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_NonLocalBC.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_NonLocalBC.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_NonLocalBCImpl.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PlotFileUtil.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PlotFileUtil.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PlotFileDataImpl.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_PlotFileDataImpl.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_FEIntegrator.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_IntegratorBase.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RKIntegrator.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_TimeIntegrator.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_RungeKutta.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Gpu.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuQualifiers.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuKernelInfo.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuPrint.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuAssert.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuTypes.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuControl.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuControl.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunch.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunch.nolint.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchGlobal.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchMacrosG.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchMacrosG.nolint.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchMacrosC.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchMacrosC.nolint.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchFunctsG.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuLaunchFunctsC.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuError.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuDevice.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuDevice.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuBuffer.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuAtomic.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuUtility.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuUtility.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuAsyncArray.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuAsyncArray.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuElixir.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuElixir.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuMemory.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuRange.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuReduce.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuAllocators.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_GpuContainers.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFParallelFor.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFParallelForC.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MFParallelForG.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_TagParallelFor.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CTOParallelForImpl.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_ParReduce.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_CudaGraph.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Machine.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Machine.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MemPool.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MemPool.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser_Exe.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser_Exe.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser_Y.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_Parser_Y.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.lex.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.lex.nolint.H">
+    </None>
+    <ClInclude Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.lex.h" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.tab.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.tab.nolint.H">
+    </None>
+    <ClInclude Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_parser.tab.h" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser_Exe.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser_Exe.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser_Y.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\AMReX_IParser_Y.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.lex.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.lex.nolint.H">
+    </None>
+    <ClInclude Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.lex.h" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.tab.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.tab.nolint.H">
+    </None>
+    <ClInclude Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser\amrex_iparser.tab.h" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_LUSolver.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_Slopes_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_BaseFwd.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MPMD.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\AMReX_MPMD.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_Mask.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_MultiMask.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_FabSet.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_BndryRegister.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_Mask.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_MultiMask.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_BndryData.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_BoundCond.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_InterpBndryData.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_LO_BCTYPES.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_LO_BCTYPES.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_InterpBndryData_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_InterpBndryData_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_LOUtil_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_YAFluxRegister.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_YAFluxRegister_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_YAFluxRegister_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_BoundaryFwd.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_EdgeFluxRegister.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary\AMReX_EdgeFluxRegister.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_AmrCore.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Cluster.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_ErrorList.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_AmrCore.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Cluster.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_ErrorList.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FillPatchUtil.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FluxRegister.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FillPatchUtil.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FillPatchUtil_I.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FillPatcher.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FluxRegister.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpBase.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpBase.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_MFInterpolater.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_MFInterpolater.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Interpolater.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_TagBox.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_AmrMesh.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Interpolater.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_TagBox.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_AmrMesh.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FluxReg_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_FluxReg_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Interp_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_Interp_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_MFInterp_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_MFInterp_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpFaceRegister.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpFaceRegister.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpFaceReg_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_InterpFaceReg_2D_C.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore\AMReX_AmrCoreFwd.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_LevelBld.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Amr.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_AmrLevel.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Derive.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_StateData.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Amr.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_AmrLevel.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Derive.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_StateData.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_PROB_AMR_F.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_StateDescriptor.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_AuxBoundaryData.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_StateDescriptor.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_AuxBoundaryData.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Extrapolater.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_Extrapolater.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_extrapolater_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_extrapolater_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr\AMReX_AmrFwd.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLMG.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLMG.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLMG_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLMG_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLMGBndry.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLLinOp.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLLinOp_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCellLinOp.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLinOp.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLinOp_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLinOp_2D_K.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLinOp.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCellABecLap.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCellABecLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCellABecLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCGSolver.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_PCGSolver.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLABecLaplacian.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLABecLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLABecLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLALaplacian.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLALap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLALap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLPoisson.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLPoisson_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLPoisson_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_GMRES.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_GMRES_MLMG.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_GMRES_MV.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_Smoother_MV.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_Algebra.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_AlgPartition.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_AlgPartition.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_AlgVector.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_SpMatrix.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\AMReX_SpMV.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCurlCurl.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCurlCurl.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLCurlCurl_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLEBNodeFDLaplacian.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLEBNodeFDLaplacian.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLEBNodeFDLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLEBNodeFDLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeTensorLaplacian.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeTensorLaplacian.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeTensorLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeTensorLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeABecLaplacian.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeABecLaplacian.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeABecLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeABecLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLaplacian.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLaplacian.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_sync.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_sten.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_misc.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLap_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLNodeLap_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLTensorOp.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLTensorOp.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLTensorOp_grad.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLTensor_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG\AMReX_MLTensor_2D_K.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\AMReX_Config_2D.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\AMReX_Version.H">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\ZERO_CHECK.vcxproj">
+      <Project>{6FD5441B-1549-3FD2-B7F4-22CE992941B5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

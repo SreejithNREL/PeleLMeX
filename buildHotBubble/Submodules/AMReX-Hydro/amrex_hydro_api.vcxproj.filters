@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_utils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_extrap_vel_to_faces.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_compute_edgestate_and_flux.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_enforce_inout_solvability.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_edge_state.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces_box.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_edge_state_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_extrap_vel_to_faces_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_plm.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_bds_edge_state_2D.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_MacProjector.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_NodalProjector.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{BFD72926-6BC0-39C5-98B3-36315134BD3B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

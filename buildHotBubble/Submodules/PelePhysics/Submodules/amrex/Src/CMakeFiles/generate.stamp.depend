@@ -1,0 +1,24 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindMPI.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/CMakeLists.txt
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXClangTidy.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXFlagsTargets.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXGenerateConfigHeader.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXGenexHelpers.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXParallelBackends.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXSetDefines.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXTargetHelpers.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReXThirdPartyLibraries.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_Config.H.in
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_Config.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_Config_ND.H.in
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_ThirdPartyProfilers.cmake
+E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/CMake/AMReX_Version.H.in

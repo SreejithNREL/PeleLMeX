@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_adaptcontroller.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_band.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_dense.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_direct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_errors.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_futils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_hashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_iterative.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_linearsolver.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_logger.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_math.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_nonlinearsolver.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_nvector_senswrapper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_nvector.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_stepper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_profiler.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6B2F8754-6C36-30EC-A116-0F1967D1A35E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

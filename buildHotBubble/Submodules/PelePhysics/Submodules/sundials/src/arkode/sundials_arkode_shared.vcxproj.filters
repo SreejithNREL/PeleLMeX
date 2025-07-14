@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_adapt.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep_nls.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_bandpre.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_bbdpre.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher_dirk.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher_erk.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_erkstep_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_erkstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_forcingstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_interp.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_ls.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_lsrkstep_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_lsrkstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mri_tables.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_controller.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_nls.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_relaxation.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_root.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_splittingstep_coefficients.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_splittingstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprkstep_io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprkstep.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprk.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sunstepper.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_user_controller.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\sundials_sunmemsys_obj_shared.dir\$(Configuration)\sundials_system_memory.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_obj_shared.dir\$(Configuration)\nvector_serial.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\sundials_sunadaptcontrollersoderlind_obj_shared.dir\$(Configuration)\sunadaptcontroller_soderlind.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\sundials_sunadaptcontrollerimexgus_obj_shared.dir\$(Configuration)\sunadaptcontroller_imexgus.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\sundials_sunadaptcontrollermrihtol_obj_shared.dir\$(Configuration)\sunadaptcontroller_mrihtol.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_obj_shared.dir\$(Configuration)\sunmatrix_band.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_obj_shared.dir\$(Configuration)\sunmatrix_dense.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_obj_shared.dir\$(Configuration)\sunmatrix_sparse.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_obj_shared.dir\$(Configuration)\sunlinsol_band.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_obj_shared.dir\$(Configuration)\sunlinsol_dense.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_obj_shared.dir\$(Configuration)\sunlinsol_spbcgs.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_obj_shared.dir\$(Configuration)\sunlinsol_spfgmr.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_obj_shared.dir\$(Configuration)\sunlinsol_spgmr.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_obj_shared.dir\$(Configuration)\sunlinsol_sptfqmr.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_obj_shared.dir\$(Configuration)\sunlinsol_pcg.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_obj_shared.dir\$(Configuration)\sunnonlinsol_newton.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_obj_shared.dir\$(Configuration)\sunnonlinsol_fixedpoint.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{BFD72926-6BC0-39C5-98B3-36315134BD3B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

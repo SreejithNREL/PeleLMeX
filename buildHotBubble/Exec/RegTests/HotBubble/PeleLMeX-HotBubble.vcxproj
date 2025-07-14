@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ACF3EB6A-93E1-39C5-A4E7-F9BC33FF75F0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>PeleLMeX-HotBubble</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PeleLMeX-HotBubble.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PeleLMeX-HotBubble</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PeleLMeX-HotBubble.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PeleLMeX-HotBubble</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">PeleLMeX-HotBubble.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">PeleLMeX-HotBubble</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">PeleLMeX-HotBubble.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">PeleLMeX-HotBubble</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/Extern/SUNDIALS" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Mechanisms/air" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/C_scripts" /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\Submodules\PelePhysics\Submodules\amrex\Src\Debug\amrex_2d.lib;Debug\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.lib;..\..\..\bin\Debug\sundials_arkode.lib;..\..\..\bin\Debug\sundials_cvode.lib;..\..\..\bin\Debug\sundials_core.lib;C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/Debug/PeleLMeX-HotBubble.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/Debug/PeleLMeX-HotBubble.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/Extern/SUNDIALS" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Mechanisms/air" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/C_scripts" /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\Submodules\PelePhysics\Submodules\amrex\Src\Release\amrex_2d.lib;Release\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.lib;..\..\..\bin\Release\sundials_arkode.lib;..\..\..\bin\Release\sundials_cvode.lib;..\..\..\bin\Release\sundials_core.lib;C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/Release/PeleLMeX-HotBubble.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/Release/PeleLMeX-HotBubble.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/Extern/SUNDIALS" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Mechanisms/air" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/C_scripts" /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\Submodules\PelePhysics\Submodules\amrex\Src\MinSizeRel\amrex_2d.lib;MinSizeRel\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.lib;..\..\..\bin\MinSizeRel\sundials_arkode.lib;..\..\..\bin\MinSizeRel\sundials_cvode.lib;..\..\..\bin\MinSizeRel\sundials_core.lib;C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/MinSizeRel/PeleLMeX-HotBubble.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/MinSizeRel/PeleLMeX-HotBubble.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Src/Extern/SUNDIALS" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Mechanisms/air" /external:I "E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/amrex/Tools/C_scripts" /external:I "C:/Program Files (x86)/Microsoft SDKs/MPI/Include" /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_XOPEN_SOURCE;_USE_MATH_DEFINES;USE_CONSTANT_TRANSPORT;USE_FUEGO_EOS;AMREX_SPACEDIM=2;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Exec\RegTests\HotBubble;E:\PeleLMeX_Dev\Source;E:\PeleLMeX_Dev\buildHotBubble;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos;E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS;E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Base\Parser;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Boundary;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\AmrCore;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Amr;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\LinearSolvers\MLMG;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS;E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\C_scripts;C:\Program Files (x86)\Microsoft SDKs\MPI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\Submodules\PelePhysics\Submodules\amrex\Src\RelWithDebInfo\amrex_2d.lib;RelWithDebInfo\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.lib;..\..\..\bin\RelWithDebInfo\sundials_arkode.lib;..\..\..\bin\RelWithDebInfo\sundials_cvode.lib;..\..\..\bin\RelWithDebInfo\sundials_core.lib;C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/RelWithDebInfo/PeleLMeX-HotBubble.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/RelWithDebInfo/PeleLMeX-HotBubble.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/PeleLMeX_Dev/Exec/RegTests/HotBubble/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\PeleLMeX_Dev\CMake\BuildExeAndLib.cmake;E:\PeleLMeX_Dev\CMake\BuildPeleExe.cmake;E:\PeleLMeX_Dev\CMake\BuildPelePhysicsLib.cmake;E:\PeleLMeX_Dev\CMake\SetPeleCompileFlags.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXBuildInfo.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_buildInfo.cpp.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/PeleLMeX_Dev/Exec/RegTests/HotBubble/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\PeleLMeX_Dev\CMake\BuildExeAndLib.cmake;E:\PeleLMeX_Dev\CMake\BuildPeleExe.cmake;E:\PeleLMeX_Dev\CMake\BuildPelePhysicsLib.cmake;E:\PeleLMeX_Dev\CMake\SetPeleCompileFlags.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXBuildInfo.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_buildInfo.cpp.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/PeleLMeX_Dev/Exec/RegTests/HotBubble/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\PeleLMeX_Dev\CMake\BuildExeAndLib.cmake;E:\PeleLMeX_Dev\CMake\BuildPeleExe.cmake;E:\PeleLMeX_Dev\CMake\BuildPelePhysicsLib.cmake;E:\PeleLMeX_Dev\CMake\SetPeleCompileFlags.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXBuildInfo.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_buildInfo.cpp.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/PeleLMeX_Dev/Exec/RegTests/HotBubble/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Exec/RegTests/HotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\PeleLMeX_Dev\CMake\BuildExeAndLib.cmake;E:\PeleLMeX_Dev\CMake\BuildPeleExe.cmake;E:\PeleLMeX_Dev\CMake\BuildPelePhysicsLib.cmake;E:\PeleLMeX_Dev\CMake\SetPeleCompileFlags.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXBuildInfo.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXGenexHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReXTargetHelpers.cmake;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Tools\CMake\AMReX_buildInfo.cpp.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\pelelmex_prob.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\pelelmex_prob.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveUserDefined.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DiffusionOp.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DiffusionOp.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_FlowControllerData.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Advance.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Advection.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BC.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BCfill.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Data.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Derive.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Derive.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveFunc.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_DeriveFunc.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Diagnostics.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Diffusion.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_EB.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Eos.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Evaluate.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Evolve.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_FlowController.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Forces.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Init.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_ODEQty.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Plot.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Projection.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Reactions.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Regrid.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Setup.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Tagging.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BPatch.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_BPatch.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Temporals.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Timestep.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_TransportProp.cpp" />
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_UMac.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_UserKeys.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Utils.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Utils.cpp" />
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_Index.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_ProblemSpecificFunctions.H">
+    </None>
+    <None Include="E:\PeleLMeX_Dev\Source\PeleLMeX_K.H">
+    </None>
+    <ClCompile Include="E:\PeleLMeX_Dev\Source\main.cpp" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\turbinflow.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\TurbForcing.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\MersenneTwister.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagBase.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagConditional.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagFilter.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagFramePlane.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\DiagPDF.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\PltFileManager.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\BlackBoxFunction.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\PMFData.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_Sundials_Core.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_NVector_MultiFab.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\AMReX_SUNMemory.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\Transport.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\mechanism.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorArkode.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorBase.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvode.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeCustomLinSolver.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeJacobian.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodePreconditioner.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorCvodeUtils.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorNull.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorRK64.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.dir\$(Configuration)\ReactorUtils.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_utils.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_extrap_vel_to_faces.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_compute_edgestate_and_flux.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_enforce_inout_solvability.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_edge_state.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces_box.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_mol_extrap_vel_to_faces.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_edge_state_2D.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_extrap_vel_to_faces_2D.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_godunov_plm.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_bds_edge_state_2D.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_MacProjector.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.dir\$(Configuration)\hydro_NodalProjector.obj" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\ZERO_CHECK.vcxproj">
+      <Project>{6FD5441B-1549-3FD2-B7F4-22CE992941B5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.vcxproj">
+      <Project>{555E4BDE-6641-3035-9E1C-56F36D12D614}</Project>
+      <Name>PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\amrex_2d.vcxproj">
+      <Project>{BD851DE7-98FD-3D10-B1DF-88296074F269}</Project>
+      <Name>amrex_2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.vcxproj">
+      <Project>{B4D21926-F8D5-3BEF-BA76-3CF983017F9A}</Project>
+      <Name>amrex_hydro</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.vcxproj">
+      <Project>{4DC3C367-112B-3A89-9B57-7C6C494B3C1E}</Project>
+      <Name>buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_shared.vcxproj">
+      <Project>{32D8E156-F8E2-3564-A316-9B91F341F98D}</Project>
+      <Name>sundials_arkode_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_shared.vcxproj">
+      <Project>{BDCF3839-F35D-3228-B5E5-376918B1A775}</Project>
+      <Name>sundials_core_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\cvode\sundials_cvode_shared.vcxproj">
+      <Project>{1DD26561-DD93-355A-B107-086B75AFA4CB}</Project>
+      <Name>sundials_cvode_shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

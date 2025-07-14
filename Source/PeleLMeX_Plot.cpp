@@ -446,7 +446,7 @@ PeleLM::WritePlotFile()
       // interpolate turbulent viscosity from faces to centers
       amrex::ParallelFor(
         mf_plt[lev],
-        [plot_arr, AMREX_D_DECL(mut_arr_x, mut_arr_y, mut_arr_z),
+        [fact, plot_arr, AMREX_D_DECL(mut_arr_x, mut_arr_y, mut_arr_z),
          cnt] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept {
           plot_arr[box_no](i, j, k, cnt) =
             fact *

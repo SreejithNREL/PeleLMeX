@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow\turbinflow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing\TurbForcing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing\MersenneTwister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagConditional.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagFramePlane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagPDF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager\PltFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\BlackBoxFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF\PMFData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_Sundials_Core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_NVector_MultiFab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_SUNMemory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\Transport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air\mechanism.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorArkode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeCustomLinSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeJacobian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodePreconditioner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorNull.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorRK64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Exec\RegTests\HotBubble\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbInflow\turbinflow.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing\TurbForcing.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\TurbForcing\MersenneTwister.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagBase.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagConditional.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagFilter.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagFramePlane.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Diagnostics\DiagPDF.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager\PltFileManager.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PltFileManager\PltFileManagerBCFill.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\BlackBoxFunction.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\BlackBoxFunctionFactory.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\NeuralNetHomerolled.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\NeuralNetLayerDef.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\NeuralNetModelDef.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\BlackBoxFunction\Table.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF\PMF.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\PMF\PMFData.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities\Utilities.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Utility\Utilities\UnitConversions.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_Sundials.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_Sundials_Core.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_NVector_MultiFab.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\amrex\Src\Extern\SUNDIALS\AMReX_SUNMemory.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\Transport.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\TransportParams.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\TransportTypes.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\Constant.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\Simple.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Transport\Sutherland.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos\EOS.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos\GammaLaw.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos\Fuego.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Eos\SRK.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Mechanisms\air\mechanism.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorArkode.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorBase.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvode.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeCustomLinSolver.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeJacobian.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodePreconditioner.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorCvodeUtils.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorNull.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorRK64.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorTypes.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Source\Reactions\ReactorUtils.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6B2F8754-6C36-30EC-A116-0F1967D1A35E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

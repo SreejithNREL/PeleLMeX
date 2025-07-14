@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{219AD916-6C9B-3152-8755-53287E651EE1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/PeleLMeX_Dev/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;E:\PeleLMeX_Dev\CMake\PeleUtils.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexCompileFlags.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexHydroOptions.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexOptions.cmake;E:\PeleLMeX_Dev\CMake\SetSundialsOptions.cmake;E:\PeleLMeX_Dev\CTestConfig.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeCXXCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeRCCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/PeleLMeX_Dev/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;E:\PeleLMeX_Dev\CMake\PeleUtils.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexCompileFlags.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexHydroOptions.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexOptions.cmake;E:\PeleLMeX_Dev\CMake\SetSundialsOptions.cmake;E:\PeleLMeX_Dev\CTestConfig.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeCXXCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeRCCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/PeleLMeX_Dev/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;E:\PeleLMeX_Dev\CMake\PeleUtils.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexCompileFlags.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexHydroOptions.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexOptions.cmake;E:\PeleLMeX_Dev\CMake\SetSundialsOptions.cmake;E:\PeleLMeX_Dev\CTestConfig.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeCXXCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeRCCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/PeleLMeX_Dev/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.31\Modules\FindMPI.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;E:\PeleLMeX_Dev\CMake\PeleUtils.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexCompileFlags.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexHydroOptions.cmake;E:\PeleLMeX_Dev\CMake\SetAmrexOptions.cmake;E:\PeleLMeX_Dev\CMake\SetSundialsOptions.cmake;E:\PeleLMeX_Dev\CTestConfig.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeCXXCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeRCCompiler.cmake;E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\3.31.5\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\ZERO_CHECK.vcxproj">
+      <Project>{6FD5441B-1549-3FD2-B7F4-22CE992941B5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PeleLMeX-HotBubble.vcxproj">
+      <Project>{ACF3EB6A-93E1-39C5-A4E7-F9BC33FF75F0}</Project>
+      <Name>PeleLMeX-HotBubble</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.vcxproj">
+      <Project>{555E4BDE-6641-3035-9E1C-56F36D12D614}</Project>
+      <Name>PelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\amrex\Src\amrex_2d.vcxproj">
+      <Project>{BD851DE7-98FD-3D10-B1DF-88296074F269}</Project>
+      <Name>amrex_2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro.vcxproj">
+      <Project>{B4D21926-F8D5-3BEF-BA76-3CF983017F9A}</Project>
+      <Name>amrex_hydro</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\AMReX-Hydro\amrex_hydro_api.vcxproj">
+      <Project>{5211061C-329F-34FA-BE17-BA29F001D8CF}</Project>
+      <Name>amrex_hydro_api</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Exec\RegTests\HotBubble\buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF.vcxproj">
+      <Project>{4DC3C367-112B-3A89-9B57-7C6C494B3C1E}</Project>
+      <Name>buildInfoPelePhysicsLib-Fuego-air-Constant-SprayOFF-SootOFF-RadiationOFF</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.vcxproj">
+      <Project>{622255EF-526C-3A60-896D-96C10B3FD09D}</Project>
+      <Name>sundials_arkode_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_static.vcxproj">
+      <Project>{770B400A-532B-3EF8-BD81-24474809A1F6}</Project>
+      <Name>sundials_arkode_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_shared.vcxproj">
+      <Project>{32D8E156-F8E2-3564-A316-9B91F341F98D}</Project>
+      <Name>sundials_arkode_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_static.vcxproj">
+      <Project>{06F93A82-BF1B-3ADE-B849-3E6D305EE861}</Project>
+      <Name>sundials_arkode_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_obj_shared.vcxproj">
+      <Project>{D66026B8-CEDB-3CCF-AD07-9C1C3D08B232}</Project>
+      <Name>sundials_core_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_obj_static.vcxproj">
+      <Project>{6C2BE36A-6F14-3419-A4EB-AC84C4D6A666}</Project>
+      <Name>sundials_core_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_shared.vcxproj">
+      <Project>{BDCF3839-F35D-3228-B5E5-376918B1A775}</Project>
+      <Name>sundials_core_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_static.vcxproj">
+      <Project>{7A9E3402-05B6-32BF-8197-BE287E253D4D}</Project>
+      <Name>sundials_core_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\cvode\sundials_cvode_obj_shared.vcxproj">
+      <Project>{D38CD671-78B4-3553-B05A-D6B408F9126E}</Project>
+      <Name>sundials_cvode_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\cvode\sundials_cvode_obj_static.vcxproj">
+      <Project>{BC61B44E-B117-3718-AE33-6A5752F11EE3}</Project>
+      <Name>sundials_cvode_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\cvode\sundials_cvode_shared.vcxproj">
+      <Project>{1DD26561-DD93-355A-B107-086B75AFA4CB}</Project>
+      <Name>sundials_cvode_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\cvode\sundials_cvode_static.vcxproj">
+      <Project>{3C624AF6-FD82-3AE1-BB9C-F6BBB3A75342}</Project>
+      <Name>sundials_cvode_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\manyvector\sundials_nvecmanyvector_obj_shared.vcxproj">
+      <Project>{24D2B10E-5215-3BF7-BD08-561280C17BF2}</Project>
+      <Name>sundials_nvecmanyvector_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\manyvector\sundials_nvecmanyvector_obj_static.vcxproj">
+      <Project>{EF390BC0-4F2E-39EF-AFF9-EE90A8F84780}</Project>
+      <Name>sundials_nvecmanyvector_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\manyvector\sundials_nvecmanyvector_shared.vcxproj">
+      <Project>{BAA4BEF5-4603-3EEB-819F-D9607A23FCEC}</Project>
+      <Name>sundials_nvecmanyvector_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\manyvector\sundials_nvecmanyvector_static.vcxproj">
+      <Project>{A328BDFE-26B1-39E0-BBEA-5B313CB91563}</Project>
+      <Name>sundials_nvecmanyvector_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_obj_shared.vcxproj">
+      <Project>{1F0FE9DF-AA5A-3119-BABB-801CA8DD5DFE}</Project>
+      <Name>sundials_nvecserial_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_obj_static.vcxproj">
+      <Project>{EDBBC07B-BE36-3C08-B1AF-1A22F1739E34}</Project>
+      <Name>sundials_nvecserial_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_shared.vcxproj">
+      <Project>{E886561C-9156-3D8B-803C-449DD1FAF08C}</Project>
+      <Name>sundials_nvecserial_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_static.vcxproj">
+      <Project>{C5F083B3-7493-3A61-9281-1371034C99C3}</Project>
+      <Name>sundials_nvecserial_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\sundials_sunadaptcontrollerimexgus_obj_shared.vcxproj">
+      <Project>{6F6F7C41-9612-3AD8-BE7F-0F5D5C5AB6D4}</Project>
+      <Name>sundials_sunadaptcontrollerimexgus_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\sundials_sunadaptcontrollerimexgus_obj_static.vcxproj">
+      <Project>{CA6A8BC9-8AE0-36A4-8748-7773BE3B68F7}</Project>
+      <Name>sundials_sunadaptcontrollerimexgus_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\sundials_sunadaptcontrollermrihtol_obj_shared.vcxproj">
+      <Project>{B48C94CF-AAF0-353C-91C8-83E2B9C760F4}</Project>
+      <Name>sundials_sunadaptcontrollermrihtol_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\sundials_sunadaptcontrollermrihtol_obj_static.vcxproj">
+      <Project>{C9D10DBE-F32C-3C3A-B991-0336DAF0487B}</Project>
+      <Name>sundials_sunadaptcontrollermrihtol_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\sundials_sunadaptcontrollersoderlind_obj_shared.vcxproj">
+      <Project>{291F881B-2B10-3201-8A1D-BC61C162FF2D}</Project>
+      <Name>sundials_sunadaptcontrollersoderlind_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\sundials_sunadaptcontrollersoderlind_obj_static.vcxproj">
+      <Project>{3386AF51-8B80-33EE-B836-0FFEAC83BCBE}</Project>
+      <Name>sundials_sunadaptcontrollersoderlind_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_obj_shared.vcxproj">
+      <Project>{83F56FF0-7B99-3BBF-AA2F-516C656BF203}</Project>
+      <Name>sundials_sunlinsolband_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_obj_static.vcxproj">
+      <Project>{D01FEF08-0CA9-3C2A-A366-CF734EA3306E}</Project>
+      <Name>sundials_sunlinsolband_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_shared.vcxproj">
+      <Project>{B59BB847-8EDA-32E7-8263-84CE104C40BB}</Project>
+      <Name>sundials_sunlinsolband_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_static.vcxproj">
+      <Project>{7153A95E-DF9E-385E-BE8A-18A76C0008CB}</Project>
+      <Name>sundials_sunlinsolband_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_obj_shared.vcxproj">
+      <Project>{D4493E2D-7139-3F4D-9D22-8E4B8C73A35D}</Project>
+      <Name>sundials_sunlinsoldense_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_obj_static.vcxproj">
+      <Project>{3A824911-8DDB-3656-9688-431B1130ECF3}</Project>
+      <Name>sundials_sunlinsoldense_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_shared.vcxproj">
+      <Project>{2FC50017-172F-3B4F-B17E-14693580A1C6}</Project>
+      <Name>sundials_sunlinsoldense_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_static.vcxproj">
+      <Project>{C2785B2D-996A-3608-8192-0FF7D7DF59FC}</Project>
+      <Name>sundials_sunlinsoldense_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_obj_shared.vcxproj">
+      <Project>{5246C9D5-7C3D-3E4C-A29B-1AF8F35F8044}</Project>
+      <Name>sundials_sunlinsolpcg_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_obj_static.vcxproj">
+      <Project>{796C7B6B-8650-3A4C-9912-82FE19344337}</Project>
+      <Name>sundials_sunlinsolpcg_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_shared.vcxproj">
+      <Project>{CBD99773-E17D-373A-BF01-5FF41B1A5FE9}</Project>
+      <Name>sundials_sunlinsolpcg_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_static.vcxproj">
+      <Project>{F0DA6451-D6EC-34F4-803F-FB859A916639}</Project>
+      <Name>sundials_sunlinsolpcg_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_obj_shared.vcxproj">
+      <Project>{9BA57BAD-228B-3898-9EBA-349F00E33D0F}</Project>
+      <Name>sundials_sunlinsolspbcgs_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_obj_static.vcxproj">
+      <Project>{07D97099-38C8-381C-AC41-2BB470E725FD}</Project>
+      <Name>sundials_sunlinsolspbcgs_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_shared.vcxproj">
+      <Project>{948F1757-8486-322D-B221-BF8BD4B544BE}</Project>
+      <Name>sundials_sunlinsolspbcgs_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_static.vcxproj">
+      <Project>{C807AC72-BFC1-340C-89F3-66E4893F7B8E}</Project>
+      <Name>sundials_sunlinsolspbcgs_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_obj_shared.vcxproj">
+      <Project>{526C9E40-F332-30AD-80ED-F9A580FC3296}</Project>
+      <Name>sundials_sunlinsolspfgmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_obj_static.vcxproj">
+      <Project>{0110669E-A215-3709-ACF1-E87951E6D803}</Project>
+      <Name>sundials_sunlinsolspfgmr_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_shared.vcxproj">
+      <Project>{0C679764-A214-3762-A6BA-7E1EF564D435}</Project>
+      <Name>sundials_sunlinsolspfgmr_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_static.vcxproj">
+      <Project>{9EB72E08-9BB1-30C6-A6F4-FDF43505D3AF}</Project>
+      <Name>sundials_sunlinsolspfgmr_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_obj_shared.vcxproj">
+      <Project>{66751A50-E0CC-3F20-82CA-664AD4D75793}</Project>
+      <Name>sundials_sunlinsolspgmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_obj_static.vcxproj">
+      <Project>{61AD3194-4F61-368E-9462-934D3C665B4B}</Project>
+      <Name>sundials_sunlinsolspgmr_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_shared.vcxproj">
+      <Project>{063CDAF5-EF94-3BBA-B39B-412DE349FDAD}</Project>
+      <Name>sundials_sunlinsolspgmr_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_static.vcxproj">
+      <Project>{8E73AC3A-6247-362B-84C5-938EADC1392D}</Project>
+      <Name>sundials_sunlinsolspgmr_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_obj_shared.vcxproj">
+      <Project>{26419D2A-AC1F-39BF-9303-C25D855AAAF1}</Project>
+      <Name>sundials_sunlinsolsptfqmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_obj_static.vcxproj">
+      <Project>{305DE51D-68FF-33A2-B675-EEB5EEDB290F}</Project>
+      <Name>sundials_sunlinsolsptfqmr_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_shared.vcxproj">
+      <Project>{392F5F28-5873-380D-917A-340F11535E10}</Project>
+      <Name>sundials_sunlinsolsptfqmr_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_static.vcxproj">
+      <Project>{852A7B5A-33DD-3A19-9E4A-6365BB29E7FE}</Project>
+      <Name>sundials_sunlinsolsptfqmr_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_obj_shared.vcxproj">
+      <Project>{259EEE11-C539-3FD0-9287-753898F74CBA}</Project>
+      <Name>sundials_sunmatrixband_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_obj_static.vcxproj">
+      <Project>{69322CAA-C92A-36DB-B33E-3A5C4D3D4C28}</Project>
+      <Name>sundials_sunmatrixband_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_shared.vcxproj">
+      <Project>{05C68966-8FD6-367D-97F7-B2097EA6BD21}</Project>
+      <Name>sundials_sunmatrixband_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_static.vcxproj">
+      <Project>{56B2FB84-2C84-3E33-BD24-2AE517E4C825}</Project>
+      <Name>sundials_sunmatrixband_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_obj_shared.vcxproj">
+      <Project>{DB204860-9E27-3D00-A533-8C83E616CA25}</Project>
+      <Name>sundials_sunmatrixdense_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_obj_static.vcxproj">
+      <Project>{70B358CA-BBB8-324E-8059-CA9018AB4B38}</Project>
+      <Name>sundials_sunmatrixdense_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_shared.vcxproj">
+      <Project>{AF60C1F2-5F3A-3FC7-AF77-3EAF711E99C2}</Project>
+      <Name>sundials_sunmatrixdense_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_static.vcxproj">
+      <Project>{C13D001B-E079-3EDE-9520-1C6A1602FBD4}</Project>
+      <Name>sundials_sunmatrixdense_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_obj_shared.vcxproj">
+      <Project>{21CCE68C-DBB7-3E4E-BC31-52C88A3AA5EE}</Project>
+      <Name>sundials_sunmatrixsparse_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_obj_static.vcxproj">
+      <Project>{7FC6F717-28DC-3238-84A7-31E05643D7C6}</Project>
+      <Name>sundials_sunmatrixsparse_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_shared.vcxproj">
+      <Project>{528E017F-5431-3CA3-8015-8F58DE506A4D}</Project>
+      <Name>sundials_sunmatrixsparse_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_static.vcxproj">
+      <Project>{8C8F4E14-8A76-3B67-84AA-958999D2DD71}</Project>
+      <Name>sundials_sunmatrixsparse_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\sundials_sunmemsys_obj_shared.vcxproj">
+      <Project>{1DEC6E71-4306-3701-9E9D-C33BCA680D8F}</Project>
+      <Name>sundials_sunmemsys_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\sundials_sunmemsys_obj_static.vcxproj">
+      <Project>{755202C3-545F-3D9D-B033-28AAFDB875AE}</Project>
+      <Name>sundials_sunmemsys_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_obj_shared.vcxproj">
+      <Project>{8160838E-46D4-33CB-9582-9547C401BC36}</Project>
+      <Name>sundials_sunnonlinsolfixedpoint_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_obj_static.vcxproj">
+      <Project>{45413C47-CCFA-30A3-8C0C-C69309C2C059}</Project>
+      <Name>sundials_sunnonlinsolfixedpoint_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_shared.vcxproj">
+      <Project>{CCC27B21-5194-3D5D-BCD3-8B5EE02D34A3}</Project>
+      <Name>sundials_sunnonlinsolfixedpoint_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_static.vcxproj">
+      <Project>{66600D20-0673-35CB-BDA9-DD62E2326EAA}</Project>
+      <Name>sundials_sunnonlinsolfixedpoint_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_obj_shared.vcxproj">
+      <Project>{BF20A45F-3178-365B-BDD3-9CD2323A6ACC}</Project>
+      <Name>sundials_sunnonlinsolnewton_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_obj_static.vcxproj">
+      <Project>{C2DFFDBE-C903-3BAD-A07E-2644B8F3382D}</Project>
+      <Name>sundials_sunnonlinsolnewton_obj_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_shared.vcxproj">
+      <Project>{B8F8E422-33D6-3FEB-A0C0-F152F8B8FA23}</Project>
+      <Name>sundials_sunnonlinsolnewton_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_static.vcxproj">
+      <Project>{00A87BD2-2CCC-3538-B4BE-3A8842B14B21}</Project>
+      <Name>sundials_sunnonlinsolnewton_static</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

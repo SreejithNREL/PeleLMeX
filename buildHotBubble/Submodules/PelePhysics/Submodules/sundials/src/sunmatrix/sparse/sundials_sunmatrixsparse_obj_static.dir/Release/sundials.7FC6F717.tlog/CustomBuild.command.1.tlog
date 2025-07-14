@@ -1,0 +1,10 @@
+^E:\PELELMEX_DEV\SUBMODULES\PELEPHYSICS\SUBMODULES\SUNDIALS\SRC\SUNMATRIX\SPARSE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/src/sunmatrix/sparse/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

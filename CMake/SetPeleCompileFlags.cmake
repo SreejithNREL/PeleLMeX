@@ -1,4 +1,9 @@
-list(APPEND PELE_CXX_FLAGS "-Wall" "-Wextra" "-pedantic" "-Wno-unused-function")
+if (NOT MSVC)
+    list(APPEND PELE_CXX_FLAGS "-Wall" "-Wextra" "-pedantic" "-Wno-unused-function")
+else()
+    list(APPEND PELE_CXX_FLAGS  "-W4" "-D_XOPEN_SOURCE")
+endif()
+
 if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
   if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7.0)
     list(APPEND PELE_CXX_FLAGS "-faligned-new"

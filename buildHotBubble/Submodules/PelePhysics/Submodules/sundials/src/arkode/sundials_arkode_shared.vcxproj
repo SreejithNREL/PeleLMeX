@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{32D8E156-F8E2-3564-A316-9B91F341F98D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>sundials_arkode_shared</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sundials_arkode_shared.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sundials_arkode</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sundials_arkode_shared.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sundials_arkode</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">sundials_arkode_shared.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">sundials_arkode</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">sundials_arkode_shared.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">sundials_arkode</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\..\bin\Debug\sundials_core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/bin/Debug/sundials_arkode.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/bin/Debug/sundials_arkode.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\..\bin\Release\sundials_core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/bin/Release/sundials_arkode.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/bin/Release/sundials_arkode.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\..\bin\MinSizeRel\sundials_core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/bin/MinSizeRel/sundials_arkode.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/bin/MinSizeRel/sundials_arkode.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";sundials_arkode_shared_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\include;E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\sundials;E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\..\..\bin\RelWithDebInfo\sundials_core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/PeleLMeX_Dev/buildHotBubble/bin/RelWithDebInfo/sundials_arkode.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/PeleLMeX_Dev/buildHotBubble/bin/RelWithDebInfo/sundials_arkode.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/PeleLMeX_Dev/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/PeleLMeX_Dev -BE:/PeleLMeX_Dev/buildHotBubble --check-stamp-file E:/PeleLMeX_Dev/buildHotBubble/Submodules/PelePhysics/Submodules/sundials/src/arkode/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_adapt.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep_nls.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_arkstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_bandpre.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_bbdpre.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher_dirk.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher_erk.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_butcher.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_erkstep_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_erkstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_forcingstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_interp.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_ls.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_lsrkstep_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_lsrkstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mri_tables.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_controller.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep_nls.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_mristep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_relaxation.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_root.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_splittingstep_coefficients.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_splittingstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprkstep_io.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprkstep.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sprk.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_sunstepper.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode_user_controller.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.dir\$(Configuration)\arkode.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\sundials_sunmemsys_obj_shared.dir\$(Configuration)\sundials_system_memory.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_obj_shared.dir\$(Configuration)\nvector_serial.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\sundials_sunadaptcontrollersoderlind_obj_shared.dir\$(Configuration)\sunadaptcontroller_soderlind.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\sundials_sunadaptcontrollerimexgus_obj_shared.dir\$(Configuration)\sunadaptcontroller_imexgus.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\sundials_sunadaptcontrollermrihtol_obj_shared.dir\$(Configuration)\sunadaptcontroller_mrihtol.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_obj_shared.dir\$(Configuration)\sunmatrix_band.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_obj_shared.dir\$(Configuration)\sunmatrix_dense.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_obj_shared.dir\$(Configuration)\sunmatrix_sparse.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_obj_shared.dir\$(Configuration)\sunlinsol_band.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_obj_shared.dir\$(Configuration)\sunlinsol_dense.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_obj_shared.dir\$(Configuration)\sunlinsol_spbcgs.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_obj_shared.dir\$(Configuration)\sunlinsol_spfgmr.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_obj_shared.dir\$(Configuration)\sunlinsol_spgmr.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_obj_shared.dir\$(Configuration)\sunlinsol_sptfqmr.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_obj_shared.dir\$(Configuration)\sunlinsol_pcg.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_obj_shared.dir\$(Configuration)\sunnonlinsol_newton.obj" />
+    <Object Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_obj_shared.dir\$(Configuration)\sunnonlinsol_fixedpoint.obj" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\ZERO_CHECK.vcxproj">
+      <Project>{6FD5441B-1549-3FD2-B7F4-22CE992941B5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\sundials_arkode_obj_shared.vcxproj">
+      <Project>{622255EF-526C-3A60-896D-96C10B3FD09D}</Project>
+      <Name>sundials_arkode_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sundials\sundials_core_shared.vcxproj">
+      <Project>{BDCF3839-F35D-3228-B5E5-376918B1A775}</Project>
+      <Name>sundials_core_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\sundials_nvecserial_obj_shared.vcxproj">
+      <Project>{1F0FE9DF-AA5A-3119-BABB-801CA8DD5DFE}</Project>
+      <Name>sundials_nvecserial_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\sundials_sunadaptcontrollerimexgus_obj_shared.vcxproj">
+      <Project>{6F6F7C41-9612-3AD8-BE7F-0F5D5C5AB6D4}</Project>
+      <Name>sundials_sunadaptcontrollerimexgus_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\sundials_sunadaptcontrollermrihtol_obj_shared.vcxproj">
+      <Project>{B48C94CF-AAF0-353C-91C8-83E2B9C760F4}</Project>
+      <Name>sundials_sunadaptcontrollermrihtol_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\sundials_sunadaptcontrollersoderlind_obj_shared.vcxproj">
+      <Project>{291F881B-2B10-3201-8A1D-BC61C162FF2D}</Project>
+      <Name>sundials_sunadaptcontrollersoderlind_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\sundials_sunlinsolband_obj_shared.vcxproj">
+      <Project>{83F56FF0-7B99-3BBF-AA2F-516C656BF203}</Project>
+      <Name>sundials_sunlinsolband_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\sundials_sunlinsoldense_obj_shared.vcxproj">
+      <Project>{D4493E2D-7139-3F4D-9D22-8E4B8C73A35D}</Project>
+      <Name>sundials_sunlinsoldense_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\sundials_sunlinsolpcg_obj_shared.vcxproj">
+      <Project>{5246C9D5-7C3D-3E4C-A29B-1AF8F35F8044}</Project>
+      <Name>sundials_sunlinsolpcg_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\sundials_sunlinsolspbcgs_obj_shared.vcxproj">
+      <Project>{9BA57BAD-228B-3898-9EBA-349F00E33D0F}</Project>
+      <Name>sundials_sunlinsolspbcgs_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\sundials_sunlinsolspfgmr_obj_shared.vcxproj">
+      <Project>{526C9E40-F332-30AD-80ED-F9A580FC3296}</Project>
+      <Name>sundials_sunlinsolspfgmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\sundials_sunlinsolspgmr_obj_shared.vcxproj">
+      <Project>{66751A50-E0CC-3F20-82CA-664AD4D75793}</Project>
+      <Name>sundials_sunlinsolspgmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\sundials_sunlinsolsptfqmr_obj_shared.vcxproj">
+      <Project>{26419D2A-AC1F-39BF-9303-C25D855AAAF1}</Project>
+      <Name>sundials_sunlinsolsptfqmr_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\sundials_sunmatrixband_obj_shared.vcxproj">
+      <Project>{259EEE11-C539-3FD0-9287-753898F74CBA}</Project>
+      <Name>sundials_sunmatrixband_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\sundials_sunmatrixdense_obj_shared.vcxproj">
+      <Project>{DB204860-9E27-3D00-A533-8C83E616CA25}</Project>
+      <Name>sundials_sunmatrixdense_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\sundials_sunmatrixsparse_obj_shared.vcxproj">
+      <Project>{21CCE68C-DBB7-3E4E-BC31-52C88A3AA5EE}</Project>
+      <Name>sundials_sunmatrixsparse_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\sundials_sunmemsys_obj_shared.vcxproj">
+      <Project>{1DEC6E71-4306-3701-9E9D-C33BCA680D8F}</Project>
+      <Name>sundials_sunmemsys_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\sundials_sunnonlinsolfixedpoint_obj_shared.vcxproj">
+      <Project>{8160838E-46D4-33CB-9582-9547C401BC36}</Project>
+      <Name>sundials_sunnonlinsolfixedpoint_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\sundials_sunnonlinsolnewton_obj_shared.vcxproj">
+      <Project>{BF20A45F-3178-365B-BDD3-9CD2323A6ACC}</Project>
+      <Name>sundials_sunnonlinsolnewton_obj_shared</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

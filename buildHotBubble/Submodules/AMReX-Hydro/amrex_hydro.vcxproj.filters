@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_extrap_vel_to_faces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_compute_edgestate_and_flux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_enforce_inout_solvability.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL\hydro_mol_edge_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL\hydro_mol_extrap_vel_to_faces_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL\hydro_mol_extrap_vel_to_faces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov_edge_state_2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov_extrap_vel_to_faces_2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov_plm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS\hydro_bds_edge_state_2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections\hydro_MacProjector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections\hydro_NodalProjector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_utils.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_constants.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Utils\hydro_bcs_K.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL\hydro_mol.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\MOL\hydro_mol_edge_state_K.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov_plm.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Godunov\hydro_godunov_ppm.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\BDS\hydro_bds.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections\hydro_MacProjector.H" />
+    <None Include="E:\PeleLMeX_Dev\Submodules\AMReX-Hydro\Projections\hydro_NodalProjector.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6B2F8754-6C36-30EC-A116-0F1967D1A35E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\PeleLMeX_Dev\buildHotBubble\CMakeFiles\e86e96cee9419ccb413c299680ee9a72\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{84D3A49A-8AE2-325C-B16C-89DC8C890FBB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

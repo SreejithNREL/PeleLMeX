@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\bin\Release\sundials_core.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\arkode\x64\Release\fake_to_force_build_order_sundials_arkode_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\nvector\serial\x64\Release\fake_to_force_build_order_sundials_nvecserial_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\imexgus\x64\Release\fake_to_force_build_order_sundials_sunadaptcontrollerimexgus_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\mrihtol\x64\Release\fake_to_force_build_order_sundials_sunadaptcontrollermrihtol_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunadaptcontroller\soderlind\x64\Release\fake_to_force_build_order_sundials_sunadaptcontrollersoderlind_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\band\x64\Release\fake_to_force_build_order_sundials_sunmatrixband_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\bin\Release\sundials_sunmatrixband.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\band\x64\Release\fake_to_force_build_order_sundials_sunlinsolband_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\dense\x64\Release\fake_to_force_build_order_sundials_sunmatrixdense_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\bin\Release\sundials_sunmatrixdense.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\dense\x64\Release\fake_to_force_build_order_sundials_sunlinsoldense_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\pcg\x64\Release\fake_to_force_build_order_sundials_sunlinsolpcg_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spbcgs\x64\Release\fake_to_force_build_order_sundials_sunlinsolspbcgs_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spfgmr\x64\Release\fake_to_force_build_order_sundials_sunlinsolspfgmr_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\spgmr\x64\Release\fake_to_force_build_order_sundials_sunlinsolspgmr_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunlinsol\sptfqmr\x64\Release\fake_to_force_build_order_sundials_sunlinsolsptfqmr_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmatrix\sparse\x64\Release\fake_to_force_build_order_sundials_sunmatrixsparse_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunmemory\system\x64\Release\fake_to_force_build_order_sundials_sunmemsys_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\fixedpoint\x64\Release\fake_to_force_build_order_sundials_sunnonlinsolfixedpoint_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\Submodules\PelePhysics\Submodules\sundials\src\sunnonlinsol\newton\x64\Release\fake_to_force_build_order_sundials_sunnonlinsolnewton_obj_shared</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>E:\PeleLMeX_Dev\buildHotBubble\bin\Release\sundials_arkode.dll</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
