@@ -17,8 +17,8 @@ BPatch::BPatch(
   const std::string& patch_name,
   const amrex::Geometry& geom,
   pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>* eosparms_h,
-  const pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>*
-    eosparms_d)
+  const pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>* /*
+    eosparms_d*/)
   : m_patchname(std::move(patch_name))
 {
 
