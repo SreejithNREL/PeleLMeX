@@ -13,7 +13,10 @@ Trim_First_Last_Whitespace(const std::string& species_name)
   return species_name.substr(start, end - start + 1);
 }
 
-BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
+BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom,
+	       pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>* eosparms_h,
+	         const pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>*
+	           eosparms_d)
   : m_patchname(std::move(patch_name))
 {
 
@@ -168,7 +171,14 @@ BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
 
   amrex::Vector<std::string> tmp_species_only;
   amrex::Vector<std::string> names;
-  pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(names);
+  amrex::Vector<std::string> mani_param_names;
+  pele::physics::eos::speciesNames<pele::physics::PhysicsType::eos_type>(names,eosparms_h);
+
+//If using manifold model, get all the manifold parameters
+#if USE_MANIFOLD_EOS
+    pele::physics::eos::chemSpeciesNames<pele::physics::PhysicsType::eos_type>(mani_param_names,eosparms_h);
+#endif
+
 
   // Check if there are unpaired open or closing braces in group definitions.
   for (const auto& s : speciesList) {
@@ -263,9 +273,32 @@ BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
 
   // Now we collected all the species for which we need to find flux. Now let us
   // check if all the species in tmp_species_only exist in the mechanism
+
+
   for (const auto& s : tmp_species_only) {
-    auto it = std::find(names.begin(), names.end(), s);
-    if (it == names.end()) {
+      amrex::Print()<<"\n Checking species "<<s;
+      bool found_transspecies = true;
+      //check if species s exist as a transported species
+            auto itt = std::find(names.begin(), names.end(), s);
+            if (itt == names.end()) found_transspecies= false;
+
+            amrex::Print()<<"\nfound_transspecies = "<<found_transspecies;
+
+
+#if USE_MANIFOLD_EOS
+            bool found_manispecies = true;
+            //check if species s exist as a manifold species
+                  auto itm = std::find(mani_param_names.begin(), mani_param_names.end(), s);
+                  if (itm == mani_param_names.end()) found_manispecies= false;
+                  amrex::Print()<<"\n found_manispecies = "<<found_manispecies;
+#endif
+
+                  if(!(found_transspecies
+#if USE_MANIFOLD_EOS
+                      || found_manispecies
+#endif
+		      ))
+      {
       std::string msg = "\nError! Unable to find species " + s +
                         " in the mechanism. Please correct the bpatch species "
                         "list in the patch " +
@@ -278,10 +311,12 @@ BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
   // species
   m_bpdata_h.num_species = static_cast<int>(tmp_species_only.size());
 
-  // Now allocate memory for speciesIndex and speciesFlux
+  // Now allocate memory for speciesIndex, isSpeciesManifold and speciesFlux
   if (m_bpdata_h.num_species > 0) {
     m_bpdata_h.speciesIndex = (int*)amrex::The_Pinned_Arena()->alloc(
       m_bpdata_h.num_species * sizeof(int));
+    m_bpdata_h.isSpeciesManifold = (bool*)amrex::The_Pinned_Arena()->alloc(
+      m_bpdata_h.num_species * sizeof(bool));
     m_bpdata_h.speciesFlux = (amrex::Real*)amrex::The_Pinned_Arena()->alloc(
       m_bpdata_h.num_species * sizeof(amrex::Real));
     m_host_allocated = true;
@@ -294,13 +329,25 @@ BPatch::BPatch(const std::string& patch_name, const amrex::Geometry& geom)
     m_bpdata_h.speciesIndex[n] = -1;
   }
 
+  // Initialise with 0
+  for (int n = 0; n < m_bpdata_h.num_species; n++) {
+    m_bpdata_h.isSpeciesManifold[n] = 0;
+  }
+
   // Now fill speciesIndex
   for (int n = 0; n < tmp_species_only.size(); n++) {
     auto it = std::find(names.begin(), names.end(), tmp_species_only[n]);
+    auto itm = std::find(mani_param_names.begin(), mani_param_names.end(), tmp_species_only[n]);
     if (it != names.end()) {
       size_t index = std::distance(names.begin(), it);
       m_bpdata_h.speciesIndex[n] = static_cast<int>(index);
     }
+    else	//should be manifold species
+      {
+	size_t index = std::distance(mani_param_names.begin(), itm);
+	m_bpdata_h.speciesIndex[n] = static_cast<int>(index);
+	m_bpdata_h.isSpeciesManifold[n] = 1;
+      }
   }
 
   // Check if there is -1. There shouldn't be any

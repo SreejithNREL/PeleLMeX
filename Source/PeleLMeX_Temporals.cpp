@@ -223,6 +223,97 @@ PeleLM::addMassFluxes(
   }
 }
 
+/*
+void
+PeleLM::addManifoldChemSpeciesFluxes(const amrex::Geometry& a_geom,const std::unique_ptr<AdvanceAdvData>& advData)
+{
+
+  // Do when m_nstep is -1 since m_nstep is increased by one before
+  // the writeTemporals
+  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
+    return;
+  }
+
+  // Get the face areas
+
+  const amrex::Real* dx = a_geom.CellSize();
+  amrex::Array<amrex::Real, AMREX_SPACEDIM> area;
+#if (AMREX_SPACEDIM == 1)
+  area[0] = 1.0;
+#elif (AMREX_SPACEDIM == 2)
+  if (geom[0].IsRZ() && m_bPatches.size() > 0) {
+    amrex::Abort("Bpatches not supported in RZ coordinates");
+  }
+  area[0] = dx[1];
+  area[1] = dx[0];
+#else
+  area[0] = dx[1] * dx[2];
+  area[1] = dx[0] * dx[2];
+  area[2] = dx[0] * dx[1];
+#endif
+
+  // Loop through all patches
+  for (const auto& m_bPatche : m_bPatches) {
+
+    BPatch* patch = m_bPatche.get();
+    BPatch::BpatchDataContainer const* bpdevice = patch->getDeviceData();
+    BPatch::BpatchDataContainer const* bphost = patch->getHostDataPtr();
+    const int idim = bphost->m_boundary_dir;
+
+    auto faceDomain =
+      amrex::convert(a_geom.Domain(), amrex::IntVect::TheDimensionVector(idim));
+
+    auto const& fma_umac = advData->umac[lev][idim].const_arrays();
+
+    // Loop through species specified by user
+    for (int m = 0; m < bphost->num_species; ++m) {
+
+      amrex::Real sum_species_flux_global = 0.0;
+
+      {
+        auto r = amrex::ParReduce(
+          amrex::TypeList<amrex::ReduceOpSum, amrex::ReduceOpSum>{},
+          amrex::TypeList<amrex::Real, amrex::Real>{}, *a_fluxes[idim],
+          amrex::IntVect(0),
+          [fma, bpdevice, faceDomain, idim, prob_lo, dx, m,
+           area] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept
+            -> amrex::GpuTuple<amrex::Real, amrex::Real> {
+            amrex::Array4<const amrex::Real> const& flux = fma[box_no];
+            int idx =
+              (bpdevice->m_boundary_dir == 0
+                 ? i
+                 : (bpdevice->m_boundary_dir == 1 ? j : k));
+            int idx_lo_hi =
+              (bpdevice->m_boundary_lo_hi == 0 ? faceDomain.smallEnd(idim)
+                                               : faceDomain.bigEnd(idim));
+
+            amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point_coordinates{
+              AMREX_D_DECL(
+                prob_lo[0] + (i + 0.5_rt) * dx[0],
+                prob_lo[1] + (j + 0.5_rt) * dx[1],
+                prob_lo[2] + (k + 0.5_rt) * dx[2])};
+
+            amrex::Real sum_species_flux = 0.0;
+            amrex::Real dummy = 0.0;
+            const bool ifinside =
+              bpdevice->CheckifPointInside(point_coordinates, dx[0]);
+
+            if (idx == idx_lo_hi and ifinside) {
+              int species_idx = bpdevice->speciesIndex[m];
+              sum_species_flux += flux(i, j, k, species_idx) * area[idim];
+            }
+            return {sum_species_flux, dummy};
+          });
+        sum_species_flux_global = amrex::get<0>(r);
+
+        amrex::ParallelAllReduce::Sum<amrex::Real>(
+          {sum_species_flux_global}, amrex::ParallelContext::CommunicatorSub());
+        bphost->speciesFlux[m] = a_factor * sum_species_flux_global;
+      }
+    }
+  }
+}*/
+
 void
 PeleLM::addUmacFluxes(
   const std::unique_ptr<AdvanceAdvData>& advData, const amrex::Geometry& a_geom)
@@ -437,108 +528,7 @@ PeleLM::addRhoHFluxes(
   }
 }
 
-void
-PeleLM::addManifoldChemSpeciesFluxes(const amrex::Geometry& a_geom)
-{
 
-  // Do when m_nstep is -1 since m_nstep is increased by one before
-  // the writeTemporals
-  if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
-    return;
-  }
-
-  // Get the face areas
-  const amrex::Real* dx = a_geom.CellSize();
-  amrex::Array<amrex::Real, AMREX_SPACEDIM> area;
-#if (AMREX_SPACEDIM == 1)
-  area[0] = 1.0;
-#elif (AMREX_SPACEDIM == 2)
-  area[0] = dx[1];
-  area[1] = dx[0];
-#else
-  area[0] = dx[1] * dx[2];
-  area[1] = dx[0] * dx[2];
-  area[2] = dx[0] * dx[1];
-#endif
-
-  // Outer loop over species
-  for (int n = 0; n < NUM_SPECIES; ++n) {
-    // Inner loop over dimensions
-    for (int idim = 0; idim < AMREX_SPACEDIM; ++idim) {
-      auto faceDomain = amrex::convert(
-        a_geom.Domain(), amrex::IntVect::TheDimensionVector(idim));
-
-      auto const& fma = a_fluxes[idim]->const_arrays();
-
-      amrex::Real sumLo = 0.0;
-      amrex::Real sumHi = 0.0;
-
-#if (AMREX_SPACEDIM == 2)
-      if (geom[0].IsRZ()) {
-        amrex::MultiFab mf_a;
-        geom[0].GetFaceArea(mf_a, grids[0], dmap[0], idim, 0);
-        auto const& ama = mf_a.const_arrays();
-        auto r = amrex::ParReduce(
-          amrex::TypeList<amrex::ReduceOpSum, amrex::ReduceOpSum>{},
-          amrex::TypeList<amrex::Real, amrex::Real>{}, *a_fluxes[idim],
-          amrex::IntVect(0),
-          [fma, ama, idim, faceDomain, n] AMREX_GPU_DEVICE(
-            int box_no, int i, int j,
-            int k) noexcept -> amrex::GpuTuple<amrex::Real, amrex::Real> {
-            amrex::Array4<const amrex::Real> const& flux = fma[box_no];
-            amrex::Array4<const amrex::Real> const& area_ar = ama[box_no];
-
-            int idx = (idim == 0) ? i : ((idim == 1) ? j : k);
-            // low
-            amrex::Real low = 0.0;
-            if (idx == faceDomain.smallEnd(idim)) {
-              low += flux(i, j, k, n) * area_ar(i, j, k);
-            }
-            // high
-            amrex::Real high = 0.0;
-            if (idx == faceDomain.bigEnd(idim)) {
-              high += flux(i, j, k, n) * area_ar(i, j, k);
-            }
-            return {low, high};
-          });
-        sumLo = amrex::get<0>(r);
-        sumHi = amrex::get<1>(r);
-      } else
-#endif
-      {
-        auto r = amrex::ParReduce(
-          amrex::TypeList<amrex::ReduceOpSum, amrex::ReduceOpSum>{},
-          amrex::TypeList<amrex::Real, amrex::Real>{}, *a_fluxes[idim],
-          amrex::IntVect(0),
-          [fma, idim, faceDomain, area, n] AMREX_GPU_DEVICE(
-            int box_no, int i, int j,
-            int k) noexcept -> amrex::GpuTuple<amrex::Real, amrex::Real> {
-            amrex::Array4<const amrex::Real> const& flux = fma[box_no];
-
-            int idx = (idim == 0) ? i : ((idim == 1) ? j : k);
-            // low
-            amrex::Real low = 0.0;
-            if (idx == faceDomain.smallEnd(idim)) {
-              low += flux(i, j, k, n) * area[idim];
-            }
-            // high
-            amrex::Real high = 0.0;
-            if (idx == faceDomain.bigEnd(idim)) {
-              high += flux(i, j, k, n) * area[idim];
-            }
-            return {low, high};
-          });
-        sumLo = amrex::get<0>(r);
-        sumHi = amrex::get<1>(r);
-      }
-      amrex::ParallelAllReduce::Sum<amrex::Real>(
-        {sumLo, sumHi}, amrex::ParallelContext::CommunicatorSub());
-      m_domainRhoYFlux[2 * idim + n * 2 * AMREX_SPACEDIM] += a_factor * sumLo;
-      m_domainRhoYFlux[2 * idim + n * 2 * AMREX_SPACEDIM + 1] -=
-        a_factor * sumHi; // Outflow, negate flux
-    }
-  }
-}
 
 void
 PeleLM::addRhoYFluxes(
@@ -662,7 +652,7 @@ PeleLM::initBPatches(const amrex::Geometry& a_geom)
   }
   for (int n = 0; n < num_bPatches; ++n) {
     pp.get("patchnames", bpatch_name[n], n);
-    m_bPatches[n] = std::make_unique<BPatch>(bpatch_name[n], a_geom);
+    m_bPatches[n] = std::make_unique<BPatch>(bpatch_name[n], a_geom, &eos_parms.host_parm(), eos_parms.device_parm());
     if (m_verbose > 0) {
       amrex::Print() << " Initializing boundary patch: " << bpatch_name[n]
                      << "\n";
@@ -673,8 +663,10 @@ PeleLM::initBPatches(const amrex::Geometry& a_geom)
 void
 PeleLM::addRhoYFluxesPatch(
   const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+  const std::unique_ptr<AdvanceAdvData>& advData,
   const amrex::Geometry& a_geom,
-  const amrex::Real& a_factor)
+  const amrex::Real& a_factor
+  )
 {
 
   if (!(m_nstep % m_temp_int == m_temp_int - 1)) {
@@ -699,6 +691,9 @@ PeleLM::addRhoYFluxesPatch(
   area[2] = dx[0] * dx[1];
 #endif
 
+  const int lev=0;
+  auto* ldata_p = getLevelDataPtr(lev, AmrOldTime);
+  auto const& state_ma = ldata_p->state.const_arrays();
   // Loop through all patches
   for (const auto& m_bPatche : m_bPatches) {
 
@@ -716,6 +711,8 @@ PeleLM::addRhoYFluxesPatch(
 
       amrex::Real sum_species_flux_global = 0.0;
 
+      //if transported species
+      if(!bpdevice->isSpeciesManifold[m])
       {
         auto r = amrex::ParReduce(
           amrex::TypeList<amrex::ReduceOpSum, amrex::ReduceOpSum>{},
@@ -756,6 +753,69 @@ PeleLM::addRhoYFluxesPatch(
           {sum_species_flux_global}, amrex::ParallelContext::CommunicatorSub());
         bphost->speciesFlux[m] = a_factor * sum_species_flux_global;
       }
+      else	//should be manifold params
+	{
+	  auto* adv = advData.get();
+
+
+	        auto r = amrex::ParReduce(
+	          amrex::TypeList<amrex::ReduceOpSum, amrex::ReduceOpSum>{},
+	          amrex::TypeList<amrex::Real, amrex::Real>{}, advData->umac[lev][idim],
+	          amrex::IntVect(0),
+	          [fma, state_ma, adv, bpdevice, faceDomain, idim, prob_lo, dx, m,
+	           area] AMREX_GPU_DEVICE(int box_no, int i, int j, int k) noexcept
+	            -> amrex::GpuTuple<amrex::Real, amrex::Real> {
+	            amrex::Array4<const amrex::Real> const& flux = fma[box_no];
+	            auto const& umac = adv->umac[0][idim].const_arrays();
+	            auto const& umac_arr = umac[box_no];
+	            amrex::Real un = umac_arr(i,j,k);
+	            amrex::Array4<const amrex::Real> rho(state_ma[box_no], DENSITY);
+
+
+	            int idx =
+	              (bpdevice->m_boundary_dir == 0
+	                 ? i
+	                 : (bpdevice->m_boundary_dir == 1 ? j : k));
+	            int idx_lo_hi =
+	              (bpdevice->m_boundary_lo_hi == 0 ? faceDomain.smallEnd(idim)
+	                                               : faceDomain.bigEnd(idim));
+
+	            amrex::GpuArray<amrex::Real, AMREX_SPACEDIM> point_coordinates{
+	              AMREX_D_DECL(
+	                prob_lo[0] + (i + 0.5_rt) * dx[0],
+	                prob_lo[1] + (j + 0.5_rt) * dx[1],
+	                prob_lo[2] + (k + 0.5_rt) * dx[2])};
+
+	            amrex::Real sum_species_flux = 0.0;
+	            amrex::Real dummy = 0.0;
+	            const bool ifinside =
+	              bpdevice->CheckifPointInside(point_coordinates, dx[0]);
+
+	            if (idx == idx_lo_hi and ifinside) {
+	              int species_idx = bpdevice->speciesIndex[m];
+	              amrex::GpuArray<amrex::Real, NUM_SPECIES> mass_frac;
+
+	              //loop through transported vars
+	              for (int n = 0; n < NUM_SPECIES; ++n)
+	        	{
+	        	  mass_frac[n] = flux(i,j,k,n)/(rho(i,j,k)*un+1e-12);		//I should somehow get the FC/CC density to compute manifold transported variables
+
+	                    }
+	              //Now lookup species_idx in the table
+	              eos.Y2ChemSpecies(mass_frac.data(), spray->indx[n], tempval);
+
+	              sum_species_flux += un * area[idim];
+
+	            }
+	            return {sum_species_flux, dummy};
+	          });
+	        sum_species_flux_global = amrex::get<0>(r);
+
+	        amrex::ParallelAllReduce::Sum<amrex::Real>(
+	          {sum_species_flux_global}, amrex::ParallelContext::CommunicatorSub());
+	        bphost->speciesFlux[m] = a_factor * sum_species_flux_global;
+
+	}
     }
   }
 }

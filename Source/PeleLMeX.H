@@ -1056,11 +1056,14 @@ public:
     const amrex::Real& a_factor = 1.0);
   void addRhoYFluxesPatch(
     const amrex::Array<const amrex::MultiFab*, AMREX_SPACEDIM>& a_fluxes,
+    const std::unique_ptr<AdvanceAdvData>& advData,
     const amrex::Geometry& a_geom,
-    const amrex::Real& a_factor = 1.0);
+    const amrex::Real& a_factor = 1.0
+    );
   void addUmacFluxes(
     const std::unique_ptr<AdvanceAdvData>& advData,
     const amrex::Geometry& a_geom);
+  void addManifoldChemSpeciesFluxes(const amrex::Geometry& a_geom,const std::unique_ptr<AdvanceAdvData>& advData);
   void openTempFile();
   void closeTempFile();
   bool doTemporalsNow() const;

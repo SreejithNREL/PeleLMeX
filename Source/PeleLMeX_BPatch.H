@@ -13,7 +13,9 @@ public:
   BPatch() = default;
   ~BPatch() = default;
 
-  BPatch(const std::string& patch_name, const amrex::Geometry& geom);
+  BPatch(const std::string& patch_name, const amrex::Geometry& geom,pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>* eosparms_h,
+	  const pele::physics::eos::EosParm<pele::physics::PhysicsType::eos_type>*
+	    eosparms_d);
 
   struct BpatchDataContainer
   {
@@ -23,6 +25,7 @@ public:
     int num_groups = 0;
     int m_patchtype_num;
     int* speciesIndex = nullptr;
+    bool* isSpeciesManifold = nullptr;
     amrex::Real* speciesFlux = nullptr;
 
     // In 2D, a boundary patch is a line
