@@ -802,7 +802,7 @@ PeleLM::addRhoYFluxesPatch(
 
 	                    }
 	              //Now lookup species_idx in the table
-	              eos.Y2ChemSpecies(mass_frac.data(), spray->indx[n], tempval);
+	              //eos.Y2ChemSpecies(mass_frac.data(), spray->indx[n], tempval);
 
 	              sum_species_flux += un * area[idim];
 
