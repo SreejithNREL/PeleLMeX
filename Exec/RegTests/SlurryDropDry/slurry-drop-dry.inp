@@ -1,0 +1,106 @@
+#----------------------DOMAIN DEFINITION------------------------
+geometry.is_periodic = 0 1 1
+geometry.coord_sys   = 0                 # 0 => cart, 1 => RZ
+geometry.prob_lo = 0.0 0.0 0.0
+geometry.prob_hi = 1.0 1.0 1.0
+
+#--------------------------BC FLAGS------------------------------
+# Interior, Inflow, Outflow, Symmetry,
+# SlipWallAdiab, NoSlipWallAdiab, SlipWallIsotherm, NoSlipWallIsotherm
+peleLM.lo_bc = Inflow Interior Interior
+peleLM.hi_bc = Outflow Interior Interior
+
+#-------------------------AMR CONTROL----------------------------
+amr.n_cell = 32 32 32
+amr.v               = 1                # AMR verbose
+amr.max_level       = 0                # maximum level number allowed
+amr.blocking_factor = 16               # block factor in grid generation
+amr.max_grid_size   = 64               # max box size
+
+#--------------------------Problem--------------------------------
+# Quiescent air at 101 C = 374.15 K, 0.4% relative humidity.
+# The parcel is held fixed and the 1.73 m/s relative velocity is imposed
+# by blowing the gas past it.
+prob.P_mean = 101325.0
+prob.init_redist   = -1
+prob.T0_gas = 374.15
+prob.RH = 0.004
+prob.vel_gas = 1.73
+prob.O2_gas = 0.233
+prob.N2_gas = 0.767
+
+# Single parcel. Initial radius 980 micron -> diameter 1.96e-3 m.
+# Initial droplet temperature 29.8 C = 302.95 K.
+prob.num_particles = (1, 1, 1)
+prob.part_temp = 302.95
+prob.part_dia = 0.00196
+prob.part_vel = 0.0 0.0 0.0
+
+#------------------------PeleLM CONTROL-----------------------------
+peleLM.v = 1
+peleLM.deltaT_verbose = 2
+peleLM.deltaT_iterMax = 50
+
+peleLM.do_temporals = 0
+peleLM.num_init_iter = 0
+
+#------------------------TIME STEPPING------------------------------
+#amr.max_step = 1
+amr.stop_time = 90
+amr.fixed_dt = 0.01
+
+#--------------------------IO CONTROL-------------------------------
+# Every 10th step (0.1 s) a plot file is written; particles.write_ascii_files
+# makes SprayIO drop a companion spray<nnnnn>.p3d ASCII dump of the full parcel
+# state next to it, which is what the trajectory is extracted from. Plot file
+# contents are kept minimal because 900 of them get written.
+amr.plot_file = "plt"
+amr.plot_int = 10
+amr.plot_speciesState = 0
+amr.plot_grad_p = 0
+
+# -----------------------LINEAR SOLVERS-----------------------------
+mac_proj.verbose = 0
+nodal_proj.verbose = 0
+diffusion.verbose = 0
+diffusion.rtol = 1.0e-12
+
+# ------------------INPUTS TO CHEMISTRY REACTOR---------------------
+peleLM.chem_integrator = "ReactorNull"
+
+#--------------------SPRAY PARTICLE DATA-----------------------
+peleLM.do_spray_particles = 1
+particles.derive_plot_vars = 1
+particles.write_ascii_files = 1
+particles.v             = 0
+particles.cfl           = 1.
+particles.fixed_parts   = 1
+particles.mom_transfer  = 1
+particles.mass_transfer = 1
+
+#--------------------SLURRY DRYING MODEL-----------------------
+# Only read when the executable is built with SPRAY_DRYING = TRUE.
+# Values below reproduce Inputs/Silica_101/inputs.h of the reference code
+# (Bi-Component-Droplet-Evaporation, "Non-Uniform Temperature Model").
+particles.drying_Rp_0    = 980.e-6      # initial droplet radius [m]
+particles.drying_Td_0    = 302.95       # initial droplet temperature [K] (29.8 C)
+particles.drying_X0      = 2.33         # initial moisture content m_w/m_s [kg/kg]
+particles.drying_rho_l   = 1000.0       # solvent (water) density [kg/m^3]
+particles.drying_rho_s   = 1800.0       # solute (silica) density [kg/m^3]
+particles.drying_Rs_0    = 16.e-9       # primary particle radius [m]
+particles.drying_eps     = 0.4          # crust porosity
+particles.drying_d_pore  = 1.369e-5     # crust pore diameter [m]
+particles.drying_Dsl     = 1.0e-7       # solute diffusivity [m^2/s]
+particles.drying_numr    = 20           # radial points, stage 1 (<= SPRAY_DRYING_NR)
+particles.drying_numr_cr = 5            # radial points in the crust
+particles.drying_numr_wc = 20           # radial points in the wet core
+# Sub-stage timestep ladder of the drying kernel [s]
+particles.drying_fdt     = 1.e-3
+particles.drying_sidt    = 1.e-10
+particles.drying_smdt    = 1.e-9
+particles.drying_sldt    = 1.e-6
+# Prescribed slip velocity. The reference experiment suspends the droplet in a
+# 1.73 m/s stream; set to a negative value to use the live |u_gas - u_parcel|.
+particles.drying_V_rel   = 1.73
+
+FILE = sprayPropsMP_water.inp

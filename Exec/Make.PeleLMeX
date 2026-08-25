@@ -57,6 +57,13 @@ ifeq ($(USE_PARTICLES), TRUE)
       ifeq ($(SPRAY_GCM), TRUE)
          DEFINES += -DPELE_SPRAY_GCM=$(SPRAY_GCM)
       endif
+      # Optional slurry drying parcel model
+      ifeq ($(SPRAY_DRYING), TRUE)
+         DEFINES += -DPELE_SPRAY_DRYING=$(SPRAY_DRYING)
+         # Number of radial nodes in the internal droplet profiles
+         SPRAY_DRYING_NR ?= 10
+         DEFINES += -DPELE_SPRAY_DRYING_NR=$(SPRAY_DRYING_NR)
+      endif
    endif
 endif
 ifeq ($(USE_SOOT), TRUE)
