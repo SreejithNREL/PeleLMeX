@@ -299,6 +299,7 @@ BPatch::BPatch(
   // Initialise with -1
   for (int n = 0; n < m_bpdata_h.num_species; n++) {
     m_bpdata_h.speciesIndex[n] = -1;
+    m_bpdata_h.speciesFlux[n] = 0.0; // Initialise flux to 0.0
   }
 
   // Now fill speciesIndex
