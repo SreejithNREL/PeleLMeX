@@ -2,6 +2,10 @@
 #include <PeleLMeX_BPatch.H>
 #include <AMReX_REAL.H>
 
+#ifdef PELE_USE_SPRAY
+#include "SprayParticles.H"
+#endif
+
 using namespace amrex::literals;
 
 void
@@ -37,6 +41,18 @@ PeleLM::initTemporals(const PeleLM::TimeStamp a_time)
       }
     }
   }
+#ifdef PELE_USE_SPRAY
+  if (m_do_sprayBalance != 0) {
+    m_sprayInjOld.resize(SprayPC->numJets());
+    for (int j = 0; j < SprayPC->numJets(); ++j) {
+      m_sprayInjOld[j] = SprayPC->getJetTotalInjMass(j); // all ranks
+    }
+    amrex::Real nparc_dummy = 0.0;
+    SprayPC->liquidMass(m_sprayMassOld, m_sprayFilmOld, nparc_dummy);
+    amrex::Real lost_m = 0.0, lost_n = 0.0;
+    SprayPC->getAndResetBndryLoss(lost_m, lost_n); // discard: opens the window
+  }
+#endif
 }
 
 void
@@ -81,6 +97,51 @@ PeleLM::speciesBalancePatch()
   tmppatchmfrFile << "\n";
   tmppatchmfrFile.flush();
 }
+
+#ifdef PELE_USE_SPRAY
+void
+PeleLM::sprayBalance()
+{
+  // ---- collective section: every rank ----
+  amrex::Real m_liq = 0.0, m_film = 0.0, nparc = 0.0;
+  SprayPC->liquidMass(m_liq, m_film, nparc);
+
+  amrex::Real m_out = 0.0, n_out = 0.0;
+  SprayPC->getAndResetBndryLoss(m_out, n_out);
+
+  const int njets = SprayPC->numJets();
+  amrex::Vector<amrex::Real> minj(njets, 0.0);
+  amrex::Real dm_inj = 0.0;
+  for (int j = 0; j < njets; ++j) {
+    minj[j] = SprayPC->getJetTotalInjMass(j);
+    if (j < static_cast<int>(m_sprayInjOld.size())) {
+      dm_inj += minj[j] - m_sprayInjOld[j];
+    }
+  }
+
+  amrex::Real mdot_evap = 0.0;
+  if (!m_spraysource.empty() && m_spraysource[0] != nullptr) {
+    const SprayComps scomps = SprayParticleContainer::getSprayComps();
+    mdot_evap = MFSum(GetVecOfConstPtrs(m_spraysource), scomps.rhoSrcIndx);
+  }
+  const amrex::Real m_evap = mdot_evap * m_dt;
+  const amrex::Real dm = (m_liq + m_film) - (m_sprayMassOld + m_sprayFilmOld);
+  const amrex::Real residual = dm - (dm_inj - m_evap - m_out);
+
+  // ---- write: I/O rank only ----
+  if (amrex::ParallelDescriptor::IOProcessor()) {
+    tmpSprayFile << m_nstep << "," << m_cur_time << "," << m_dt << "," << nparc
+                 << "," << m_liq << "," << m_film << "," << dm << "," << dm_inj
+                 << "," << mdot_evap << "," << m_evap << "," << m_out << ","
+                 << n_out << "," << residual;
+    for (int j = 0; j < njets; ++j) {
+      tmpSprayFile << "," << minj[j];
+    }
+    tmpSprayFile << "\n";
+    tmpSprayFile.flush();
+  }
+}
+#endif
 
 void
 PeleLM::speciesBalance()
@@ -766,6 +827,12 @@ PeleLM::writeTemporals()
     speciesBalancePatch();
   }
 
+#ifdef PELE_USE_SPRAY
+  if (m_do_sprayBalance != 0) {
+    sprayBalance();
+  }
+#endif
+
   //----------------------------------------------------------------
   // State
   // Get kinetic energy and enstrophy
@@ -913,6 +980,15 @@ PeleLM::openTempFile()
       }
       tmppatchmfrFile << "\n";
     }
+#ifdef PELE_USE_SPRAY
+    if (m_do_sprayBalance != 0) {
+      tempFileName = m_temporal_dir + "/tempspray";
+      tmpSprayFile.open(
+        tempFileName.c_str(),
+        std::ios::out | std::ios::app | std::ios_base::binary);
+      tmpSprayFile.precision(12);
+    }
+#endif
 #ifdef PELE_USE_PLASMA
     if (m_do_ionsBalance) {
       tempFileName = m_temporal_dir + "/tempIons";
@@ -964,6 +1040,12 @@ PeleLM::closeTempFile()
     if (m_do_ionsBalance) {
       tmpIonsFile.flush();
       tmpIonsFile.close();
+    }
+#endif
+#ifdef PELE_USE_SPRAY
+    if (m_do_sprayBalance) {
+      tmpSprayFile.flush();
+      tmpSprayFile.close();
     }
 #endif
   }
