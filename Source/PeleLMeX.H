@@ -1082,6 +1082,7 @@ public:
   //-----------------------------------------------------------------------------
   // Temporal
   void massBalance();
+  void sprayBalance();
   void speciesBalance();
   void speciesBalancePatch();
   void initBPatches(
@@ -2427,6 +2428,7 @@ public:
 
   // Temporals
   int m_do_temporals = 0;
+  int m_do_sprayBalance = 0;
   int m_do_patch_mfr = 0;
   amrex::Vector<std::unique_ptr<BPatch>> m_bPatches;
   int m_temp_int = 5;
@@ -2446,6 +2448,11 @@ public:
   amrex::Real m_domainRhoHFluxEB = 0.0;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM * NUM_SPECIES> m_domainRhoYFlux;
   amrex::Array<amrex::Real, 2 * AMREX_SPACEDIM> m_domainUmacFlux;
+#ifdef PELE_USE_SPRAY
+  amrex::Vector<amrex::Real> m_sprayInjOld;
+  amrex::Real m_sprayFilmOld = 0.0;
+  amrex::Real m_sprayMassOld = 0.0;
+#endif
 
   std::ofstream tmpStateFile;
   std::ofstream tmpExtremasFile;
@@ -2453,6 +2460,9 @@ public:
   std::ofstream tmpEnergyFile;
   std::ofstream tmpSpecFile;
   std::ofstream tmppatchmfrFile;
+#ifdef PELE_USE_SPRAY
+  std::ofstream tmpSprayFile;
+#endif
 
   // Number of ghost cells
 #ifdef AMREX_USE_EB

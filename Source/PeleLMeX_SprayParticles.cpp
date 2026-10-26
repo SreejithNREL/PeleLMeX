@@ -169,6 +169,18 @@ PeleLM::SprayInit()
     amrex::Print() << "Total number of initial particles "
                    << SprayPC->TotalNumberOfParticles(false, false) << "\n";
   }
+  if (
+    m_do_temporals != 0 && m_do_sprayBalance != 0 &&
+    amrex::ParallelDescriptor::IOProcessor()) {
+    tmpSprayFile << "iter,time,dt,N_parcels,M_liquid,M_film,deltaMass,"
+                    "dM_injected,mdot_evaporation,M_evaporated,"
+                    "M_outofdomain,N_outofdomain,residual";
+    for (int j = 0; j < SprayPC->numJets(); ++j) {
+      tmpSprayFile << ",Minj_" << SprayPC->getJet(j)->jet_name();
+    }
+    tmpSprayFile << "\n";
+    tmpSprayFile.flush();
+  }
 }
 
 // Sets the number of ghost cells for the state, source, and ghost particles

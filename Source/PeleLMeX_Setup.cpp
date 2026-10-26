@@ -890,6 +890,9 @@ PeleLM::readParameters()
     pp.query("do_energy_balance", m_do_energyBalance);
     pp.query("do_species_balance", m_do_speciesBalance);
     pp.query("do_patch_mfr", m_do_patch_mfr);
+#ifdef PELE_USE_SPRAY
+    pp.query("do_spray_balance", m_do_sprayBalance);
+#endif
   }
 
   // -----------------------------------------
@@ -993,6 +996,9 @@ PeleLM::readParameters()
 
 #ifdef PELE_USE_SPRAY
   SprayReadParameters();
+  if (!do_spray_particles) {
+    m_do_sprayBalance = 0;
+  }
   if (do_spray_particles && m_mesh_mapping) {
     amrex::Abort(
       "Spray particles are not supported with geometry.mesh_mapping: the "
