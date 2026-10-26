@@ -1097,7 +1097,16 @@ PeleLM::derive(
 
   const PeleLMDeriveRec* rec = derive_lst.get(a_name);
 
-  if (rec != nullptr) { // This is a derived variable
+  if (rec != nullptr && rec->isLevelDerive()) { // Level-wide derive
+    mf = std::make_unique<amrex::MultiFab>(
+      grids[lev], dmap[lev], rec->numDerive(), nGrow, amrex::MFInfo(),
+      Factory(lev));
+    mf->setVal(0.0);
+    rec->levelDerFunc()(this, *mf, 0, rec->numDerive(), a_time, lev);
+    if (nGrow > 0) {
+      mf->FillBoundary(geom[lev].periodicity());
+    }
+  } else if (rec != nullptr) { // This is a derived variable
     mf = std::make_unique<amrex::MultiFab>(
       grids[lev], dmap[lev], rec->numDerive(), nGrow, amrex::MFInfo(),
       Factory(lev));
@@ -1167,7 +1176,23 @@ PeleLM::deriveComp(
 
   const PeleLMDeriveRec* rec = derive_lst.get(a_name);
 
-  if (rec != nullptr) { // This is a derived variable
+  if (rec != nullptr && rec->isLevelDerive()) { // Level-wide derive
+    int derComp = rec->variableComp(a_name);
+    if (derComp < 0) {
+      amrex::Error("PeleLM::deriveComp(): unknown derive component: " + a_name);
+    }
+    mf = std::make_unique<amrex::MultiFab>(
+      grids[lev], dmap[lev], 1, nGrow, amrex::MFInfo(), Factory(lev));
+    amrex::MultiFab derTemp(
+      grids[lev], dmap[lev], rec->numDerive(), nGrow, amrex::MFInfo(),
+      Factory(lev));
+    derTemp.setVal(0.0);
+    rec->levelDerFunc()(this, derTemp, 0, rec->numDerive(), a_time, lev);
+    if (nGrow > 0) {
+      derTemp.FillBoundary(geom[lev].periodicity());
+    }
+    amrex::MultiFab::Copy(*mf, derTemp, derComp, 0, 1, nGrow);
+  } else if (rec != nullptr) { // This is a derived variable
     mf = std::make_unique<amrex::MultiFab>(
       grids[lev], dmap[lev], 1, nGrow, amrex::MFInfo(), Factory(lev));
     std::unique_ptr<amrex::MultiFab> statemf =
