@@ -67,9 +67,26 @@ PeleLMDeriveRec::PeleLMDeriveRec(
 {
 }
 
+PeleLMDeriveRec::PeleLMDeriveRec(
+  std::string a_name,
+  amrex::IndexType result_type,
+  int nvar_derive,
+  amrex::Vector<std::string>& var_names,
+  PeleLMLevelDeriveFunc a_level_func)
+  : derive_name(std::move(a_name)),
+    variable_names(var_names),
+    der_type(result_type),
+    n_derive(nvar_derive),
+    level_func(a_level_func),
+    mapper(&amrex::pc_interp),
+    bx_map(nullptr) // unused: level-wide derives fill valid cells
+{
+}
+
 PeleLMDeriveRec::~PeleLMDeriveRec()
 {
   func = nullptr;
+  level_func = nullptr;
   mapper = nullptr;
   bx_map = nullptr;
 }
@@ -90,6 +107,18 @@ PeleLMDeriveFunc
 PeleLMDeriveRec::derFunc() const noexcept
 {
   return func;
+}
+
+PeleLMLevelDeriveFunc
+PeleLMDeriveRec::levelDerFunc() const noexcept
+{
+  return level_func;
+}
+
+bool
+PeleLMDeriveRec::isLevelDerive() const noexcept
+{
+  return level_func != nullptr;
 }
 
 PeleLMDeriveRec::DeriveBoxMap
@@ -183,6 +212,17 @@ PeleLMDeriveList::add(
   amrex::Interpolater* interp)
 {
   lst.emplace_back(name, result_type, nvar_der, vars, bx_map, interp);
+}
+
+void
+PeleLMDeriveList::add(
+  const std::string& name,
+  amrex::IndexType result_type,
+  int nvar_der,
+  amrex::Vector<std::string>& vars,
+  PeleLMLevelDeriveFunc level_func)
+{
+  lst.emplace_back(name, result_type, nvar_der, vars, level_func);
 }
 
 std::list<PeleLMDeriveRec>&

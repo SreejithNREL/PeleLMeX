@@ -7,6 +7,9 @@
 #include <PeleLMeX_DeriveFunc.H>
 #include <PeleLMeX_BPatch.H>
 #include <PelePhysics.H>
+#ifdef PELE_USE_SPRAY
+#include "SprayParticles.H"
+#endif
 #ifdef PELE_USE_CMAKE
 #include <PeleGitHashes.H>
 #endif
@@ -1735,6 +1738,24 @@ PeleLM::derivedSetup()
       static_cast<int>(var_names.size()), var_names, pelelmex_deruserdef,
       the_same_box);
   }
+
+#ifdef PELE_USE_SPRAY
+  // Spray: additive Eulerian fields and spray->gas sources, usable by plot
+  // files and all diagnostics (level-wide derives)
+  if (do_spray_particles) {
+    amrex::Vector<std::string> spray_field_names =
+      SprayParticleContainer::EulerianFieldNames();
+    derive_lst.add(
+      "spray_fields", amrex::IndexType::TheCellType(),
+      static_cast<int>(spray_field_names.size()), spray_field_names,
+      pelelmex_derspray_fields);
+    amrex::Vector<std::string> spray_src_names = pelelmex_spray_source_names();
+    derive_lst.add(
+      "spray_sources", amrex::IndexType::TheCellType(),
+      static_cast<int>(spray_src_names.size()), spray_src_names,
+      pelelmex_derspray_sources);
+  }
+#endif
 
 #if (AMREX_SPACEDIM == 3)
   // Q-criterion

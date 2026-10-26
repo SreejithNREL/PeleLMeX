@@ -318,6 +318,31 @@ void pelelmex_deruserdef(
   const amrex::Vector<amrex::BCRec>& bcrec,
   int level);
 
+#ifdef PELE_USE_SPRAY
+// Level-wide spray derives (see PeleLMLevelDeriveFunc)
+
+// Additive per-volume Eulerian spray fields deposited from the parcels;
+// component names from SprayParticleContainer::EulerianFieldNames()
+void pelelmex_derspray_fields(
+  PeleLM* a_pelelm,
+  amrex::MultiFab& a_der,
+  int dcomp,
+  int ncomp,
+  amrex::Real time,
+  int level);
+
+// Spray -> gas source terms of the current step (copied from the spray
+// source MultiFab; zero before the first spray advance)
+amrex::Vector<std::string> pelelmex_spray_source_names();
+void pelelmex_derspray_sources(
+  PeleLM* a_pelelm,
+  amrex::MultiFab& a_der,
+  int dcomp,
+  int ncomp,
+  amrex::Real time,
+  int level);
+#endif
+
 #ifdef USE_MANIFOLD_EOS
 void pelelmex_dermaniout(
   PeleLM* a_pelelm,

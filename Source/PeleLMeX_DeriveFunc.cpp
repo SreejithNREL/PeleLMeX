@@ -6,6 +6,9 @@
 
 #include <PelePhysics.H>
 #include <mechanism.H>
+#ifdef PELE_USE_SPRAY
+#include "SprayParticles.H"
+#endif
 #ifdef AMREX_USE_EB
 #include <AMReX_EBFabFactory.H>
 #include <AMReX_EBFArrayBox.H>
@@ -1732,5 +1735,74 @@ pelelmex_dermaniout(
         manfunc.get_func()->get_value(n, maniparm, der(i, j, k, n));
       }
     });
+}
+#endif
+
+#ifdef PELE_USE_SPRAY
+//
+// Additive Eulerian spray fields (level-wide derive)
+//
+void
+pelelmex_derspray_fields(
+  PeleLM* /*a_pelelm*/,
+  amrex::MultiFab& a_der,
+  int dcomp,
+  int ncomp,
+  amrex::Real /*time*/,
+  int level)
+{
+  AMREX_ALWAYS_ASSERT(ncomp == SprayParticleContainer::NumEulerianFields());
+  a_der.setVal(0.0, dcomp, ncomp, a_der.nGrow());
+  if (!PeleLM::do_spray_particles || !PeleLM::SprayPC) {
+    return;
+  }
+  if (level >= static_cast<int>(PeleLM::SprayPC->GetParticles().size())) {
+    return; // no particle data on this level
+  }
+  PeleLM::SprayPC->computeEulerianFields(a_der, level, dcomp);
+}
+
+//
+// Spray -> gas source terms (level-wide derive)
+//
+amrex::Vector<std::string>
+pelelmex_spray_source_names()
+{
+  return {
+    "spray_evap_rate", "spray_energy_src",
+    AMREX_D_DECL("spray_mom_src_x", "spray_mom_src_y", "spray_mom_src_z")};
+}
+
+void
+pelelmex_derspray_sources(
+  PeleLM* a_pelelm,
+  amrex::MultiFab& a_der,
+  int dcomp,
+  int ncomp,
+  amrex::Real /*time*/,
+  int level)
+{
+  AMREX_ALWAYS_ASSERT(
+    ncomp == static_cast<int>(pelelmex_spray_source_names().size()));
+  a_der.setVal(0.0, dcomp, ncomp, a_der.nGrow());
+  if (!PeleLM::do_spray_particles) {
+    return;
+  }
+  // The spray source only exists once the first spray advance has allocated
+  // it on the current grids
+  if (
+    level >= static_cast<int>(a_pelelm->m_spraysource.size()) ||
+    a_pelelm->m_spraysource[level] == nullptr ||
+    a_pelelm->m_spraysource[level]->boxArray() != a_der.boxArray() ||
+    a_pelelm->m_spraysource[level]->DistributionMap() !=
+      a_der.DistributionMap()) {
+    return;
+  }
+  const amrex::MultiFab& src = *(a_pelelm->m_spraysource[level]);
+  const SprayComps scomps = SprayParticleContainer::getSprayComps();
+  amrex::MultiFab::Copy(a_der, src, scomps.rhoSrcIndx, dcomp, 1, 0);
+  amrex::MultiFab::Copy(a_der, src, scomps.engSrcIndx, dcomp + 1, 1, 0);
+  amrex::MultiFab::Copy(
+    a_der, src, scomps.momSrcIndx, dcomp + 2, AMREX_SPACEDIM, 0);
 }
 #endif

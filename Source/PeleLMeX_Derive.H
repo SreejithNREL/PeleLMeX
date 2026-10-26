@@ -35,6 +35,17 @@ using PeleLMMFVecDeriveFunc = void (*)(
   const amrex::Geometry&,
   amrex::Real,
   const amrex::Vector<amrex::BCRec>&);
+// Level-wide derive: fills the whole MultiFab of one level in a single call
+// (valid cells; derive() fills the ghost cells afterwards). Used for derived
+// quantities that are not local to a box, e.g. deposited particle fields.
+using PeleLMLevelDeriveFunc = void (*)(
+  PeleLM* a_pelelm,
+  amrex::MultiFab& a_der,
+  int a_dcomp,
+  int a_ncomp,
+  amrex::Real a_time,
+  int a_lev);
+
 class PeleLMDeriveRec
 {
   friend class PeleLMDeriveList;
@@ -77,6 +88,17 @@ public:
    * \brief The DeriveFunc used to calculate the derived type.
    */
   PeleLMDeriveFunc derFunc() const noexcept;
+
+  /**
+   * \brief The level-wide function used to calculate the derived type
+   * (nullptr for box-wise derives).
+   */
+  PeleLMLevelDeriveFunc levelDerFunc() const noexcept;
+
+  /**
+   * \brief True if this is a level-wide derive (see PeleLMLevelDeriveFunc).
+   */
+  bool isLevelDerive() const noexcept;
 
   DeriveBoxMap boxMap() const noexcept;
 
@@ -164,6 +186,22 @@ public:
     DeriveBoxMap box_map,
     amrex::Interpolater* interp = &amrex::pc_interp);
 
+  /**
+   * \brief Constructor for a level-wide derive.
+   *
+   * \param name
+   * \param result_type
+   * \param nvar_derive
+   * \param var_names
+   * \param level_func
+   */
+  PeleLMDeriveRec(
+    std::string name,
+    amrex::IndexType result_type,
+    int nvar_derive,
+    amrex::Vector<std::string>& var_names,
+    PeleLMLevelDeriveFunc level_func);
+
 private:
   //! Name of derived quantity.
   std::string derive_name;
@@ -179,6 +217,9 @@ private:
 
   //! Function that computes derived quantity from state variables.
   PeleLMDeriveFunc func = nullptr;
+
+  //! Level-wide function (alternative to func).
+  PeleLMLevelDeriveFunc level_func = nullptr;
 
   //! Interpolater for mapping crse grid derived data to finer levels.
   amrex::Interpolater* mapper = nullptr;
@@ -291,6 +332,22 @@ public:
     amrex::Vector<std::string>& vars,
     PeleLMDeriveRec::DeriveBoxMap bx_map,
     amrex::Interpolater* interp = &amrex::pc_interp);
+
+  /**
+   * \brief Adds a level-wide derive to the registry.
+   *
+   * \param name
+   * \param result_type
+   * \param nvar_derive
+   * \param var_names
+   * \param level_func
+   */
+  void add(
+    const std::string& name,
+    amrex::IndexType result_type,
+    int nvar_der,
+    amrex::Vector<std::string>& vars,
+    PeleLMLevelDeriveFunc level_func);
 
   std::list<PeleLMDeriveRec>& dlist();
 
